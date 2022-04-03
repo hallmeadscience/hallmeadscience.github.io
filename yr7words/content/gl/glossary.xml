@@ -1,0 +1,1495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 rel. 3 U (http://www.altova.com) by V Bishop (3T Productions Ltd) -->
+<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by Paul O (3T Productions Limited) -->
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="glossary.xsd">
+	<glossary>
+		<letter id="a">
+			<term name="abdomen" data="es7g1.mp3">
+				<description>Rear or bottom end of an animal's main body.</description>
+			</term>
+			<term name="acetic acid" data="es7g2.mp3">
+				<description>The old name for ethanoic acid. It is the acid in vinegar.</description>
+				<pronunciation><![CDATA[a-<b>see</b>-tick]]></pronunciation>
+			</term>
+			<term name="acid" data="es7g3.mp3">
+				<description>A substance that turns litmus red. It has a pH of less than 7.</description>
+			</term>
+			<term name="acid rain" data="es7g4.mp3">
+				<description>Rain containing sulphuric and nitric acid.</description>
+			</term>
+			<term name="acne" data="es7g5.mp3">
+				<description>Spots on the skin.</description>
+				<pronunciation><![CDATA[<b>ack</b>-nee]]></pronunciation>
+			</term>
+			<term name="adaptations" data="es7g6.mp3">
+				<description>The features that plants and animals have to help them live in a particular place. </description>
+				<pronunciation><![CDATA[add-app-<b>tay</b>-shuns ]]></pronunciation>
+			</term>
+			<term name="adapted" data="es7g7.mp3">
+				<description>When something has certain features to help it do a particular job. When the features of a cell help it do its job, the cell is said to be 'adapted' to its job.</description>
+			</term>
+			<term name="adolescence" data="es7g8.mp3">
+				<description>Time when both physical and emotional changes occur in humans.</description>
+				<pronunciation><![CDATA[add-ol-<b>less</b>-sense]]></pronunciation>
+			</term>
+			<term name="afterbirth" data="es7g9.mp3">
+				<description>When the placenta is pushed out through the vagina.</description>
+			</term>
+			<term name="air resistance" data="es7g10.mp3">
+				<description>A force that tries to slow things down that are moving through air. It is a type of friction.</description>
+			</term>
+			<term name="alkali" data="es7g11.mp3">
+				<description>Substance that turns litmus blue. Has a pH of more than 7.</description>
+				<pronunciation><![CDATA[<b>alk</b>-al-lie]]></pronunciation>
+			</term>
+			<term name="alternative energy resources" data="es7g12.mp3">
+				<description>Another name for renewable energy resources.</description>
+			</term>
+			<term name="ammeter" data="es7g13.mp3">
+				<description>Measures how much electricity is flowing around a circuit.</description>
+			</term>
+			<term name="amnion" data="es7g14.mp3">
+				<description>Bag containing amniotic fluid.</description>
+				<pronunciation><![CDATA[<b>am</b>-nee-on]]></pronunciation>
+			</term>
+			<term name="amniotic fluid" data="es7g15.mp3">
+				<description>Liquid surrounding the growing embryo and protecting it.</description>
+				<pronunciation><![CDATA[am-nee-<b>ot</b>-tick]]></pronunciation>
+			</term>
+			<term name="amp (A)" data="es7g16.mp3">
+				<description>The unit for current.</description>
+			</term>
+			<term name="amphibian" data="es7g17.mp3">
+				<description>Vertebrate with moist skin, e.g. a frog.</description>
+				<pronunciation><![CDATA[am-<b>fib</b>-ee-an]]></pronunciation>
+			</term>
+			<term name="antacid" data="es7g18.mp3">
+				<description>A medicine containing an alkali used to cancel out some of the acid in the stomach to treat heartburn.</description>
+				<pronunciation><![CDATA[ant-<b>ass</b>-id]]></pronunciation>
+			</term>
+			<term name="ante-natal class" data="es7g19.mp3">
+				<description>A pregnant woman and the father of the baby attend this to find out more about what happens during pregnancy and childbirth.</description>
+			</term>
+			<term name="antenna" data="es7g20.mp3">
+				<description>Something sticking out of an animal's head which is used to sense things. The plural is antennae.</description>
+			</term>
+			<term name="anther" data="es7g21.mp3">
+				<description>Part of the stamen. It produces pollen grains.</description>
+			</term>
+			<term name="antibodies" data="es7g22.mp3">
+				<description>Substances produced by white blood cells that help to fight microbes which might cause diseases.</description>
+			</term>
+			<term name="arachnid" data="es7g23.mp3">
+				<description>Type of arthropod with four pairs of legs, e.g. a spider.</description>
+				<pronunciation><![CDATA[ar-<b>ack</b>-nid]]></pronunciation>
+			</term>
+			<term name="arthropod" data="es7g24.mp3">
+				<description>Invertebrate with jointed legs, e.g. a fly or spider.</description>
+				<pronunciation><![CDATA[<b>arth</b>-row-pod]]></pronunciation>
+			</term>
+			<term name="ascorbic acid" data="es7g25.mp3">
+				<description>Chemical name for vitamin C.</description>
+				<pronunciation><![CDATA[a-<b>score</b>-bick]]></pronunciation>
+			</term>
+			<term name="asteroid" data="es7g26.mp3">
+				<description>A small lump of rock orbiting around the Sun</description>
+				<pronunciation><![CDATA[<b>ass</b>-ter-oyd]]></pronunciation>
+			</term>
+			<term name="atom" data="es7g27.mp3">
+				<description>The smallest part of an element.</description>
+			</term>
+			<term name="axis" data="es7g28.mp3">
+				<description>Imaginary vertical line that goes from one pole of the Earth to the other. The Earth spins around its axis.</description>
+				<pronunciation><![CDATA[<b>acks</b>-iss]]></pronunciation>
+			</term>
+		</letter>
+		<letter id="b">
+			<term name="balanced forces" data="es7g29.mp3">
+				<description>When two forces are the same strength, but working in opposite directions.</description>
+			</term>
+			<term name="biomass" data="es7g30.mp3">
+				<description>Any fuel that comes from plants, animals, or their wastes (e.g. wood, methane from rotting plants, etc.).</description>
+				<pronunciation><![CDATA[<b>bi</b>-O-mass]]></pronunciation>
+			</term>
+			<term name="bird" data="es7g31.mp3">
+				<description>Vertebrate with feathers, e.g. an eagle.</description>
+			</term>
+			<term name="bonds" data="es7g32.mp3">
+				<description>Forces holding particles together.</description>
+			</term>
+			<term name="brain" data="es7g33.mp3">
+				<description>Organ that controls what the body does.</description>
+			</term>
+			<term name="braking distance" data="es7g34.mp3">
+				<description>The distance a car travels while the brakes are trying to stop it.</description>
+			</term>
+			<term name="breathing system" data="es7g35.mp3">
+				<description>Takes in oxygen and gets rid of carbon dioxide from our bodies.</description>
+				<pronunciation><![CDATA[<b>bree</b>-thing]]></pronunciation>
+			</term>
+			<term name="brine" data="es7g36.mp3">
+				<description>A solution of common salt and water.</description>
+			</term>
+			<term name="buoyancy aids" data="es7g37.mp3">
+				<description>A jacket filled with foam that helps you to float in water.</description>
+			</term>
+			<term name="burette" data="es7g38.mp3">
+				<description>A tube with a tap at the bottom and a measuring scale on its side. Used to add a measured quantity of a liquid to another one.</description>
+				<pronunciation><![CDATA[bew-<b>rett</b>]]></pronunciation>
+			</term>
+		</letter>
+		<letter id="c">
+			<term name="cable grip" data="es7g39.mp3">
+				<description>Part of a plug that holds the cable, and stops the wires being pulled out of the pins.</description>
+			</term>
+			<term name="carbon dioxide" data="es7g40.mp3">
+				<description>A gas which will put out a lighted splint and turn limewater milky.</description>
+			</term>
+			<term name="carnivore" data="es7g41.mp3">
+				<description>An animal that only eats other animals. </description>
+			</term>
+			<term name="carpel" data="es7g42.mp3">
+				<description>Female reproductive organ found in flowers. It is made of a stigma, style and ovary.</description>
+				<pronunciation><![CDATA[<b>car</b>-pull]]></pronunciation>
+			</term>
+			<term name="cell (biology)" data="es7g43.mp3">
+				<description>The basic unit which living things are made of.</description>
+				<pronunciation><![CDATA[sell]]></pronunciation>
+			</term>
+			<term name="cell (physics)" data="es7g44.mp3">
+				<description>A source of electricity with a low 'energy'. Cells push electrons round a circuit.</description>
+			</term>
+			<term name="cell division" data="es7g45.mp3">
+				<description>When a cell splits in two. Cells are made using cell division.</description>
+			</term>
+			<term name="cell surface membrane" data="es7g46.mp3">
+				<description>Controls what goes into and out of a cell.</description>
+				<pronunciation><![CDATA[<b>mem</b>-brain]]></pronunciation>
+			</term>
+			<term name="cell wall" data="es7g47.mp3">
+				<description>Tough wall around plant cells. Helps to support the cell.</description>
+			</term>
+			<term name="cellulose" data="es7g48.mp3">
+				<description>Tough material used to make plant cell walls.</description>
+			</term>
+			<term name="centipede" data="es7g49.mp3">
+				<description>Type of arthropod with long thin body divided into sections. One pair of legs on each body section.</description>
+				<pronunciation><![CDATA[<b>sent</b>-ip-eed]]></pronunciation>
+			</term>
+			<term name="cervix" data="es7g50.mp3">
+				<description>Ring of muscle at the bottom of the uterus in females.</description>
+				<pronunciation><![CDATA[<b>sir</b>-vicks]]></pronunciation>
+			</term>
+			<term name="chemical energy" data="es7g51.mp3">
+				<description>The kind of energy stored in chemicals. Food, fuels and cells (batteries) all contain chemical energy.</description>
+			</term>
+			<term name="chemical reaction" data="es7g52.mp3">
+				<description>When new substances are formed.</description>
+			</term>
+			<term name="chlorophyll" data="es7g53.mp3">
+				<description>Green substance found inside chloroplasts.</description>
+				<pronunciation><![CDATA[<b>klor</b>-O-fill]]></pronunciation>
+			</term>
+			<term name="chloroplast" data="es7g54.mp3">
+				<description>Green disc containing chlorophyll. Found in plant cells. Where the plant makes food using photosynthesis.</description>
+				<pronunciation><![CDATA[<b>klor</b>-O-plast]]></pronunciation>
+			</term>
+			<term name="choice chamber" data="es7g55.mp3">
+				<description>Equipment that allows scientists to test how environmental factors affect organisms.</description>
+			</term>
+			<term name="chromatogram" data="es7g56.mp3">
+				<description>The dried piece of paper produced by chromatography.</description>
+				<pronunciation><![CDATA[krow-<b>mat</b>-O-gram]]></pronunciation>
+			</term>
+			<term name="chromatography" data="es7g57.mp3">
+				<description>Separating dissolved solids from one another. The solids are usually coloured.</description>
+				<pronunciation><![CDATA[krow-mat-<b>og</b>-graph-ee]]></pronunciation>
+			</term>
+			<term name="cilia" data="es7g58.mp3">
+				<description>Small hairs on the surface of some cells.</description>
+				<pronunciation><![CDATA[<b>sil</b>-lee-ah]]></pronunciation>
+			</term>
+			<term name="ciliated" data="es7g59.mp3">
+				<description>Having cilia.</description>
+				<pronunciation><![CDATA[<b>sil</b>-lee-ayted]]></pronunciation>
+			</term>
+			<term name="ciliated epithelial cell" data="es7g60.mp3">
+				<description>Cell with cilia found in the lungs.</description>
+				<pronunciation><![CDATA[<b>sil</b>-lee-aytedep-pee-<b>theel</b>-ee-al]]></pronunciation>
+			</term>
+			<term name="circuit" data="es7g61.mp3">
+				<description>A complete loop that electricity flows around.</description>
+				<pronunciation><![CDATA[<b>sir</b>-kit]]></pronunciation>
+			</term>
+			<term name="circulatory system" data="es7g62.mp3">
+				<description>Carries oxygen and food around the body.</description>
+				<pronunciation><![CDATA[serk-you-<b>late</b>-or-ee]]></pronunciation>
+			</term>
+			<term name="circumcision" data="es7g63.mp3">
+				<description>Removal of the foreskin.</description>
+				<pronunciation><![CDATA[sir-cum-<b>siz</b>-shun]]></pronunciation>
+			</term>
+			<term name="citric acid" data="es7g64.mp3">
+				<description>The acid in citrus fruits.</description>
+				<pronunciation><![CDATA[<b>sit</b>-rick]]></pronunciation>
+			</term>
+			<term name="classification" data="es7g65.mp3">
+				<description>Sorting things into groups.</description>
+				<pronunciation><![CDATA[clas-if-ik-<b>ay</b>-shun]]></pronunciation>
+			</term>
+			<term name="coal" data="es7g66.mp3">
+				<description>A fossil fuel made from the remains of plants.</description>
+			</term>
+			<term name="combination reaction" data="es7g67.mp3">
+				<description>When chemicals join to form new substances.</description>
+			</term>
+			<term name="combustion" data="es7g68.mp3">
+				<description>The scientific word for burning.</description>
+			</term>
+			<term name="common salt" data="es7g69.mp3">
+				<description>A chemical we use to make things taste 'salty'.</description>
+			</term>
+			<term name="community" data="es7g70.mp3">
+				<description>All the plants and animals that live in a habitat. </description>
+				<pronunciation><![CDATA[com-<b>mew</b>-nit-ee ]]></pronunciation>
+			</term>
+			<term name="compete" data="es7g433.mp3">
+				<description>All organisms need some of the same things and so each organism has to try to get these things before another organism does. For example, plants compete with one another for light.</description>
+			</term>
+			<term name="concentrate" data="es7g444.mp3">
+				<description>We concentrate a solution by adding more of the solute to it.</description>
+				<pronunciation/>
+			</term>
+			<term name="contraction" data="es7g434.mp3">
+				<description>When something is getting smaller.</description>
+				<pronunciation><![CDATA[con-<b>track</b>-shun]]></pronunciation>
+			</term>
+			<term name="component" data="es7g71.mp3">
+				<description>Something in a circuit, like a bulb, switch or motor.</description>
+				<pronunciation><![CDATA[com-<b>po</b>-nent]]></pronunciation>
+			</term>
+			<term name="condensing" data="es7g72.mp3">
+				<description>A gas turning into a liquid.</description>
+			</term>
+			<term name="conductor" data="es7g73.mp3">
+				<description>A material that lets electricity flow through it.</description>
+			</term>
+			<term name="constellation" data="es7g74.mp3">
+				<description>A pattern of stars.</description>
+				<pronunciation><![CDATA[con-stell-<b>ay</b>-shun]]></pronunciation>
+			</term>
+			<term name="consumer" data="es7g75.mp3">
+				<description>An organism that has to eat other organisms to stay alive. Animals are consumers.</description>
+				<pronunciation><![CDATA[con-<b>syou</b>-mer]]></pronunciation>
+			</term>
+			<term name="contact force" data="es7g76.mp3">
+				<description>A force that needs to touch an object before it can affect it (e.g. friction).</description>
+			</term>
+			<term name="continuous" data="es7g77.mp3">
+				<description>Variation where there is a range of values which change gradually, such as the height of people.</description>
+			</term>
+			<term name="contraction" data="es7g434.mp3">
+				<description>When something is getting smaller.</description>
+				<pronunciation><![CDATA[con-<b>track</b>-shun]]></pronunciation>
+			</term>
+			<term name="contractions" data="es7g78.mp3">
+				<description>The uterus starts to push out the baby during labour.</description>
+				<pronunciation><![CDATA[con-<b>track</b>-shuns]]></pronunciation>
+			</term>
+			<term name="convection current" data="es7g79.mp3">
+				<description>A flow of liquid or gas caused by part of it being heated or cooled more than the rest.</description>
+				<pronunciation><![CDATA[con-<b>veck</b>-shun]]></pronunciation>
+			</term>
+			<term name="cord" data="es7g80.mp3">
+				<description>Carries food, oxygen and waste between the placenta and the growing fetus.</description>
+			</term>
+			<term name="correlation" data="es7g81.mp3">
+				<description>Same as a relationship.</description>
+			</term>
+			<term name="corrosion" data="es7g82.mp3">
+				<description>When stone or metal reacts with chemicals in air or water and is worn away or changed into a different substance.</description>
+			</term>
+			<term name="corrosive" data="es7g83.mp3">
+				<description>Substances that attack metals, stonework and skin are called corrosive.</description>
+				<pronunciation><![CDATA[cor-<b>row</b>-sive]]></pronunciation>
+			</term>
+			<term name="coverslip" data="es7g84.mp3">
+				<description>Thin piece of glass used to hold a specimen in place on a slide.</description>
+			</term>
+			<term name="cross-pollination" data="es7g85.mp3">
+				<description>Transfer of pollen from an anther to a stigma of a different plant.</description>
+			</term>
+			<term name="crude oil" data="es7g86.mp3">
+				<description>A mixture of different liquids found underground. It includes the liquids we use as petrol and engine oil.</description>
+			</term>
+			<term name="crustacean" data="es7g87.mp3">
+				<description>Type of arthropod with a chalky shell and 5-7 pairs of legs, e.g. a lobster.</description>
+				<pronunciation><![CDATA[crust-<b>ay</b>-shun]]></pronunciation>
+			</term>
+			<term name="cytoplasm" data="es7g88.mp3">
+				<description>Jelly inside a cell where the cell's activities happen.</description>
+				<pronunciation><![CDATA[<b>site</b>-O-plaz-m]]></pronunciation>
+			</term>
+		</letter>
+		<letter id="d">
+			<term name="daily changes" data="es7g89.mp3">
+				<description>Changes in the physical environmental factors which happen during a day (e.g. it gets dark at night). </description>
+			</term>
+			<term name="data" data="es7g90.mp3">
+				<description>Results of an experiment.</description>
+			</term>
+			<term name="daughter cell" data="es7g91.mp3">
+				<description>The two new cells made by cell division are called daughter cells.</description>
+			</term>
+			<term name="day" data="es7g92.mp3">
+				<description>24 hours, the time it takes the Earth to spin once on its axis.</description>
+			</term>
+			<term name="deciduous" data="es7g93.mp3">
+				<description>Tree that drops its leaves in winter (e.g. oak tree). </description>
+				<pronunciation><![CDATA[dess-<b>idd</b>-you-us ]]></pronunciation>
+			</term>
+			<term name="decomposer" data="es7g94.mp3">
+				<description>Something that eats dead plants.</description>
+			</term>
+			<term name="decomposition reaction" data="es7g95.mp3">
+				<description>A reaction where a chemical breaks up to form other compounds. A decomposition reaction does not require oxygen from the air.</description>
+			</term>
+			<term name="dense" data="es7g96.mp3">
+				<description>Something which is heavy for its volume.</description>
+			</term>
+			<term name="density" data="es7g97.mp3">
+				<description>The amount of mass that 1cm3 of a substance has. Measured in g/cm3.</description>
+			</term>
+			<term name="desalination" data="es7g98.mp3">
+				<description>Removing salt from sea water.</description>
+				<pronunciation><![CDATA[<b>dee</b>-sal-in-ay-shun]]></pronunciation>
+			</term>
+			<term name="diffusion" data="es7g99.mp3">
+				<description>When particles mix with each other without anything moving them.</description>
+			</term>
+			<term name="digestive system" data="es7g100.mp3">
+				<description>Breaks down our food.</description>
+				<pronunciation><![CDATA[die-<b>jest</b>-iv]]></pronunciation>
+			</term>
+			<term name="dilute" data="es7g101.mp3">
+				<description>We dilute a solution by adding more of the solvent to it.</description>
+				<pronunciation><![CDATA[<b>die</b>-loot]]></pronunciation>
+			</term>
+			<term name="discontinuous" data="es7g102.mp3">
+				<description>Variation where there are only a few different options, such as people who can roll their tongues and those who cannot.</description>
+			</term>
+			<term name="displacement" data="es7g103.mp3">
+				<description>The volume of water pushed out of the way by an object.</description>
+			</term>
+			<term name="dissolving" data="es7g104.mp3">
+				<description>When a solid splits up and mixes with a liquid to make a solution.</description>
+				<pronunciation><![CDATA[diss-<b>olv</b>-ing]]></pronunciation>
+			</term>
+			<term name="distance/time graph" data="es7g105.mp3">
+				<description>A graph that shows how far and how fast something travels during a journey.</description>
+			</term>
+			<term name="distillation" data="es7g106.mp3">
+				<description>The process of separating a liquid from a solution by evaporating the liquid and then condensing it.</description>
+				<pronunciation><![CDATA[dist-till-<b>ay</b>-shun]]></pronunciation>
+			</term>
+			<term name="distribution" data="es7g107.mp3">
+				<description>The places where an organism can be found in a habitat. </description>
+				<pronunciation><![CDATA[diss-trib-<b>you</b>-shun ]]></pronunciation>
+			</term>
+			<term name="drag" data="es7g108.mp3">
+				<description>Air resistance and water resistance are both sometimes called drag.</description>
+			</term>
+		</letter>
+		<letter id="e">
+			<term name="Earth" data="es7g109.mp3">
+				<description>The planet we live on.</description>
+			</term>
+			<term name="earth wire" data="es7g110.mp3">
+				<description>The green and yellow wire in a cable or plug.</description>
+			</term>
+			<term name="echinoderm" data="es7g111.mp3">
+				<description>Invertebrate with a body in five parts, e.g. a starfish.</description>
+				<pronunciation><![CDATA[ek-<b>eye</b>-no-derm]]></pronunciation>
+			</term>
+			<term name="egg cell" data="es7g112.mp3">
+				<description>The female sex cell.</description>
+			</term>
+			<term name="ejaculation" data="es7g113.mp3">
+				<description>Semen is pumped out of a man's penis into the top of the vagina during sexual intercourse.</description>
+				<pronunciation><![CDATA[edge-ack-you-<b>lay</b>-shun]]></pronunciation>
+			</term>
+			<term name="elastic" data="es7g114.mp3">
+				<description>Any substance that will return to its original shape and size after it has been stretched or squashed.</description>
+			</term>
+			<term name="electric current" data="es7g115.mp3">
+				<description>The flow of electricity around a circuit.</description>
+			</term>
+			<term name="electric shock" data="es7g116.mp3">
+				<description>When electricity flows through the body.</description>
+			</term>
+			<term name="electrical energy" data="es7g117.mp3">
+				<description>The kind of energy carried by electricity.</description>
+			</term>
+			<term name="electron" data="es7g118.mp3">
+				<description>Tiny particle that flows around a circuit.</description>
+			</term>
+			<term name="embryo (human)" data="es7g119.mp3">
+				<description>Tiny new human life which grows by cell division from a fertilised egg cell.</description>
+				<pronunciation><![CDATA[<b>em</b>-bree-O]]></pronunciation>
+			</term>
+			<term name="embryo (plant)" data="es7g120.mp3">
+				<description>Tiny plant, found inside a seed, with a very small shoot and a very small root.</description>
+				<pronunciation><![CDATA[<b>em</b>-bree-O]]></pronunciation>
+			</term>
+			<term name="environment" data="es7g121.mp3">
+				<description>The conditions around a certain organism caused by physical environmental factors. </description>
+			</term>
+			<term name="environmental factors" data="es7g122.mp3">
+				<description>Things in an environment that can change something about an organism.</description>
+			</term>
+			<term name="environmental variation" data="es7g123.mp3">
+				<description>Differences between organisms caused by environmental factors.</description>
+			</term>
+			<term name="erection" data="es7g125.mp3">
+				<description>When the penis becomes stiff.</description>
+			</term>
+			<term name="ethanoic acid" data="es7g126.mp3">
+				<description>The acid in vinegar.</description>
+				<pronunciation><![CDATA[eth-an-<b>know</b>-ic]]></pronunciation>
+			</term>
+			<term name="evaporation" data="es7g127.mp3">
+				<description>A liquid turning into a gas.</description>
+				<pronunciation><![CDATA[ev-app-or-<b>ay</b>-shun]]></pronunciation>
+			</term>
+			<term name="evergreen" data="es7g128.mp3">
+				<description>Tree that keeps its leaves in winter (e.g. pine tree). </description>
+			</term>
+			<term name="exoskeleton" data="es7g129.mp3">
+				<description>Thick outer covering found on arthropods.</description>
+				<pronunciation><![CDATA[ex-O-<b>skel</b>-e-ton]]></pronunciation>
+			</term>
+			<term name="expansion" data="es7g130.mp3">
+				<description>When something gets bigger.</description>
+			</term>
+			<term name="explosives" data="es7g131.mp3">
+				<description>Chemicals which are designed to explode (to produce large amounts of gas very quickly).</description>
+			</term>
+			<term name="external fertilisation" data="es7g132.mp3">
+				<description>When fertilisation happens outside the bodies of the parents.</description>
+			</term>
+			<term name="eyepiece lens" data="es7g133.mp3">
+				<description>Part of the microscope you look down.</description>
+			</term>
+		</letter>
+		<letter id="f">
+			<term name="fertilisation" data="es7g134.mp3">
+				<description>Fusing of a male sex cell with a female sex cell.</description>
+				<pronunciation><![CDATA[fert-ill-eyes-<b>ay</b>-shun]]></pronunciation>
+			</term>
+			<term name="fertilised egg cell" data="es7g135.mp3">
+				<description>What is produced when a male sex cell fuses with an egg cell.</description>
+			</term>
+			<term name="fetus" data="es7g136.mp3">
+				<description>After an embryo has grown all its organs it is called a fetus. This is usually at about 10 weeks.</description>
+				<pronunciation><![CDATA[<b>fee</b>-tus]]></pronunciation>
+			</term>
+			<term name="filament (biology)" data="es7g137.mp3">
+				<description>Part of the stamen. It supports the anther.</description>
+			</term>
+			<term name="filament (physics)" data="es7g138.mp3">
+				<description>Thin piece of wire inside a light bulb that glows when electricity is flowing through it.</description>
+			</term>
+			<term name="filtering" data="es7g139.mp3">
+				<description>Separating things that have not dissolved from a liquid. The liquid is passed through a filter to do this.</description>
+			</term>
+			<term name="fire triangle" data="es7g140.mp3">
+				<description>A triangle that shows the three things needed for a fire to keep burning: heat, fuel and oxygen.</description>
+			</term>
+			<term name="fish" data="es7g141.mp3">
+				<description>Vertebrate with wet scales, fins and gills, e.g. a salmon.</description>
+			</term>
+			<term name="flow" data="es7g142.mp3">
+				<description>Move.</description>
+			</term>
+			<term name="flower" data="es7g143.mp3">
+				<description>Organ system containing reproductive organs - carpel (female), stamen (male).</description>
+			</term>
+			<term name="focusing wheel" data="es7g144.mp3">
+				<description>Wheel on a microscope that moves parts of the microscope to get the image into focus.</description>
+			</term>
+			<term name="food chain" data="es7g145.mp3">
+				<description>A way of showing what eats what in a habitat.</description>
+			</term>
+			<term name="food web" data="es7g146.mp3">
+				<description>Many food chains linked together.</description>
+			</term>
+			<term name="force" data="es7g147.mp3">
+				<description>A push or a pull.</description>
+			</term>
+			<term name="force meter" data="es7g148.mp3">
+				<description>Piece of equipment containing a spring, used to measure forces.</description>
+			</term>
+			<term name="foreskin" data="es7g149.mp3">
+				<description>A covering of skin protecting the head of the penis.</description>
+			</term>
+			<term name="fossil" data="es7g150.mp3">
+				<description>A dead organism that has been trapped in mud and whose body has not completely rotted away.</description>
+			</term>
+			<term name="fossil fuels" data="es7g151.mp3">
+				<description>Coal, oil and natural gas - all fuels that were formed from the remains of dead plants and animals.</description>
+			</term>
+			<term name="fractional distillation" data="es7g152.mp3">
+				<description>A way of separating liquids with different boiling points.</description>
+				<pronunciation><![CDATA[<b>frac</b>-shon-al]]></pronunciation>
+			</term>
+			<term name="fractionating tower" data="es7g153.mp3">
+				<description>Large tower used to separate the different liquids in crude oil.</description>
+				<pronunciation><![CDATA[<b>frac</b>-shon-ay-ting]]></pronunciation>
+			</term>
+			<term name="friction" data="es7g154.mp3">
+				<description>A force that tries to slow things down when two things rub against each other.</description>
+			</term>
+			<term name="fruit" data="es7g155.mp3">
+				<description>Something used to carry seeds. Can be fleshy or dry.</description>
+			</term>
+			<term name="fuel" data="es7g156.mp3">
+				<description>Anything that stores energy that can be converted into heat energy - includes fossil fuels and nuclear fuel.</description>
+			</term>
+			<term name="full moon" data="es7g157.mp3">
+				<description>The phase of the Moon when it looks like a bright, full circle.</description>
+			</term>
+			<term name="function" data="es7g158.mp3">
+				<description>Something's job.</description>
+			</term>
+			<term name="fuse (biology)" data="es7g159.mp3">
+				<description>When two sex cells join together to form a fertilised egg cell they are said to fuse.</description>
+			</term>
+			<term name="fuse (physics)" data="es7g160.mp3">
+				<description>A piece of wire that melts if too much electricity flows through it.</description>
+			</term>
+		</letter>
+		<letter id="g">
+			<term name="galaxy" data="es7g161.mp3">
+				<description>Millions of stars grouped together.</description>
+			</term>
+			<term name="gas" data="es7g162.mp3">
+				<description>Something that does not have a fixed shape or volume, and is easy to squash.</description>
+			</term>
+			<term name="generate" data="es7g163.mp3">
+				<description>Make electricity by turning a magnet inside coils of wire.</description>
+			</term>
+			<term name="generator" data="es7g164.mp3">
+				<description>Large coil of wire with a magnet inside. When the magnet is turned, electricity is produced in the coil of wire.</description>
+			</term>
+			<term name="geothermal power" data="es7g165.mp3">
+				<description>Making electricity using heat from hot rocks underground.</description>
+				<pronunciation><![CDATA[ge-O-<b>therm</b>-al]]></pronunciation>
+			</term>
+			<term name="gestation period" data="es7g166.mp3">
+				<description>The length of time from fertilisation to birth.</description>
+				<pronunciation><![CDATA[jess-<b>tay</b>-shun]]></pronunciation>
+			</term>
+			<term name="glands" data="es7g167.mp3">
+				<description>The glands in the male reproductive system add a special liquid to the sperm cells to make semen. There are other sorts of glands in the body.</description>
+			</term>
+			<term name="gram" data="es7g168.mp3">
+				<description>A unit for measuring mass (g).</description>
+			</term>
+			<term name="gravity" data="es7g169.mp3">
+				<description>The force of attraction between any two objects. The Earth is very big and so has strong gravity that pulls everything down towards it.</description>
+			</term>
+		</letter>
+		<letter id="h">
+			<term name="habitat" data="es7g170.mp3">
+				<description>The place an organism lives in (e.g. woodland). </description>
+			</term>
+			<term name="harmful" data="es7g171.mp3">
+				<description>Another word for irritant.</description>
+			</term>
+			<term name="head" data="es7g172.mp3">
+				<description>Front or top end of an animal's body.</description>
+			</term>
+			<term name="heart" data="es7g173.mp3">
+				<description>Organ that pumps blood.</description>
+			</term>
+			<term name="heat energy" data="es7g174.mp3">
+				<description>The hotter something is, the more heat energy it has.</description>
+			</term>
+			<term name="heat exchanger" data="es7g175.mp3">
+				<description>Piece of equipment used in desalination to take heat away from steam and turn it into water.</description>
+			</term>
+			<term name="hemispheres" data="es7g176.mp3">
+				<description>The two halves of a sphere - the shape you would get if you cut a solid ball in half.</description>
+				<pronunciation><![CDATA[<b>hem</b>-ee-sfears]]></pronunciation>
+			</term>
+			<term name="herbivore" data="es7g177.mp3">
+				<description>An animal that only eats plants. </description>
+			</term>
+			<term name="hibernation" data="es7g178.mp3">
+				<description>When animals hide during the winter and go to sleep. </description>
+				<pronunciation><![CDATA[high-ber-<b>nay</b>-shun ]]></pronunciation>
+			</term>
+			<term name="host" data="es7g179.mp3">
+				<description>An animal that has a parasite living on it or inside it.</description>
+			</term>
+			<term name="hydrocarbon" data="es7g180.mp3">
+				<description>A chemical compound containing only hydrogen and carbon.</description>
+			</term>
+			<term name="hydrochloric acid" data="es7g181.mp3">
+				<description>A common acid that is also found in your stomach.</description>
+			</term>
+			<term name="hydroelectric power" data="es7g182.mp3">
+				<description>Making electricity by letting falling water (usually from a reservoir) turn turbines and generators.</description>
+				<pronunciation><![CDATA[hi-drO-el-<b>eck</b>-trick]]></pronunciation>
+			</term>
+		</letter>
+		<letter id="i">
+			<term name="image" data="es7g184.mp3">
+				<description>What you see down a microscope.</description>
+			</term>
+			<term name="implantation" data="es7g185.mp3">
+				<description>When an embryo sinks into the soft lining of the uterus.</description>
+				<pronunciation><![CDATA[im-plant-<b>ay</b>-shun]]></pronunciation>
+			</term>
+			<term name="impulse" data="es7g186.mp3">
+				<description>Electrical signal carried by a nerve cell.</description>
+			</term>
+			<term name="in focus" data="es7g436.mp3">
+				<description>When an image is clear and sharp.</description>
+			</term>
+			<term name="in parallel" data="es7g187.mp3">
+				<description>When a voltmeter is connected across a bulb or other component.</description>
+			</term>
+			<term name="indicator" data="es7g188.mp3">
+				<description>A dye that will change colour in acids and alkalis.</description>
+				<pronunciation><![CDATA[<b>ind</b>-ic-ay-ter]]></pronunciation>
+			</term>
+			<term name="inflate" data="es7g189.mp3">
+				<description>To blow air into something.</description>
+			</term>
+			<term name="inherit" data="es7g437.mp3">
+				<description>Something passed on from our parents.</description>
+			</term>
+			<term name="inherited variation" data="es7g190.mp3">
+				<description>Differences between organisms passed to organisms by their parents in reproduction.</description>
+			</term>
+			<term name="inner planets" data="es7g191.mp3">
+				<description>Mercury, Venus, Earth and Mars. The inner planets are all rocky planets.</description>
+			</term>
+			<term name="insect" data="es7g192.mp3">
+				<description>Type of arthropod with three pairs of legs, e.g. a fly.</description>
+			</term>
+			<term name="insoluble" data="es7g193.mp3">
+				<description>A solid that will not dissolve.</description>
+			</term>
+			<term name="insulator" data="es7g194.mp3">
+				<description>A material that does not let electricity flow through it.</description>
+			</term>
+			<term name="internal fertilisation" data="es7g195.mp3">
+				<description>When fertilisation happens inside the bodies of the parents.</description>
+			</term>
+			<term name="intestine" data="es7g196.mp3">
+				<description>The small intestine is an organ used to digest and absorb food.
+The large intestine is an organ which removes water from unwanted food.</description>
+				<pronunciation><![CDATA[in-<b>test</b>-in]]></pronunciation>
+			</term>
+			<term name="invertebrate" data="es7g197.mp3">
+				<description>Animal with no backbone.</description>
+				<pronunciation><![CDATA[in-<b>vert</b>-eb-rate]]></pronunciation>
+			</term>
+			<term name="irreversible action" data="es7g198.mp3">
+				<description>A reaction in which what you end up with cannot be turned back into what you started with.</description>
+			</term>
+			<term name="irreversible change" data="es7g199.mp3">
+				<description>Permanent change.</description>
+			</term>
+			<term name="irritant" data="es7g200.mp3">
+				<description>Something that irritates the skin and eyes.</description>
+			</term>
+			<term name="IVF" data="es7g201.mp3">
+				<description>In Vitrio Fertilisation ('in glass')  a method of fertilising an egg outside the woman's body by injecting a sperm cell into it.</description>
+			</term>
+		</letter>
+		<letter id="j">
+			<term name="joule (J)" data="es7g202.mp3">
+				<description>The unit for measuring energy.</description>
+				<pronunciation><![CDATA[<b>jool</b>]]></pronunciation>
+			</term>
+		</letter>
+		<letter id="k">
+			<term name="kidneys" data="es7g203.mp3">
+				<description>Organs used to clean the blood and make urine.</description>
+			</term>
+			<term name="kilogram" data="es7g204.mp3">
+				<description>A unit for measuring mass (kg). There are 1000 g in 1 kg.</description>
+			</term>
+			<term name="kilojoule (kJ)" data="es7g205.mp3">
+				<description>There are 1000 joules in 1 kilojoule.</description>
+				<pronunciation><![CDATA[<b>kill</b>-O-jool]]></pronunciation>
+			</term>
+			<term name="kilometres per hour (km/h)" data="es7g438.mp3">
+				<description>Units for speed when the distance is measured in kilometres and the time is measured in hours.</description>
+			</term>
+			<term name="kinetic energy" data="es7g207.mp3">
+				<description>The kind of energy in moving things.</description>
+				<pronunciation><![CDATA[kin-<b>et</b>-ick]]></pronunciation>
+			</term>
+			<term name="kingdom" data="es7g208.mp3">
+				<description>Largest groups that living things are sorted into. The two biggest are the plant and animal kingdoms.</description>
+			</term>
+		</letter>
+		<letter id="l">
+			<term name="labour" data="es7g209.mp3">
+				<description>Time when the baby is about to be born.</description>
+			</term>
+			<term name="law of conservation of energy" data="es7g210.mp3">
+				<description>The idea that energy can never be created or destroyed, only changed from one form into another.</description>
+			</term>
+			<term name="leaf" data="es7g211.mp3">
+				<description>Plant organ used to make food using photosynthesis.</description>
+			</term>
+			<term name="leap year" data="es7g212.mp3">
+				<description>A year with 366 days in it. We have a leap year every 4 years.</description>
+			</term>
+			<term name="light energy" data="es7g213.mp3">
+				<description>The kind of energy given out by light bulbs, candles, etc.</description>
+			</term>
+			<term name="light source" data="es7g214.mp3">
+				<description>Something that gives out light.</description>
+			</term>
+			<term name="light year" data="es7g215.mp3">
+				<description>The distance that light travels in one year.</description>
+			</term>
+			<term name="limewater" data="es7g216.mp3">
+				<description>A chemical that goes cloudy when carbon dioxide is bubbled through it.</description>
+			</term>
+			<term name="liquid" data="es7g217.mp3">
+				<description>Something with a fixed volume but no fixed shape.</description>
+				<pronunciation><![CDATA[<b>lick</b>-wid]]></pronunciation>
+			</term>
+			<term name="litmus" data="es7g218.mp3">
+				<description>A simple kind of indicator. It turns red in acids and blue in alkalis.</description>
+			</term>
+			<term name="live wire" data="es7g219.mp3">
+				<description>The brown wire in a cable or plug.</description>
+			</term>
+			<term name="liver" data="es7g220.mp3">
+				<description>Organ used to make and destroy substances in our bodies.</description>
+			</term>
+			<term name="lubricant" data="es7g221.mp3">
+				<description>A substance (normally a liquid) used to reduce friction.</description>
+				<pronunciation><![CDATA[<b>loo</b>-brick-ant]]></pronunciation>
+			</term>
+			<term name="lubrication" data="es7g222.mp3">
+				<description>Adding a lubricant to something.</description>
+				<pronunciation><![CDATA[loo-brick-<b>ay</b>-shun]]></pronunciation>
+			</term>
+			<term name="luminous" data="es7g223.mp3">
+				<description>Gives out light.</description>
+			</term>
+			<term name="lunar eclipse" data="es7g224.mp3">
+				<description>When the Moon moves into the shadow of the Earth.</description>
+			</term>
+			<term name="lunar month" data="es7g225.mp3">
+				<description>28 days - the time it takes the Moon to orbit around the Earth once.</description>
+			</term>
+			<term name="lungs" data="es7g226.mp3">
+				<description>Organs used to take oxygen out of the air and put waste carbon dioxide into the air.</description>
+			</term>
+		</letter>
+		<letter id="m">
+			<term name="magnetism" data="es7g227.mp3">
+				<description>A force that attracts objects made out of iron.</description>
+			</term>
+			<term name="magnification" data="es7g228.mp3">
+				<description>How much bigger a microscope makes something appear.</description>
+				<pronunciation><![CDATA[mag-nif-ick-<b>ay</b>-shun]]></pronunciation>
+			</term>
+			<term name="mains (electricity)" data="es7g229.mp3">
+				<description>Alternating current at 230 V provided to houses, shops etc.</description>
+			</term>
+			<term name="mammal" data="es7g230.mp3">
+				<description>Vertebrate with hair, which also produces milk, e.g. a human.</description>
+			</term>
+			<term name="mammary glands" data="es7g231.mp3">
+				<description>Glands contained in the breasts of women which produce milk after childbirth.</description>
+			</term>
+			<term name="mass" data="es7g232.mp3">
+				<description>The amount of matter that something is made of. Measured in grams (g) and kilograms (kg). Your mass does not change if you go into space or to another planet.</description>
+			</term>
+			<term name="mature" data="es7g233.mp3">
+				<description>Another word for develop.</description>
+			</term>
+			<term name="menopause" data="es7g234.mp3">
+				<description>When the ovaries in women stop releasing eggs.</description>
+				<pronunciation><![CDATA[<b>men</b>-O-paws]]></pronunciation>
+			</term>
+			<term name="menstrual cycle" data="es7g235.mp3">
+				<description>Series of events lasting about a month, happening in the female reproductive system. The cycle causes ovulation and the lining of the uterus is replaced.</description>
+				<pronunciation><![CDATA[<b>men</b>-strew-al]]></pronunciation>
+			</term>
+			<term name="menstruation" data="es7g236.mp3">
+				<description>When the lining of the uterus and a little blood pass out of the vagina as part of the menstrual cycle.</description>
+				<pronunciation><![CDATA[men-strew-<b>ay</b>-shun]]></pronunciation>
+			</term>
+			<term name="metal" data="es7g439.mp3">
+				<description>A type of substance that is shiny, conducts heat and electricity well, and has high melting and boiling points.</description>
+			</term>
+			<term name="metres per second (m/s)" data="es7g237.mp3">
+				<description>Units for speed when the distance is measured in metres and the time is measured in seconds.</description>
+			</term>
+			<term name="microhabitat" data="es7g238.mp3">
+				<description>Small areas of a habitat with certain conditions (e.g. under a log in a woodland habitat). </description>
+			</term>
+			<term name="microscope" data="es7g239.mp3">
+				<description>Used to magnify small things.</description>
+				<pronunciation><![CDATA[<b>my</b>-crow-scope]]></pronunciation>
+			</term>
+			<term name="migration" data="es7g240.mp3">
+				<description>When animals move to different areas of the world depending on the season. </description>
+				<pronunciation><![CDATA[my-<b>gray</b>-shun ]]></pronunciation>
+			</term>
+			<term name="miles per hour (mph)" data="es7g241.mp3">
+				<description>Units for speed when the distance is measured in miles and the time is measured in hours.</description>
+			</term>
+			<term name="Milky Way" data="es7g242.mp3">
+				<description>The galaxy that our Solar System is in.</description>
+			</term>
+			<term name="millipede" data="es7g243.mp3">
+				<description>Arthropod with long, thin body divided into sections. Two pairs of legs on each body section.</description>
+				<pronunciation><![CDATA[<b>mill</b>-ip-eed]]></pronunciation>
+			</term>
+			<term name="mixture" data="es7g244.mp3">
+				<description>A lot of different things jumbled up together.</description>
+			</term>
+			<term name="model" data="es7g245.mp3">
+				<description>A scientific way of thinking about how things happen.</description>
+			</term>
+			<term name="mollusc" data="es7g246.mp3">
+				<description>Invertebrate that crawls on a fleshy pad, e.g. a snail.</description>
+				<pronunciation><![CDATA[<b>moll</b>-usk]]></pronunciation>
+			</term>
+			<term name="Moon" data="es7g247.mp3">
+				<description>A moon is a large lump of rock orbiting around a planet. The Moon is the moon that orbits the Earth.</description>
+			</term>
+			<term name="muscle cell" data="es7g248.mp3">
+				<description>Cell that can change its length and so help us to move.</description>
+				<pronunciation><![CDATA[<b>muss</b>-ell]]></pronunciation>
+			</term>
+			<term name="muscle tissue" data="es7g440.mp3">
+				<description>A group of the same cells that change length and so help us to move.</description>
+				<pronunciation><![CDATA[<b>muss</b>-ell <b>tiss</b>-you]]></pronunciation>
+			</term>
+		</letter>
+		<letter id="n">
+			<term name="natural gas" data="es7g249.mp3">
+				<description>Fossil fuel formed from the remains of dead plants and animals that lived in the sea.</description>
+			</term>
+			<term name="navel" data="es7g250.mp3">
+				<description>Scar left by the cord. Often called the 'belly-button'.</description>
+				<pronunciation><![CDATA[<b>nave</b>-ell]]></pronunciation>
+			</term>
+			<term name="nectar" data="es7g251.mp3">
+				<description>Sugary liquid produced in flowers which some insects (and other animals) like to eat.</description>
+			</term>
+			<term name="nerve" data="es7g252.mp3">
+				<description>Carries messages around the body.</description>
+			</term>
+			<term name="nerve cell" data="es7g253.mp3">
+				<description>Cell that carries messages around the body.</description>
+			</term>
+			<term name="nervous system" data="es7g254.mp3">
+				<description>Carries messages around the body.</description>
+				<pronunciation><![CDATA[<b>nerve</b>-us]]></pronunciation>
+			</term>
+			<term name="neurone" data="es7g255.mp3">
+				<description>Another name for a nerve cell.</description>
+			</term>
+			<term name="neutral" data="es7g256.mp3">
+				<description>Substance that is not an acid or an alkali. Has a pH of 7.</description>
+			</term>
+			<term name="neutral wire" data="es7g257.mp3">
+				<description>The blue wire in a cable or plug.</description>
+			</term>
+			<term name="neutralisation" data="es7g258.mp3">
+				<description>When something is neutralised.</description>
+			</term>
+			<term name="neutralise" data="es7g259.mp3">
+				<description>When an acid is added to a base (or alkali) a neutral substance is produced.</description>
+			</term>
+			<term name="new moon" data="es7g260.mp3">
+				<description>The phase of the Moon when we cannot see the lit-up side.</description>
+			</term>
+			<term name="newton (N)" data="es7g261.mp3">
+				<description>The unit of force.</description>
+			</term>
+			<term name="newton meter" data="es7g262.mp3">
+				<description>Another name for a force meter.</description>
+			</term>
+			<term name="nitric acid" data="es7g263.mp3">
+				<description>A common acid.</description>
+			</term>
+			<term name="nocturnal" data="es7g264.mp3">
+				<description>Animals that are active at night. </description>
+				<pronunciation><![CDATA[nock-<b>tur</b>-nal ]]></pronunciation>
+			</term>
+			<term name="non-contact force" data="es7g265.mp3">
+				<description>A force that can affect something from a distance (e.g. gravity).</description>
+			</term>
+			<term name="non-renewable energy resource" data="es7g266.mp3">
+				<description>Any energy resource that will run out and we cannot renew our supplies of it (e.g. oil).</description>
+			</term>
+			<term name="normal distribution" data="es7g267.mp3">
+				<description>The bell shape of a graph that shows continuous variation of a particular feature such as height.</description>
+			</term>
+			<term name="northern hemisphere" data="es7g268.mp3">
+				<description>The half of the Earth with the North Pole in it. The UK is in the northern hemisphere.</description>
+			</term>
+			<term name="nuclear energy" data="es7g269.mp3">
+				<description>Energy stored inside the particles that things are made out of.</description>
+			</term>
+			<term name="nuclear power" data="es7g270.mp3">
+				<description>Making electricity by using the nuclear energy stored inside uranium.</description>
+			</term>
+			<term name="nucleus" data="es7g271.mp3">
+				<description>Controls what a cell does.</description>
+				<pronunciation><![CDATA[<b>new</b>-clee-us]]></pronunciation>
+			</term>
+		</letter>
+		<letter id="o">
+			<term name="objective lens" data="es7g272.mp3">
+				<description>Part of the microscope that is closest to what you are looking at.</description>
+			</term>
+			<term name="observation" data="es7g273.mp3">
+				<description>What you see happening in an experiment.</description>
+			</term>
+			<term name="offspring" data="es7g274.mp3">
+				<description>Any plant or animal formed by reproduction. Offspring are produced by their parents.</description>
+			</term>
+			<term name="oil" data="es7g275.mp3">
+				<description>Fossil fuel formed from the remains of dead plants and animals that lived in the sea.</description>
+			</term>
+			<term name="omnivore" data="es7g276.mp3">
+				<description>An animal that eats both plants and other animals.</description>
+			</term>
+			<term name="orbit" data="es7g277.mp3">
+				<description>The path that a planet takes around the Sun, or the path that a moon or satellite takes around a planet.</description>
+			</term>
+			<term name="organ" data="es7g278.mp3">
+				<description>A large part of a plant or animal that does a very important job.</description>
+			</term>
+			<term name="organ system" data="es7g279.mp3">
+				<description>Collection of organs working together to do a very important job.</description>
+			</term>
+			<term name="organism" data="es7g280.mp3">
+				<description>A living thing.</description>
+			</term>
+			<term name="outer planets" data="es7g281.mp3">
+				<description>Jupiter, Saturn, Uranus, Neptune and Pluto. All the outer planets except Pluto are made of gas.</description>
+			</term>
+			<term name="ovary (humans)" data="es7g282.mp3">
+				<description>Female reproductive organ. Produces egg cells.</description>
+				<pronunciation><![CDATA[<b>O</b>-very]]></pronunciation>
+			</term>
+			<term name="ovary (plants)" data="es7g283.mp3">
+				<description>Part of the carpel. It contains ovules, each of which contains an egg cell.</description>
+				<pronunciation><![CDATA[<b>O</b>-very]]></pronunciation>
+			</term>
+			<term name="oviduct" data="es7g284.mp3">
+				<description>Carries egg cells from the ovaries to the uterus in women. Fertilisation happens here.</description>
+			</term>
+			<term name="ovulation" data="es7g285.mp3">
+				<description>Releasing of an egg cell from an ovary in women.</description>
+				<pronunciation><![CDATA[ov-you-<b>lay</b>-shun]]></pronunciation>
+			</term>
+			<term name="ovule" data="es7g286.mp3">
+				<description>Contains egg cells. Is found in the ovary.</description>
+				<pronunciation><![CDATA[<b>ov</b>-you'll]]></pronunciation>
+			</term>
+			<term name="oxide" data="es7g287.mp3">
+				<description>A compound that includes oxygen.</description>
+			</term>
+		</letter>
+		<letter id="p">
+			<term name="palisade cell" data="es7g288.mp3">
+				<description>Cell found in leaves which contains many chloroplasts.</description>
+				<pronunciation><![CDATA[<b>pal</b>-iss-aid]]></pronunciation>
+			</term>
+			<term name="parallel circuit" data="es7g289.mp3">
+				<description>A circuit with two or more wires running next to each other.</description>
+			</term>
+			<term name="parasite" data="es7g290.mp3">
+				<description>An animal that lives on or inside another living animal. Most parasites feed on blood.</description>
+			</term>
+			<term name="parent" data="es7g291.mp3">
+				<description>An organism that has had offspring.</description>
+			</term>
+			<term name="partial eclipse" data="es7g292.mp3">
+				<description>A solar eclipse when the Moon only covers part of the Sun.</description>
+			</term>
+			<term name="particles" data="es7g293.mp3">
+				<description>The tiny pieces that everything is made out of.</description>
+				<pronunciation><![CDATA[<b>part</b>-ick-als]]></pronunciation>
+			</term>
+			<term name="permanent change" data="es7g294.mp3">
+				<description>A change in which what you ended up with cannot be turned back into what you started with.</description>
+			</term>
+			<term name="pH scale" data="es7g295.mp3">
+				<description>A numbered scale from 1-14 showing the strengths of acids and alkalis. Numbers below 7 are acids. Numbers above 7 are alkalis. pH 7 is neutral.</description>
+			</term>
+			<term name="phases of the Moon" data="es7g296.mp3">
+				<description>The different shapes the Moon seems to have at different times.</description>
+			</term>
+			<term name="photosynthesis" data="es7g297.mp3">
+				<description>Process that plants use to make their own food. It needs light to work. Carbon dioxide and water are used up. Food (a sugar called glucose) and oxygen are produced.</description>
+				<pronunciation><![CDATA[foto-<b>sinth</b>-e-sis]]></pronunciation>
+			</term>
+			<term name="physical change" data="es7g298.mp3">
+				<description>A change where no new substances are formed.</description>
+				<pronunciation><![CDATA[<b>fizz</b>-ick-al]]></pronunciation>
+			</term>
+			<term name="physical environmental factors" data="es7g299.mp3">
+				<description> The non-living conditions in the environment of an organism (e.g. temperature, light).</description>
+			</term>
+			<term name="placenta" data="es7g300.mp3">
+				<description>Attached to the uterus wall, this takes oxygen and food out of the mother's blood and puts waste materials into the mother's blood.</description>
+				<pronunciation><![CDATA[plas-<b>en</b>-ta]]></pronunciation>
+			</term>
+			<term name="plant crossing" data="es7g301.mp3">
+				<description>Producing new varieties of plants by pollination between different varieties.</description>
+			</term>
+			<term name="pollen grain" data="es7g302.mp3">
+				<description>The male sex cell in plants.</description>
+			</term>
+			<term name="pollen tube" data="es7g303.mp3">
+				<description>Tube that grows from a pollen grain down through the stigma and style and into the ovary.</description>
+			</term>
+			<term name="pollination" data="es7g304.mp3">
+				<description>Transfer of pollen from an anther to a stigma.</description>
+				<pronunciation><![CDATA[poll-in-<b>ay</b>-shun]]></pronunciation>
+			</term>
+			<term name="pollinator" data="es7g305.mp3">
+				<description>An animal that carried pollen between plants.</description>
+			</term>
+			<term name="pooter" data="es7g306.mp3">
+				<description>A small container connected to two tubes. Used to catch tiny animals.</description>
+			</term>
+			<term name="power pack" data="es7g307.mp3">
+				<description>A source of electricity with a low energy (low voltage).</description>
+			</term>
+			<term name="predator" data="es7g308.mp3">
+				<description>An animal that catches and eats other animals. </description>
+			</term>
+			<term name="prediction" data="es7g309.mp3">
+				<description>What you think will happen in an experiment.</description>
+			</term>
+			<term name="pregnant" data="es7g310.mp3">
+				<description>When a woman has an embryo growing inside her uterus.</description>
+			</term>
+			<term name="premature baby" data="es7g311.mp3">
+				<description>A small baby born early.</description>
+			</term>
+			<term name="pressure" data="es7g312.mp3">
+				<description>The force caused by particles hitting a certain area.</description>
+				<pronunciation><![CDATA[<b>presh</b>-ur]]></pronunciation>
+			</term>
+			<term name="prey" data="es7g313.mp3">
+				<description>An animal that is caught and eaten by another animal.</description>
+				<pronunciation><![CDATA[<b>pray</b>]]></pronunciation>
+			</term>
+			<term name="producer" data="es7g314.mp3">
+				<description>An organism that is able to make its own food. Plants are producers.</description>
+				<pronunciation><![CDATA[prod-<b>you</b>-sur ]]></pronunciation>
+			</term>
+			<term name="product" data="es7g315.mp3">
+				<description>New chemical formed in a chemical reaction.</description>
+			</term>
+			<term name="property" data="es7g316.mp3">
+				<description>A description of how a material behaves and what it is like. Hardness is a property of some solids.</description>
+			</term>
+			<term name="puberty" data="es7g317.mp3">
+				<description>Time when physical changes happen in the body between the ages of about 11 and 15.</description>
+				<pronunciation><![CDATA[<b>pew</b>-bert-ty]]></pronunciation>
+			</term>
+			<term name="pure" data="es7g318.mp3">
+				<description>A substance that does not have anything else in it.</description>
+			</term>
+		</letter>
+		<letter id="q">
+			<term name="quadrat" data="es7g319.mp3">
+				<description>A square frame, thrown randomly on the ground, which is used to sample plants in an area.</description>
+			</term>
+		</letter>
+		<letter id="r">
+			<term name="radiation" data="es7g320.mp3">
+				<description>Dangerous particles and energy given off by uranium and other radioactive materials.</description>
+			</term>
+			<term name="reactants" data="es7g321.mp3">
+				<description>Chemicals that join together to form a new substance.</description>
+			</term>
+			<term name="relationship" data="es7g322.mp3">
+				<description>A link between two things shown on a graph.</description>
+			</term>
+			<term name="renewable energy resource" data="es7g323.mp3">
+				<description>An energy resource that will never run out (e.g. solar power).</description>
+			</term>
+			<term name="reproductive organ" data="es7g324.mp3">
+				<description>Organ that produces sex cells.</description>
+			</term>
+			<term name="reproductive organs" data="es7g325.mp3">
+				<description>Organs used in sexual reproduction.</description>
+			</term>
+			<term name="reproductive system" data="es7g326.mp3">
+				<description>All the reproductive organs.</description>
+			</term>
+			<term name="reptile" data="es7g327.mp3">
+				<description>Vertebrate with dry scales, e.g. a snake.</description>
+			</term>
+			<term name="resistance" data="es7g328.mp3">
+				<description>A way of saying how difficult it is for electricity to flow through something.</description>
+			</term>
+			<term name="resistor" data="es7g329.mp3">
+				<description>A component that makes it difficult for electricity to flow - resistors are used to control the size of the current in a circuit.</description>
+			</term>
+			<term name="reversible change" data="es7g330.mp3">
+				<description>A change in which what you end up with can easily be turned back into what you started with.</description>
+			</term>
+			<term name="root" data="es7g331.mp3">
+				<description>Plant organ used to take water out of the soil.</description>
+			</term>
+			<term name="root hair cell" data="es7g441.mp3">
+				<description>Cell found in roots. It has a large surface area to help the cell absorb water quickly.</description>
+			</term>
+			<term name="root hair tissue" data="es7g442.mp3">
+				<description>Found in roots. Takes in water from the soil.</description>
+			</term>
+			<term name="rust" data="es7g334.mp3">
+				<description>Substance formed when iron or steel reacts with oxygen and water.</description>
+			</term>
+		</letter>
+		<letter id="s">
+			<term name="salts" data="es7g335.mp3">
+				<description>Chemicals from rocks that have dissolved in water.</description>
+			</term>
+			<term name="sample" data="es7g336.mp3">
+				<description>A small part of something. If you sample something you take a small part of it. You use your results from the small part to suggest what the rest of it is like.</description>
+			</term>
+			<term name="satellite" data="es7g337.mp3">
+				<description>Anything that orbits a planet.</description>
+			</term>
+			<term name="saturated" data="es7g338.mp3">
+				<description>A solution that contains as much dissolved solid as it possibly can.</description>
+			</term>
+			<term name="scavenger" data="es7g339.mp3">
+				<description>An animal that eats animals that have died or been killed by other animals. </description>
+			</term>
+			<term name="scrotum" data="es7g340.mp3">
+				<description>Bag of skin containing the testes in males.</description>
+				<pronunciation><![CDATA[<b>scrow</b>-tum]]></pronunciation>
+			</term>
+			<term name="seasonal changes" data="es7g341.mp3">
+				<description>Changes in the physical environmental factors of an environment which happen during the course of a year (e.g. it gets colder in winter).</description>
+			</term>
+			<term name="segment" data="es7g344.mp3">
+				<description>Some animals have bodies that are divided into obvious sections called segments.</description>
+			</term>
+			<term name="self-pollination" data="es7g345.mp3">
+				<description>Transfer of pollen from an anther to stigma of the same plant.</description>
+			</term>
+			<term name="semen" data="es7g346.mp3">
+				<description>A mixture of sperm cells and special fluids released by men during sexual intercourse.</description>
+				<pronunciation><![CDATA[<b>see</b>-men]]></pronunciation>
+			</term>
+			<term name="series circuit" data="es7g347.mp3">
+				<description>A circuit where there is only one loop of wire.</description>
+			</term>
+			<term name="sex cell" data="es7g348.mp3">
+				<description>A cell used for sexual reproduction.</description>
+			</term>
+			<term name="sex hormones" data="es7g349.mp3">
+				<description>Chemicals released in our bodies that control the menstrual cycle and puberty.</description>
+				<pronunciation><![CDATA[<b>hor</b>-moans]]></pronunciation>
+			</term>
+			<term name="sexual reproduction" data="es7g350.mp3">
+				<description>Producing new organisms by the joining of two sex cells.</description>
+				<pronunciation><![CDATA[re-pro-<b>duck</b>-shun]]></pronunciation>
+			</term>
+			<term name="skin" data="es7g351.mp3">
+				<description>Organ used for protection and feeling.</description>
+			</term>
+			<term name="slide" data="es7g352.mp3">
+				<description>Glass sheet that a specimen is put on.</description>
+			</term>
+			<term name="solar cells" data="es7g353.mp3">
+				<description>Flat plates that convert light energy into electrical energy.</description>
+			</term>
+			<term name="solar eclipse" data="es7g354.mp3">
+				<description>When the Moon is between the Sun and the Earth, and casts a shadow on part of the Earth.</description>
+			</term>
+			<term name="solar panels" data="es7g355.mp3">
+				<description>Flat plates that use the Sun"s energy to heat water.</description>
+			</term>
+			<term name="solar power" data="es7g356.mp3">
+				<description>Making electricity by using light or heat energy from the Sun.</description>
+			</term>
+			<term name="solar system" data="es7g357.mp3">
+				<description>A star with planets and other objects orbiting it.</description>
+			</term>
+			<term name="solid" data="es7g358.mp3">
+				<description>Something with a fixed shape and volume.</description>
+			</term>
+			<term name="solubility" data="es7g359.mp3">
+				<description>The amount of a solid that will dissolve in 100g of a liquid.</description>
+				<pronunciation><![CDATA[sol-you-<b>bill</b>-ity]]></pronunciation>
+			</term>
+			<term name="soluble" data="es7g360.mp3">
+				<description>A solid that can dissolve in a liquid. Salt is soluble in water.</description>
+				<pronunciation><![CDATA[<b>sol</b>-you-bull]]></pronunciation>
+			</term>
+			<term name="solute" data="es7g361.mp3">
+				<description>The solid that has dissolved in a liquid to make a solution.</description>
+			</term>
+			<term name="solution" data="es7g362.mp3">
+				<description>When a solid has dissolved in a liquid.</description>
+				<pronunciation><![CDATA[sol-<b>oo</b>-shun]]></pronunciation>
+			</term>
+			<term name="solvent" data="es7g363.mp3">
+				<description>The liquid that has dissolved a solid to make a solution.</description>
+			</term>
+			<term name="sound energy" data="es7g364.mp3">
+				<description>The kind of energy made by anything that is making a noise.</description>
+			</term>
+			<term name="space probe" data="es7g365.mp3">
+				<description>An unmanned space craft that has cameras and other equipment to find out about other planets.</description>
+			</term>
+			<term name="species" data="es7g366.mp3">
+				<description>A group of organisms that can reproduce with each other to produce offspring that will also be able to reproduce.</description>
+				<pronunciation><![CDATA[<b>spee</b>-shees]]></pronunciation>
+			</term>
+			<term name="specimen" data="es7g367.mp3">
+				<description>What you look at down a microscope.</description>
+				<pronunciation><![CDATA[<b>spess</b>-im-men]]></pronunciation>
+			</term>
+			<term name="speed" data="es7g368.mp3">
+				<description>How fast something is moving. Often measured in metres per second (m/s).</description>
+			</term>
+			<term name="sperm cell" data="es7g369.mp3">
+				<description>The male sex cell.</description>
+			</term>
+			<term name="sperm count" data="es7g370.mp3">
+				<description>The number of sperm produced by a man.</description>
+			</term>
+			<term name="sperm duct" data="es7g371.mp3">
+				<description>Tube that carries sperm from the testes to the urethra.</description>
+			</term>
+			<term name="sphere" data="es7g372.mp3">
+				<description>A shape like a ball.</description>
+				<pronunciation><![CDATA[<b>sfear</b>]]></pronunciation>
+			</term>
+			<term name="stage" data="es7g373.mp3">
+				<description>Part of the microscope. You put slides on it.</description>
+			</term>
+			<term name="stain" data="es7g374.mp3">
+				<description>Dye used to colour parts of a cell to make them easier to see.</description>
+			</term>
+			<term name="stamen" data="es7g375.mp3">
+				<description>Male reproductive organ found in flowers. It is made of an anther and a filament.</description>
+				<pronunciation><![CDATA[<b>stay</b>-men]]></pronunciation>
+			</term>
+			<term name="star" data="es7g376.mp3">
+				<description>A huge ball of gas that gives out heat and light energy.</description>
+			</term>
+			<term name="states of matter" data="es7g377.mp3">
+				<description>There are three different forms which a substance can be in; solid, liquid or gas.</description>
+			</term>
+			<term name="static electricity" data="es7g378.mp3">
+				<description>A force which attracts things with extra electrical charges on them.</description>
+			</term>
+			<term name="stationary" data="es7g379.mp3">
+				<description>Not moving.</description>
+			</term>
+			<term name="steam" data="es7g380.mp3">
+				<description>Water as a gas. Also called water vapour.</description>
+			</term>
+			<term name="stem" data="es7g381.mp3">
+				<description>Plant organ used to take water to the leaves and to support the leaves.</description>
+			</term>
+			<term name="stigma" data="es7g382.mp3">
+				<description>Part of the carpel. It is where pollen lands.</description>
+			</term>
+			<term name="still" data="es7g383.mp3">
+				<description>The apparatus used for distillation.</description>
+			</term>
+			<term name="stomach" data="es7g384.mp3">
+				<description>Organ used to store and break up food.</description>
+				<pronunciation><![CDATA[<b>stum</b>-ack]]></pronunciation>
+			</term>
+			<term name="stopping distance" data="es7g385.mp3">
+				<description>The distance a car moves while it is stopping. The stopping distance is equal to the thinking distance and the braking distance added together.</description>
+			</term>
+			<term name="style" data="es7g386.mp3">
+				<description>Part of the carpel connecting the stigma to the ovary.</description>
+			</term>
+			<term name="sulphuric acid" data="es7g387.mp3">
+				<description>A common acid. Used in car batteries.</description>
+			</term>
+			<term name="Sun" data="es7g388.mp3">
+				<description>The star that the Earth orbits around.</description>
+			</term>
+			<term name="sweepnet" data="es7g389.mp3">
+				<description>A net which is swept through long grass to catch tiny animals.</description>
+			</term>
+			<term name="sweetener" data="es7g390.mp3">
+				<description>A substance that makes things taste sweeter. Sugar is a natural sweetener.</description>
+			</term>
+			<term name="switch" data="es7g391.mp3">
+				<description>Turns electricity on or off, by closing or opening a gap in a circuit.</description>
+			</term>
+		</letter>
+		<letter id="t">
+			<term name="testes" data="es7g392.mp3">
+				<description>Male reproductive organ. Produces sperm cells. Plural = testes.</description>
+			</term>
+			<term name="test-tube babies" data="es7g393.mp3">
+				<description>A baby born after IVF.</description>
+			</term>
+			<term name="theory" data="es7g394.mp3">
+				<description>An idea about why things work the way they do. Scientists use their imaginations to come up with a theory.</description>
+				<pronunciation><![CDATA[<b>thear</b>-ree]]></pronunciation>
+			</term>
+			<term name="thinking distance" data="es7g395.mp3">
+				<description>The distance a car travels while the driver is deciding to press the brake pedal.</description>
+			</term>
+			<term name="thorax" data="es7g396.mp3">
+				<description>Middle part of an animal's main body. In insects the legs are attached to the thorax.</description>
+			</term>
+			<term name="tidal power" data="es7g397.mp3">
+				<description>Making electricity using the moving (kinetic) energy from the tides.</description>
+			</term>
+			<term name="tissue" data="es7g398.mp3">
+				<description>A group of the same cells all doing the same job.</description>
+				<pronunciation><![CDATA[<b>tiss</b>-you]]></pronunciation>
+			</term>
+			<term name="top predator" data="es7g399.mp3">
+				<description>The last animal in a food chain.</description>
+			</term>
+			<term name="total eclipse" data="es7g400.mp3">
+				<description>A solar eclipse when the Moon completely blocks out light from the Sun.</description>
+			</term>
+			<term name="transferred" data="es7g443.mp3">
+				<description>When energy is changed from one form to another.</description>
+			</term>
+			<term name="transparent" data="es7g401.mp3">
+				<description>Another word for see-through.</description>
+			</term>
+			<term name="tree beating" data="es7g402.mp3">
+				<description>Hitting the branches of a tree and collecting small animals that fall out.</description>
+			</term>
+			<term name="turbine" data="es7g403.mp3">
+				<description>The machine in a power station that is pushed round by water or steam and turns the generator.</description>
+			</term>
+		</letter>
+		<letter id="u">
+			<term name="umbilical cord" data="es7g404.mp3">
+				<description>Carries food, oxygen and waste between the placenta and the growing fetus.</description>
+				<pronunciation><![CDATA[um-<b>bill</b>-ick-al]]></pronunciation>
+			</term>
+			<term name="unbalanced forces" data="es7g405.mp3">
+				<description>When two forces working in opposite directions are not the same strength.</description>
+			</term>
+			<term name="universal indicator" data="es7g406.mp3">
+				<description>A mixture of indicators giving a different colour depending on how weak or strong an acid or alkali is.</description>
+			</term>
+			<term name="Universe" data="es7g407.mp3">
+				<description>All the galaxies and the space between them make up the Universe.</description>
+			</term>
+			<term name="unstable" data="es7g408.mp3">
+				<description>A chemical which can explode very easily is referred to as unstable.</description>
+			</term>
+			<term name="upthrust" data="es7g409.mp3">
+				<description>A force that pushes things up.</description>
+			</term>
+			<term name="uranium" data="es7g410.mp3">
+				<description>A fuel used in nuclear power stations.</description>
+				<pronunciation><![CDATA[yer-<b>rain</b>-ee-um]]></pronunciation>
+			</term>
+			<term name="urethra" data="es7g411.mp3">
+				<description>A tube carrying semen or urine running down the centre of the penis in males. A tube carrying urine in females.</description>
+				<pronunciation><![CDATA[you-<b>ree</b>-thra]]></pronunciation>
+			</term>
+			<term name="uterus" data="es7g412.mp3">
+				<description>Organ in females in which a baby develops.</description>
+				<pronunciation><![CDATA[<b>you</b>-ter-ous]]></pronunciation>
+			</term>
+		</letter>
+		<letter id="v">
+			<term name="vacuole" data="es7g413.mp3">
+				<description>Storage space in plant cells.</description>
+				<pronunciation><![CDATA[<b>vack</b>-you-oll]]></pronunciation>
+			</term>
+			<term name="vacuum" data="es7g414.mp3">
+				<description>A completely empty space.</description>
+				<pronunciation><![CDATA[<b>vack</b>-yoom]]></pronunciation>
+			</term>
+			<term name="vagina" data="es7g415.mp3">
+				<description>Tube in females. The penis is placed here during sexual intercourse.</description>
+				<pronunciation><![CDATA[vaj-<b>eye</b>-na]]></pronunciation>
+			</term>
+			<term name="variable resistor" data="es7g417.mp3">
+				<description>A resistor that can be adjusted to change the amount of resistance it has.</description>
+			</term>
+			<term name="variation" data="es7g418.mp3">
+				<description>The differences between things.</description>
+			</term>
+			<term name="variety" data="es7g419.mp3">
+				<description>A plant or animal that is in some way different from its parents.</description>
+			</term>
+			<term name="vertebrate" data="es7g420.mp3">
+				<description>An animal with a backbone.</description>
+				<pronunciation><![CDATA[<b>vert</b>-eb-rate]]></pronunciation>
+			</term>
+			<term name="vibrate" data="es7g421.mp3">
+				<description>Move backwards and forwards.</description>
+			</term>
+			<term name="voltage" data="es7g422.mp3">
+				<description>A way of saying how much energy is transferred by electricity.</description>
+			</term>
+			<term name="voltmeter" data="es7g423.mp3">
+				<description>An instrument for measuring voltage</description>
+			</term>
+			<term name="volts (V)" data="es7g424.mp3">
+				<description>Unit for voltage.</description>
+			</term>
+		</letter>
+		<letter id="w">
+			<term name="water resistance" data="es7g425.mp3">
+				<description>A force that tries to slow things down that are moving through water. It is a type of friction.</description>
+			</term>
+			<term name="water vapour" data="es7g426.mp3">
+				<description>Water as a gas. Also called steam.</description>
+				<pronunciation><![CDATA[<b>vay</b>-per]]></pronunciation>
+			</term>
+			<term name="weight" data="es7g427.mp3">
+				<description>The amount of force with which gravity pulls something towards the Earth. It is measured in newtons (N).</description>
+			</term>
+			<term name="wind turbine" data="es7g428.mp3">
+				<description>A kind of windmill that generates electricity using energy from the wind.</description>
+			</term>
+			<term name="word equation" data="es7g429.mp3">
+				<description>A way of writing out what happens in a chemical reaction.</description>
+			</term>
+		</letter>
+		<letter id="x">
+			<term name="xylem tissue" data="es7g430.mp3">
+				<description>Found in roots, stems and leaves. Transports water.</description>
+			</term>
+		</letter>
+		<letter id="y">
+			<term name="year" data="es7g432.mp3">
+				<description>The length of time it takes a planet to go around the Sun. One year on Earth is 365.25 days.</description>
+			</term>
+		</letter>
+		<letter id="z">
+		</letter>
+	</glossary>
+</root>
