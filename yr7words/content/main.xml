@@ -1,0 +1,111 @@
+<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by Paul O (3T Productions Limited) -->
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="main.xsd">
+	<book id="es7"><![CDATA[Exploring Science 7]]></book>
+	<subjects>
+		<subject name="Biology" colour="#00FF00">
+			<unit id="7A" pageid="4" endpageid="17">
+				<title><![CDATA[Cells]]></title>
+				<topic id="7Aa" pageid="4"><![CDATA[Human organs]]></topic>
+				<topic id="7Ab" pageid="7"><![CDATA[On the slide]]></topic>
+				<topic id="7Ac" pageid="10"><![CDATA[Shaped for the job]]></topic>
+				<topic id="7Ad" pageid="12"><![CDATA[All systems go]]></topic>
+				<topic id="7Ae" pageid="14"><![CDATA[A seedy story]]></topic>
+			</unit>
+			<unit id="7B" pageid="18" endpageid="29">
+				<title><![CDATA[Reproduction]]></title>
+				<topic id="7Ba" pageid="18"><![CDATA[Starting out in life]]></topic>
+				<topic id="7Bb" pageid="20"><![CDATA[Reproductive organs]]></topic>
+				<topic id="7Bc" pageid="22"><![CDATA[Sex]]></topic>
+				<topic id="7Bd" pageid="25"><![CDATA[Periods]]></topic>
+				<topic id="7Be" pageid="28"><![CDATA[Giving birth]]></topic>
+			</unit>
+			<unit id="7C" pageid="30" endpageid="43">
+				<title><![CDATA[Environment and feeding relationships]]></title>
+				<topic id="7Ca" pageid="30"><![CDATA[Home sweet habitat]]></topic>
+				<topic id="7Cb" pageid="32"><![CDATA[Adept adaptations]]></topic>
+				<topic id="7Cc" pageid="34"><![CDATA[All change]]></topic>
+				<topic id="7Cd" pageid="36"><![CDATA[Finding food]]></topic>
+				<topic id="7Ce" pageid="39"><![CDATA[Links and chains]]></topic>
+			</unit>
+			<unit id="7D" pageid="44" endpageid="55">
+				<title><![CDATA[Variation and classification]]></title>
+				<topic id="7Da" pageid="44"><![CDATA[Being different]]></topic>
+				<topic id="7Db" pageid="47"><![CDATA[It's your inheritance]]></topic>
+				<topic id="7Dc" pageid="50"><![CDATA[Describing differences]]></topic>
+				<topic id="7Dd" pageid="52"><![CDATA[Classified information]]></topic>
+				<topic id="7De" pageid="54"><![CDATA[No backbone!]]></topic>
+			</unit>
+		</subject>
+		<subject name="Chemistry" colour="#0000FF">
+			<unit id="7E" pageid="56" endpageid="65">
+				<title><![CDATA[Acids and alkalis]]></title>
+				<topic id="7Ea" pageid="56"><![CDATA[Tangy tastes]]></topic>
+				<topic id="7Eb" pageid="58"><![CDATA[Diamonds are for Safety]]></topic>
+				<topic id="7Ec" pageid="60"><![CDATA[In the red]]></topic>
+				<topic id="7Ed" pageid="62"><![CDATA[Mixing a rainbow]]></topic>
+				<topic id="7Ee" pageid="64"><![CDATA[Finding the balance]]></topic>
+			</unit>
+			<unit id="7F" pageid="66" endpageid="77">
+				<title><![CDATA[Simple chemical reactions]]></title>
+				<topic id="7Fa" pageid="66"><![CDATA[Getting a reaction]]></topic>
+				<topic id="7Fb" pageid="68"><![CDATA[Fizzy pop]]></topic>
+				<topic id="7Fc" pageid="69"><![CDATA[Fizz and chips]]></topic>
+				<topic id="7Fd" pageid="70"><![CDATA[On fire!]]></topic>
+				<topic id="7Fe" pageid="74"><![CDATA[Burning issues]]></topic>
+			</unit>
+			<unit id="7G" pageid="78" endpageid="89">
+				<title><![CDATA[Particle model of solids, liquids and gases]]></title>
+				<topic id="7Ga" pageid="78"><![CDATA[States matter]]></topic>
+				<topic id="7Gb" pageid="80"><![CDATA[In theory]]></topic>
+				<topic id="7Gc" pageid="82"><![CDATA[Bits and pieces]]></topic>
+				<topic id="7Gd" pageid="84"><![CDATA[Aroma roamer]]></topic>
+				<topic id="7Ge" pageid="86"><![CDATA[What a gas!]]></topic>
+			</unit>
+			<unit id="7H" pageid="90" endpageid="101">
+				<title><![CDATA[Solutions]]></title>
+				<topic id="7Ha" pageid="90"><![CDATA[The solution is clear]]></topic>
+				<topic id="7Hb" pageid="92"><![CDATA[Salt of the Earth]]></topic>
+				<topic id="7Hc" pageid="94"><![CDATA[Still water]]></topic>
+				<topic id="7Hd" pageid="98"><![CDATA[Dyeing for juice]]></topic>
+				<topic id="7He" pageid="100"><![CDATA[A soluble problem]]></topic>
+			</unit>
+		</subject>
+		<subject name="Physics" colour="#FF0000">
+			<unit id="7I" pageid="102" endpageid="113">
+				<title><![CDATA[Energy resources]]></title>
+				<topic id="7Ia" pageid="102"><![CDATA[Fuelled by fossils]]></topic>
+				<topic id="7Ib" pageid="104"><![CDATA[Make the last!]]></topic>
+				<topic id="7Ic" pageid="106"><![CDATA[Planning for the future]]></topic>
+				<topic id="7Id" pageid="110"><![CDATA[Eat up!]]></topic>
+				<topic id="7Ie" pageid="112"><![CDATA[The source is the Sun]]></topic>
+			</unit>
+			<unit id="7J" pageid="114" endpageid="127">
+				<title><![CDATA[Electrical circuits]]></title>
+				<topic id="7Ja" pageid="114"><![CDATA[Live and dangerous!]]></topic>
+				<topic id="7Jb" pageid="118"><![CDATA[Go with the flow]]></topic>
+				<topic id="7Jc" pageid="120"><![CDATA[Series and parallel]]></topic>
+				<topic id="7Jd" pageid="124"><![CDATA[Using electricity]]></topic>
+				<topic id="7Je" pageid="126"><![CDATA[Electricity and you]]></topic>
+			</unit>
+			<unit id="7K" pageid="128" endpageid="139">
+				<title><![CDATA[Forces and their effects]]></title>
+				<topic id="7Ka" pageid="128"><![CDATA[The forces are with us]]></topic>
+				<topic id="7Kb" pageid="130"><![CDATA[That floating feeling]]></topic>
+				<topic id="7Kc" pageid="133"><![CDATA[Balancing act]]></topic>
+				<topic id="7Kd" pageid="136"><![CDATA[Friction]]></topic>
+				<topic id="7Ke" pageid="138"><![CDATA[The need for speed]]></topic>
+			</unit>
+			<unit id="7L" pageid="140" endpageid="151">
+				<title><![CDATA[The Solar System and beyond]]></title>
+				<topic id="7La" pageid="140"><![CDATA[A place near the Sun]]></topic>
+				<topic id="7Lb" pageid="142"><![CDATA[Moonshine]]></topic>
+				<topic id="7Lc" pageid="144"><![CDATA[A plan for all seasons]]></topic>
+				<topic id="7Ld" pageid="146"><![CDATA[The Solar System]]></topic>
+				<topic id="7Le" pageid="150"><![CDATA[Starry, starry nights]]></topic>
+			</unit>
+		</subject>
+	</subjects>
+	<contents pageid="2"/>
+	<glossary pageid="152"/>
+	<index pageid="158"/>
+</root>
