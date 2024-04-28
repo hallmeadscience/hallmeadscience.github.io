@@ -1,0 +1,70 @@
+#menu a {
+    background: url("../images/images-spacer.gif") top left no-repeat;
+   	font-family : Verdana, Arial, Monaco, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 22px;
+	font-weight: bold;
+	text-decoration: none;
+	color : #ffffff;
+   }
+#menu a:hover {
+   background-image: url("../images/images-ro-green.gif");
+   }
+#menu a:active {
+   background-image: url("../images/images-ro-green.gif");
+   }
+   
+#menu b {
+ background-image: url("../images/images-ro-green.gif");
+
+}	  
+.types {
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color : #000000;
+	padding: 8px;
+	}
+.types b {
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color : #d32243;
+	}	
+	
+hr {
+	color : #50adde;
+	height: 1px;
+}
+
+/*Make header Nav appear over the interactive on small screens
+this should be moved to the header css if possible*/
+#learnerHDR_Header{
+	z-index: 1;
+}
+
+.rock-header img{
+	display:block; width: auto !important; max-width: 100%; height: auto !important;
+}
+
+/*Main Content Container*/
+.container.rock-cycle{
+	background-color: #fff;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box; 
+	max-width: 740px;
+	padding: 10px 21px 0px 21px;
+	margin:auto;
+	font-size: 16px;
+	overflow: hidden;
+	background-image: url('../images/images-pagefade2.gif');
+	background-repeat: repeat-x;
+	background-position: bottom;
+	padding-bottom: 42px;
+}
+
+/*Class to hide links to flash/html5 content
+needed for flashlinks.js*/
+.learner-hidden{
+	display:none;
+}
+	

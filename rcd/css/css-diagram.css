@@ -1,0 +1,423 @@
+.diagram *{
+	padding: 0;
+	margin: 0;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box; /* Firefox */
+}
+
+.diagram{
+	width:100%;
+	max-width: 690px;
+	display:block;
+	margin: 20px auto;
+	position: relative;
+	font-family: "Arial", sans;
+	border: 1px solid #66CC00;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	border-radius: 7px;
+	overflow:hidden;
+	background-clip:padding-box;
+	-moz-background-clip:padding-box; /* Firefox */
+	font-size: 16px;
+}
+
+.frame{
+	display:block;
+	width: 100%;
+	padding-bottom: 2.57%;
+	background: transparent url("https://hallmeadscience.github.io/rcd/images/images-frame-sprite.png") no-repeat;
+	background-size: cover;
+	position: absolute;
+	z-index: 999;
+}
+#frame-top{
+	top:0;
+	left:0;
+}
+
+#frame-bottom{
+	background-position: 0 100%;
+	padding-bottom: 3%;
+	bottom:0;
+	left:0;
+}
+
+ .title-container{
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	font-weight: bold;
+	font-size: 18px;
+	top: 20px;
+}
+
+.screen{
+	display:block;
+	position: relative;
+	text-align:center;
+	overflow: hidden;
+}
+
+.screen-content{
+	position: relative;
+	width: 100%;
+	padding-bottom: 57.97%;
+	text-align: left;
+	
+}
+
+ .popup{
+	position:absolute;
+	width: 100%;
+	height: 100%;
+	overflow:hidden;
+	background-color: #FFFFCC;
+	border: 2px solid #006600;
+	z-index: 200;
+	text-align: center;
+}
+
+ .popup-title{
+	font-family: 'Arial Narrow', 'Arial', sans;
+	line-height: 14px;
+	font-weight: bold;
+}
+
+ .popup-content{
+	position:relative;
+	overflow: hidden;
+	padding: 20px 5px 5px 5px;
+}
+
+ .popup-text{
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	text-align: center;
+	font-size: 12px;
+	position:relative;
+	line-height: 12px;
+}
+
+.popup-text a{
+	color: #000;
+}
+
+.diagram-button{
+	display:block;
+	width: 123px;
+	margin:auto;
+	position:relative;
+	border: 1px solid #ccc;
+	background-color: #666;
+	color: white;
+	border: 2px solid #66CC00;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	font-size: 24px;
+	font-weight: bold;
+	z-index: 100;
+	background: rgb(153,255,0); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(153,255,0,1) 0%, rgba(51,153,102,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(153,255,0,1)), color-stop(100%,rgba(51,153,102,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(153,255,0,1) 0%,rgba(51,153,102,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(153,255,0,1) 0%,rgba(51,153,102,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(153,255,0,1) 0%,rgba(51,153,102,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(153,255,0,1) 0%,rgba(51,153,102,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99ff00', endColorstr='#339966',GradientType=0 ); /* IE6-9 */
+	-moz-box-shadow:    2px 2px 0px 0px rgba(0,0,0,.3);
+	-webkit-box-shadow: 2px 2px 0px 0px rgba(0,0,0,.3);
+	box-shadow:         2px 2px 0px 0px rgba(0,0,0,.3);
+}
+
+.diagram-button:hover{
+	background: rgb(149,196,245); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(149,196,245,1) 0%, rgba(0,51,102,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(149,196,245,1)), color-stop(100%,rgba(0,51,102,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(149,196,245,1) 0%,rgba(0,51,102,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(149,196,245,1) 0%,rgba(0,51,102,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(149,196,245,1) 0%,rgba(0,51,102,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(149,196,245,1) 0%,rgba(0,51,102,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#95c4f5', endColorstr='#003366',GradientType=0 ); /* IE6-9 */
+}
+
+.done-button{
+	margin-bottom: 30px;
+}
+
+.close-button{
+	position:absolute;
+	top: 20px;
+	right: 20px;
+	font-size: 8px;
+	text-transform: uppercase;
+	background: #fff url('../images/images-close-button.png') no-repeat;
+	background-size: auto 100%;
+	padding-left: 10px;
+	cursor: pointer;
+}
+
+.item .close-button{
+	top: 5px;
+	right: 5px;
+}
+
+
+.description{
+	margin-bottom: 5px;
+}
+
+.sample{
+	background: #339900;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	padding: 2px;
+	line-height: 10px;
+	position:relative;
+	margin-bottom: 5px;
+	overflow:hidden;
+	text-align: left;
+}
+
+.sample-title{
+	display:inline-block;
+	vertical-align: middle;
+	color: #fff;
+	font-size: 14px;
+	margin-right: 10px;
+	height: 100%;
+	margin: 18px 0 5px 15px;
+}
+
+.sample-image{
+	max-width: 135px;
+	/*max-height: 48px;*/
+	display: inline-block;
+	vertical-align: middle;
+	float: right;
+	margin-right: 10px;
+}
+
+.sample-image img{
+	/*max-width: 100%;
+	max-height: 100%;*/
+	max-height: 48px;
+}
+
+ .item-container{
+	width: 100%;
+	height:100%;
+	position:absolute;
+	top:0; left: 0;
+	background: transparent url('https://hallmeadscience.github.io/rcd/images/diagram-blank.png') no-repeat;
+	background-size: 100%;
+	background-position: center center;
+}
+
+ .item{
+	position:absolute;
+	background: #fff;
+	border: 1px solid #333;
+}
+
+.process{
+	width: 9.27%;
+	border: 0;
+}
+
+.icon-container{
+	display: inline-block;
+}
+
+.process .icon-container{
+	background-color: #fff;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	border: 1px solid #66CC00;
+	line-height: normal;
+	float: none;
+	max-width: 64px;
+	max-height: 64px;
+}
+
+.icon{
+	max-width: 100%;
+	max-height: 58px;
+	vertical-align: middle;
+}
+
+ .item-label-container{
+	cursor: pointer;
+	text-align: center;
+}
+
+ .item.disabled{
+	display:none;
+}
+
+ .item-label{
+	display: inline-block;
+	vertical-align: middle;
+	font-weight: bold;
+	font-size: 12px;
+	width: 120px;
+}
+
+.process .item-label{
+	font-size: 10px;
+	position: absolute;
+	display:block;
+	width: 75px;
+	background:#fff;
+	margin:auto;
+	left: -5px;
+}
+/*width: 690 height: 400*/
+#item2 .popup:before, #item4 .popup:before, #item7 .popup:before, #item10 .popup:before, #item12 .popup:before{
+	content: '';
+	display:block;
+	height: 26px;
+	width: 18px;
+	position:absolute;
+	background: transparent url('https://hallmeadscience.github.io/rcd/images/images-popup-arrow-sprite.png') no-repeat;
+}
+
+ #item1{/*left:316px; top:291px;*/ left:45.79%; top:72.75%;}
+ #item2{/*left:112px; top:309px;*/ left:17.23%; top:77.5%;}
+	#item2 .popup{top: -168px; left:-50px; width: 257px; height: 148px;}
+	#item2 .popup:before{top: 144px; left:115px; width: 26px;background-position: -74px 0;}
+ #item3{/*left:43px; top:190px;*/  left:6.23%; top:47.5%;}
+ #item4{/*left:6px; top:143px;*/ left:0.86%; top:35.75%;}
+	#item4 .popup{top: -90px; right:-270px; width: 250px; height: auto;}
+	#item4 .popup:before{top: 90px; left:-18px; width: 18px;height: 26px; background-position: 0 0;}
+ #item5{/*left:160px; top:191px;*/  left:23.78%; top:47.75%;}
+ #item6{/*left:154px; top:51px;*/ left:22.31%; top:12.75%;}
+ #item7{/*left:267px; top:60px;*/ left:38.69%; top:15%;}
+	#item7 .popup{top: 50px; left:-25px; width: 220px; height: auto;}
+	#item7 .popup:before{top: -18px; left:90px; width: 26px;height: 18px; background-position: -21px 0;}
+ #item8{/*left:269px; top:126px;*/ left:38.98%; top:31.5%;}
+ #item9{/*left:484px; top:51px;*/ left:70.14%; top:12.75%;}
+ #item10{/*left:525px; top:143px;*/ left:76.08%; top:35.75%;}
+	#item10 .popup{top: -10px; left:-250px; width: 230px; height: auto;}
+	#item10 .popup:before{top: 10px; right:-18px; width: 18px;height: 26px; background-position: -52px 0;}
+ #item11{/*left:580px; top:191px;*/ left:84.05%; top:47.75%;}
+ #item12{/*left:441px; top:309px;*/ left:63.91%; top:77.25%;}
+	#item12 .popup{top: -265px; left:-40px; width: 220px; height: auto;}
+	#item12 .popup:before{bottom: -18px; left:90px; width: 26px;height: 18px; background-position: -74px 0;}
+ #item13{/*left:464px; top:190px;*/ left:67.24%; top:47.5%;}
+ #item14{/*left:358px; top:126px;*/ left:51.88%; top:31.5%;}
+
+ .item .popup{
+	display:none;
+}
+
+.legend {
+	display:none;
+}
+
+@media only screen and (max-width: 680px){
+	.popup-content{
+		padding-top: 40px;
+	}
+	
+	.animation{
+		max-height: 100%;
+		max-width: 100%;
+	}
+	#item2{left:27.23%; top:74.5%;}
+	#item10{left:84.08%; top:32.75%;}
+}
+
+@media only screen and (max-width: 621px){
+	.item-label{ width: auto; margin-right: 10px}
+	
+}
+
+@media only screen and (max-width: 500px){
+	
+	.screen-content{
+		padding-bottom: 0;
+	}
+	
+	.title-container{ position: relative;}
+	.item, .process .icon-container{
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		border-radius: 5px;
+		background: #ffffff; /* Old browsers */
+		background: -moz-linear-gradient(top,  #ffffff 0%, #cccccc 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#cccccc)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  #ffffff 0%,#cccccc 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  #ffffff 0%,#cccccc 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  #ffffff 0%,#cccccc 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  #ffffff 0%,#cccccc 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+
+	}
+	.item-container .icon-container{display:none;}
+	.item.process{ background: transparent;}
+	.process .item-label{ display:none;}
+	.process .icon-container{display:block;}
+	.item-label{margin: 0; padding: 3px;}
+	
+	.item .popup{
+		position:relative !important;
+		height: auto !important;
+		width: auto !important;
+		top: auto !important;
+		left: auto !important;
+		right: auto !important;
+		bottom: auto !important;
+	}
+	
+	.item-container{
+		position:relative;
+		padding-bottom: 57.97%;
+	}
+	
+	.legend {
+		display:block;
+		margin-bottom: 20px;
+	}
+	
+	.legend-item, .diagram-button:hover{
+		background-color: #333;
+		margin-bottom: 5px;
+		cursor: pointer;
+		background: rgb(153,255,0); /* Old browsers */
+		background: -moz-linear-gradient(top,  rgba(153,255,0,1) 0%, rgba(51,153,102,1) 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(153,255,0,1)), color-stop(100%,rgba(51,153,102,1))); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  rgba(153,255,0,1) 0%,rgba(51,153,102,1) 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  rgba(153,255,0,1) 0%,rgba(51,153,102,1) 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  rgba(153,255,0,1) 0%,rgba(51,153,102,1) 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  rgba(153,255,0,1) 0%,rgba(51,153,102,1) 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99ff00', endColorstr='#339966',GradientType=0 ); /* IE6-9 */
+	}
+	
+	.legend .icon-container{
+		margin-right: 10px;
+	}
+	
+	.legend .icon{
+		max-height: 40px;
+	}
+	
+	.diagram-button, .diagram-button:hover{
+		-moz-border-radius: 0;
+		-webkit-border-radius: 0;
+		border-radius: 0;
+		border: 0;
+		width: 100%;
+		display:block;
+		margin-bottom: 30px;
+	}
+	
+}
+
+@media only screen and (max-width: 400px){
+	.item-label{font-size: 10px;}
+}
