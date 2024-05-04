@@ -91,6 +91,6 @@ _data = {
 			},
 		},
 		done:{
-			console.log("Goodbye")
+			
 		}
 	}
