@@ -90,7 +90,5 @@ _data = {
 				process: true
 			},
 		},
-		done:{
-			
-		}
+		
 	}
