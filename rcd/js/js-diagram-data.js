@@ -91,6 +91,6 @@ _data = {
 			},
 		},
 		done:{
-			link:'https://sites.google.com/hallmeadschool.co.uk/remote-science/home/lesson-tools/chemistry/rock-cycle'
+			console.log("Goodbye")
 		}
 	}
