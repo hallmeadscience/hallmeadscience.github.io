@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circuit Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Title styling */
+        h1 {
+            margin: 20px 0;
+        }
+
+        .title-part {
+            display: inline;
+        }
+
+        .title-potential {
+            font-size: 0.8em;
+            color: red;
+            font-style: italic;
+        }
+
+        /* Container for GIFs */
+        #gif-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 75vw; /* 75% of viewport width */
+            height: 75vh; /* 75% of viewport height */
+            border: 2px solid black; /* Optional: Border to visually see the container */
+            background-color: white; /* Default background for the circuit */
+            margin: 0 auto; /* Center the container on the page */
+            overflow: hidden; /* Hide overflow if the GIF is larger than the container */
+        }
+
+        img {
+            width: 100%; /* Fill the container width */
+            height: 100%; /* Fill the container height */
+            object-fit: contain; /* Maintain aspect ratio */
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .highlight {
+            background-color: pink;
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+
+    <h1><span class="title-part">SPOT THE </span><span class="title-potential">potential</span><span class="title-part"> DIFFERENCE</span></h1>
+
+    <div id="question">Which circuit would you like to see?</div>
+
+    <!-- Buttons for selecting circuits -->
+    <div id="buttons">
+        <button id="circuit1" onclick="startCycle('circuit1')">1 Bulb, 1 Cell</button>
+        <button id="circuit2" onclick="startCycle('circuit2')">2 Bulbs, Series</button>
+        <button id="circuit3" onclick="startCycle('circuit3')">2 Cells, Series</button>
+    </div>
+
+    <!-- Container for displaying GIFs -->
+    <div id="gif-container">
+        <img id="current-img" src="" alt="Circuit GIF" style="display:none;">
+    </div>
+
+    <script>
+        // Object to store GIF paths and updated descriptions for each circuit
+        const gifSets = {
+            circuit1: {
+                gifs: ['3vb.gif', '3vbcv.gif', '3vbcvr.gif', '3vblv.gif', '3vblvr.gif', '3vbwv.gif', '3vbwvr.gif'],
+                texts: [
+                    'Showing the circuit with a 3V battery and bulb (no voltmeter). CLICK AGAIN to see Voltmeter added to battery (no reading)',
+                    'Voltmeter added to battery (no reading).CLICK AGAIN to see Voltmeter reading across battery',
+                    'Voltmeter reading across battery.CLICK AGAIN to see Voltmeter added to Lamp 1 (no reading)',
+                    'Voltmeter added to Lamp 1 (no reading).CLICK AGAIN to see Voltmeter reading across Lamp 1',
+                    'Voltmeter reading across Lamp 1.CLICK AGAIN to see Voltmeter added to wire (no reading)',
+                    'Voltmeter added to wire (no reading).CLICK AGAIN to see Voltmeter reading across wire',
+                    'Voltmeter reading across wire.CLICK AGAIN to see everything again'
+                ]
+            },
+            circuit2: {
+                gifs: ['s.gif', 'svl1.gif', 'svrl1.gif', 'svl2.gif', 'svrl2.gif', 'svb.gif', 'svrb.gif'],
+                texts: [
+                    'Series circuit with no voltmeter.CLICK AGAIN to see Voltmeter added to Lamp 1 (no reading)',
+                    'Voltmeter added to Lamp 1 (no reading yet). CLICK AGAIN to see Voltmeter reading across Lamp 1',
+                    'Voltmeter reading across Lamp 1. CLICK AGAIN to see Voltmeter added to Lamp 2 (no reading)',
+                    'Voltmeter added to Lamp 2 (no reading yet). CLICK AGAIN to see Voltmeter reading across Lamp 2',
+                    'Voltmeter reading across Lamp 2. CLICK AGAIN to see Voltmeter added to battery (no reading) ',
+                    'Voltmeter added to battery (no reading). CLICK AGAIN to see Voltmeter reading across the battery',
+                    'Voltmeter reading across the battery. CLICK AGAIN to see every thing again'
+                ]
+            },
+            circuit3: {
+                gifs: ['2cell.gif', '2cellv.gif', '2cellvr1.gif', '2cellvr2.gif'],
+                texts: [
+                    'Series circuit with 2 cells (no voltmeter). CLICK AGAIN to see Voltmeters added (no reading)',
+                    'Voltmeters added (no reading).CLICK AGAIN to see Voltmeter readings for individual cells and bulb',
+                    'Voltmeter readings for individual cells and bulb.CLICK AGAIN to see Combined potential difference across both cells and bulb reading',
+                    'Combined potential difference across both cells and bulb reading.CLICK AGAIN to see everything again'
+                ]
+            }
+        };
+
+        // Variables to track current state
+        let currentSet = '';
+        let currentIndex = 0;
+
+        // Function to start the cycle based on user choice (circuit)
+        function startCycle(circuit) {
+            // Set the current circuit and reset index if a new circuit is selected
+            if (currentSet !== circuit) {
+                currentSet = circuit;
+                currentIndex = 0;  // Start with the first gif
+                document.getElementById('current-img').style.display = 'block';  // Ensure image is visible
+                
+                // Change the background color based on the selected set
+                const gifContainer = document.getElementById('gif-container');
+                gifContainer.style.backgroundColor = 'white';
+            } else {
+                // Cycle through the GIFs if the same button is clicked again
+                currentIndex = (currentIndex + 1) % gifSets[currentSet].gifs.length;
+            }
+
+            updateDisplay();
+        }
+
+        // Function to update the GIF and button text
+        function updateDisplay() {
+            const currentGifSet = gifSets[currentSet];
+            
+            // Show the GIF
+            document.getElementById('current-img').src = currentGifSet.gifs[currentIndex];
+            
+            // Update button text
+            const button = document.getElementById(currentSet);
+            const nextText = currentGifSet.texts[currentIndex];
+            button.innerText = nextText;
+            button.classList.add('highlight');
+            
+            // Make the other buttons return to their original state
+            const otherButtons = ['circuit1', 'circuit2', 'circuit3'].filter(b => b !== currentSet);
+            otherButtons.forEach(id => {
+                document.getElementById(id).innerText = id === 'circuit1' ? '1 Bulb, 1 Cell' : id === 'circuit2' ? '2 Bulbs, Series' : '2 Cells, Series';
+                document.getElementById(id).classList.remove('highlight');
+            });
+        }
+
+        // Function to reset everything to the initial question
+        function resetCycle() {
+            document.getElementById('question').innerText = 'Which circuit would you like to see?';
+            document.getElementById('circuit1').innerText = '1 Bulb, 1 Cell';
+            document.getElementById('circuit2').innerText = '2 Bulbs, Series';
+            document.getElementById('circuit3').innerText = '2 Cells, Series';
+            document.getElementById('current-img').style.display = 'none';
+            
+            currentSet = '';
+            currentIndex = 0;
+
+            // Remove the highlight from all buttons
+            document.getElementById('circuit1').classList.remove('highlight');
+            document.getElementById('circuit2').classList.remove('highlight');
+            document.getElementById('circuit3').classList.remove('highlight');
+        }
+    </script>
+
+</body>
+</html>
+
+
+
