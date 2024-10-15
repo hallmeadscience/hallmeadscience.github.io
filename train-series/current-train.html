@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charge train</title>
+    <title>Charge Train</title>
     <style>
         /* Basic styles */
         body {
@@ -44,6 +44,12 @@
             box-shadow: 0 0 15px pink;
         }
 
+        /* Timer button styles */
+        #timer {
+            background-color: yellow;
+            font-size: 18px;
+        }
+
         /* Ensure buttons are responsive */
         #button-container {
             display: flex;
@@ -69,11 +75,14 @@
 
     <!-- Buttons for selecting gif sets -->
     <div id="button-container">
-        <button id="setA" onclick="showNextGif('a', 1)">Show 1 charge flowing past per second</button>
-        <button id="setB" onclick="showNextGif('b', 2)">Show 2 charges flowing past per second</button>
-        <button id="setC" onclick="showNextGif('c', 4)">Show 4 charges flowing past per second</button>
+        <button id="setA" onclick="showNextGif('a', 'X')">Show charge movement for current X</button>
+        <button id="setB" onclick="showNextGif('b', 'Y')">Show charge movement for current Y</button>
+        <button id="setC" onclick="showNextGif('c', 'Z')">Show charge movement for current Z</button>
         <button id="reset" onclick="resetGifs()">Reset</button>
     </div>
+
+    <!-- Timer button -->
+    <button id="timer" onclick="startTimer()">Get ready to count</button>
 
     <script>
         // Object to store GIF paths for each set
@@ -86,28 +95,29 @@
         // Variable to keep track of current gif set and gif index
         let currentSet = '';
         let currentIndex = 0;
-        let currentCharge = 1;  // This will store 1, 2, or 4 depending on the set
+        let currentLabel = 'X';  // Store the current (X, Y, or Z)
         let lastClickedButton = null; // Store the last clicked button for glow effect
+        let timerTimeout;  // To store the timer reference
 
         // Store the initial button text for each set to easily reset them
         const initialButtonText = {
-            'a': 'Show 1 charge flowing past per second',
-            'b': 'Show 2 charges flowing past per second',
-            'c': 'Show 4 charges flowing past per second'
+            'a': 'Show charge movement for current X',
+            'b': 'Show charge movement for current Y',
+            'c': 'Show charge movement for current Z'
         };
 
         // Function to show the next gif in the selected set
-        function showNextGif(set, charge) {
+        function showNextGif(set, label) {
             // If the user selects a new set, reset the previous button to its initial text
             if (currentSet !== '' && currentSet !== set) {
                 resetButtonText(currentSet);
             }
 
-            // Set current set and charge if it's a new selection
+            // Set current set and charge label if it's a new selection
             if (currentSet === '' || currentSet !== set) {
                 currentSet = set;
                 currentIndex = 0;
-                currentCharge = charge;
+                currentLabel = label;
             }
 
             const currentGifSet = gifSets[currentSet];
@@ -127,11 +137,11 @@
             const button = document.getElementById(buttonId);
 
             if (currentIndex === 0) {
-                button.innerText = `Showing movement of ${currentCharge} charge(s) per second - click again to see ammeters`;
+                button.innerText = `Showing movement of charges for current ${currentLabel} - CLICK AGAIN to see ammeters`;
             } else if (currentIndex === 1) {
-                button.innerText = `Showing position of ammeters for ${currentCharge} charge(s) per second movement - click again to see ammeter reading`;
+                button.innerText = `Showing position of ammeters for current ${currentLabel} charge movement - CLICK AGAIN to see ammeter reading`;
             } else if (currentIndex === 2) {
-                button.innerText = `Showing ammeter reading for ${currentCharge} charge(s) per second`;
+                button.innerText = `Showing ammeter reading for current ${currentLabel}`;
             }
         }
 
@@ -156,7 +166,7 @@
         function resetGifs() {
             currentSet = '';
             currentIndex = 0;
-            currentCharge = 1;
+            currentLabel = 'X';
             document.getElementById('current-img').src = 'r.png';
 
             // Reset button text
@@ -168,9 +178,58 @@
             if (lastClickedButton) {
                 lastClickedButton.classList.remove('glow');
             }
+
+            // Reset timer button
+            resetTimer();
+        }
+
+        // Timer button logic
+        function startTimer() {
+            const timerButton = document.getElementById('timer');
+            timerButton.innerText = "Count the charges";
+            timerButton.style.backgroundColor = "green";
+
+            // Beep at the start for human reaction time
+            beepSound();
+
+            // Start the 5-second countdown
+            timerTimeout = setTimeout(() => {
+                stopTimer();
+            }, 5000);
+        }
+
+        // Function to stop the timer and change button text and color
+        function stopTimer() {
+            const timerButton = document.getElementById('timer');
+            timerButton.innerText = "Stop counting";
+            timerButton.style.backgroundColor = "red";
+            beepSound();  // Beep at the end
+
+            // Optionally reset the button after a short delay
+            setTimeout(resetTimer, 2000);
+        }
+
+        // Function to reset the timer button
+        function resetTimer() {
+            const timerButton = document.getElementById('timer');
+            timerButton.innerText = "Get ready to count";
+            timerButton.style.backgroundColor = "yellow";
+            clearTimeout(timerTimeout);  // Clear the timeout if still running
+        }
+
+        // Function to play a beep sound (using a simple beep alert)
+        function beepSound() {
+            const beep = new AudioContext();
+            const oscillator = beep.createOscillator();
+            oscillator.type = 'square';
+            oscillator.frequency.setValueAtTime(440, beep.currentTime); // Frequency in hertz (440Hz = A4 note)
+            oscillator.connect(beep.destination);
+            oscillator.start();
+            oscillator.stop(beep.currentTime + 0.1);  // Beep duration 0.1 second
         }
     </script>
 
 </body>
 </html>
+
 
