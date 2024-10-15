@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charge train</title>
+    <style>
+        /* Basic styles */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        #gif-container {
+            margin-top: 20px;
+        }
+
+        /* Set gif to be 80% of the screen width, but no more than 600px */
+        img {
+            width: 80%;
+            max-width: 600px;
+            height: auto;
+        }
+
+        /* Button styles */
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Reset button specific style */
+        #reset {
+            background-color: red;
+            color: white;
+        }
+
+        /* Pink glow for the clicked button */
+        .glow {
+            background-color: pink;
+            box-shadow: 0 0 15px pink;
+        }
+
+        /* Ensure buttons are responsive */
+        #button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        @media (max-width: 600px) {
+            button {
+                width: 100%;
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Charge Train</h1>
+    <div id="gif-container">
+        <!-- Default reset image is displayed initially -->
+        <img id="current-img" src="r.png" alt="Reset Image">
+    </div>
+
+    <!-- Buttons for selecting gif sets -->
+    <div id="button-container">
+        <button id="setA" onclick="showNextGif('a', 1)">Show 1 charge flowing past per second</button>
+        <button id="setB" onclick="showNextGif('b', 2)">Show 2 charges flowing past per second</button>
+        <button id="setC" onclick="showNextGif('c', 4)">Show 4 charges flowing past per second</button>
+        <button id="reset" onclick="resetGifs()">Reset</button>
+    </div>
+
+    <script>
+        // Object to store GIF paths for each set
+        const gifSets = {
+            'a': ['a1.gif', 'a2.gif', 'a3.gif'],
+            'b': ['b1.gif', 'b2.gif', 'b3.gif'],
+            'c': ['c1.gif', 'c2.gif', 'c3.gif']
+        };
+
+        // Variable to keep track of current gif set and gif index
+        let currentSet = '';
+        let currentIndex = 0;
+        let currentCharge = 1;  // This will store 1, 2, or 4 depending on the set
+        let lastClickedButton = null; // Store the last clicked button for glow effect
+
+        // Store the initial button text for each set to easily reset them
+        const initialButtonText = {
+            'a': 'Show 1 charge flowing past per second',
+            'b': 'Show 2 charges flowing past per second',
+            'c': 'Show 4 charges flowing past per second'
+        };
+
+        // Function to show the next gif in the selected set
+        function showNextGif(set, charge) {
+            // If the user selects a new set, reset the previous button to its initial text
+            if (currentSet !== '' && currentSet !== set) {
+                resetButtonText(currentSet);
+            }
+
+            // Set current set and charge if it's a new selection
+            if (currentSet === '' || currentSet !== set) {
+                currentSet = set;
+                currentIndex = 0;
+                currentCharge = charge;
+            }
+
+            const currentGifSet = gifSets[currentSet];
+
+            if (currentIndex < currentGifSet.length) {
+                document.getElementById('current-img').src = currentGifSet[currentIndex];
+                updateButtonText(set);
+                currentIndex++;
+            }
+
+            highlightButton('set' + set.toUpperCase());
+        }
+
+        // Function to update the button text based on the current gif in the set
+        function updateButtonText(set) {
+            const buttonId = 'set' + set.toUpperCase();
+            const button = document.getElementById(buttonId);
+
+            if (currentIndex === 0) {
+                button.innerText = `Showing movement of ${currentCharge} charge(s) per second - CLICK AGAIN to see ammeters`;
+            } else if (currentIndex === 1) {
+                button.innerText = `Showing position of ammeters for ${currentCharge} charge(s) per second movement - CLICK AGAIN to see ammeter reading`;
+            } else if (currentIndex === 2) {
+                button.innerText = `Showing ammeter reading for ${currentCharge} charge(s) per second`;
+            }
+        }
+
+        // Function to reset a specific button's text back to its initial state
+        function resetButtonText(set) {
+            const buttonId = 'set' + set.toUpperCase();
+            const button = document.getElementById(buttonId);
+            button.innerText = initialButtonText[set];  // Reset to original label
+        }
+
+        // Function to highlight the clicked button with a pink glow
+        function highlightButton(buttonId) {
+            if (lastClickedButton) {
+                lastClickedButton.classList.remove('glow');
+            }
+            const clickedButton = document.getElementById(buttonId);
+            clickedButton.classList.add('glow');
+            lastClickedButton = clickedButton; // Store this button as the last clicked one
+        }
+
+        // Function to reset everything to the initial state
+        function resetGifs() {
+            currentSet = '';
+            currentIndex = 0;
+            currentCharge = 1;
+            document.getElementById('current-img').src = 'r.png';
+
+            // Reset button text
+            document.getElementById('setA').innerText = initialButtonText['a'];
+            document.getElementById('setB').innerText = initialButtonText['b'];
+            document.getElementById('setC').innerText = initialButtonText['c'];
+
+            // Remove glow from the last clicked button
+            if (lastClickedButton) {
+                lastClickedButton.classList.remove('glow');
+            }
+        }
+    </script>
+
+</body>
+</html>
+
