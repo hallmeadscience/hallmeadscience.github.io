@@ -8,31 +8,36 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            margin-top: 50px;
+            margin: 0;
+            padding: 0;
         }
         .container {
             display: flex;
-            justify-content: space-between; /* Triangle on left, output on right */
-            align-items: flex-start; /* Align items at the top */
-            width: 90%;
-            margin: auto; /* Center the container horizontally */
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            height: 100vh; /* Full viewport height */
+            margin: 0 auto;
+            padding: 10px;
+            box-sizing: border-box;
         }
         /* Triangle Container */
         .triangle-container {
             position: relative;
             width: 0;
             height: 0;
-            margin-top: 10px; /* Very close to the title */
-            margin-left: 60px; /* Keep triangle in its current position */
+            margin-top: 5%; /* Position relative to the screen */
             display: inline-block;
-            text-align: center; /* Center triangle horizontally */
+            text-align: center;
+            flex: 1 1 auto; /* Allow resizing */
+            max-width: 40%; /* Limit width to prevent overflow */
         }
         .triangle-outline {
             width: 0;
             height: 0;
-            border-left: 260px solid transparent; /* Larger outline */
-            border-right: 260px solid transparent;
-            border-bottom: 390px solid black; /* Black border */
+            border-left: 20vw solid transparent; /* Make borders relative to viewport width */
+            border-right: 20vw solid transparent;
+            border-bottom: 30vw solid black; /* Proportional size */
             position: absolute;
             top: 0;
             left: 0;
@@ -40,79 +45,108 @@
         .triangle {
             width: 0;
             height: 0;
-            border-left: 250px solid transparent;
-            border-right: 250px solid transparent;
-            border-bottom: 375px solid lightblue;
+            border-left: 18vw solid transparent;
+            border-right: 18vw solid transparent;
+            border-bottom: 27vw solid lightblue;
             position: absolute;
-            top: 10px; /* Centered within the outline */
-            left: 10px;
+            top: 5%;
+            left: 5%;
         }
         .triangle-text {
             position: absolute;
-            width: 500px;
-            top: 100px;
-            left: -250px;
+            width: 100%;
+            top: 40%;
+            left: 0;
             text-align: center;
         }
         .triangle-text button {
             background: lightblue;
             border: 1px solid lightblue;
             border-radius: 10px;
-            width: 120px;
-            height: 120px;
-            font-size: 52px;
+            width: 15vw; /* Width in percentage */
+            height: 15vw; /* Height in percentage */
+            font-size: 5vw; /* Font size based on viewport width */
             color: black;
             font-weight: bold;
             cursor: pointer;
             position: relative;
-            padding: 0; /* Remove internal padding */
+            padding: 0;
         }
-        /* Position adjustments for each button */
         .triangle-text button.e-button {
-            padding-top: 10px; /* Move E higher */
-            line-height: 1;
+            padding-top: 10px;
         }
-        /* Move Q to the left and V to the right within their buttons */
         .triangle-text button.q-button {
-            text-align: left; /* Align Q to the left */
-            padding-left: 20px; /* Move Q further to the left */
-            padding-top: 50px; /* Move Q lower */
+            text-align: left;
+            padding-left: 10%;
+            padding-top: 30%;
         }
         .triangle-text button.v-button {
-            text-align: right; /* Align V to the right */
-            padding-right: 20px; /* Move V further to the right */
-            padding-top: 50px; /* Move V lower */
+            text-align: right;
+            padding-right: 10%;
+            padding-top: 30%;
         }
         .triangle-text button:hover {
-            background: #add8e6; /* Slightly lighter blue */
+            background: #add8e6;
         }
+
         /* Output Box Style */
         .output {
-            padding: 40px;
+            padding: 2vw;
             border: 2px solid #ccc;
             border-radius: 20px;
             background-color: #f9f9f9;
-            font-size: 52px; /* Same font size as buttons */
-            width: 600px; /* Increased width */
-            text-align: center; /* Center-align text */
-            margin-top: 70px; /* Keep same vertical alignment */
-            position: relative;
-            left: -150px; /* Move equation box a bit closer to the triangle */
-            font-family: Arial, sans-serif; /* Match font to button */
+            font-size: 5vw; /* Font size in vw units for responsiveness */
+            width: 40%; /* Width is also responsive */
+            text-align: center;
+            font-family: Arial, sans-serif;
             color: black;
-            font-weight: bold; /* Make text bold */
+            font-weight: bold;
+            margin-top: 10%; /* Position below triangle */
+            box-sizing: border-box;
         }
         h1 {
-            font-size: 48px;
-            margin-bottom: 5px; /* Reduce gap between title and triangle */
+            font-size: 8vw; /* Responsive title font */
+            margin-bottom: 2%;
         }
 
         /* Smaller font size for full word equations */
         .output .word-equation {
-            font-size: 22px; /* Reduced font size to prevent wrapping */
+            font-size: 4vw; /* Adjust font size for word equations */
             line-height: 1.3;
-            font-weight: bold; /* Make word equations bold */
+            font-weight: bold;
         }
+
+        /* Ensure responsiveness with media queries */
+        @media (max-width: 768px) {
+            .triangle-text button {
+                width: 20vw;
+                height: 20vw;
+                font-size: 6vw;
+            }
+            .output {
+                font-size: 4vw;
+                width: 50%;
+            }
+            .triangle-container {
+                max-width: 50%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .triangle-text button {
+                width: 25vw;
+                height: 25vw;
+                font-size: 8vw;
+            }
+            .output {
+                font-size: 5vw;
+                width: 60%;
+            }
+            .triangle-container {
+                max-width: 60%;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -155,3 +189,5 @@
     </script>
 </body>
 </html>
+
+           
