@@ -53,4 +53,91 @@
             width: 0;
             height: 0;
             border-left: 16.5vw solid transparent;
-       
+            border-right: 16.5vw solid transparent;
+            border-bottom: 23vw solid lightblue;
+            position: absolute;
+            top: 1vw;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .triangle-text {
+            position: absolute;
+            top: 25%;
+            width: 100%;
+        }
+        .triangle-text button {
+            background: lightblue;
+            border: 1px solid lightblue;
+            border-radius: 10px;
+            width: 8vw;
+            height: 8vw;
+            font-size: 2.5vw;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+            padding: 0;
+        }
+        .triangle-text button.e-button {
+            padding-top: 5px;
+        }
+        .triangle-text button.q-button {
+            text-align: left;
+            padding-left: 20%;
+        }
+        .triangle-text button.v-button {
+            text-align: right;
+            padding-right: 20%;
+        }
+        .output {
+            flex: 1;
+            padding: 2vw;
+            border: 2px solid #ccc;
+            border-radius: 20px;
+            background-color: #f9f9f9;
+            font-size: 1.8vw;
+            text-align: center;
+            min-width: 300px; /* Ensures box doesn't shrink too much */
+        }
+        .output .word-equation {
+            font-size: 1.2vw;
+            line-height: 1.3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Equation Triangle: E = Q × V</h1>
+    <div class="container">
+        <div class="triangle-container">
+            <div class="triangle-outline"></div>
+            <div class="triangle">
+                <div class="triangle-text">
+                    <button class="e-button" onclick="showEquation('E')">E</button>
+                    <br>
+                    <button class="q-button" onclick="showEquation('Q')">Q</button>
+                    <button class="v-button" onclick="showEquation('V')">V</button>
+                </div>
+            </div>
+        </div>
+        <div class="output" id="output">
+            Click a variable to see the rearranged equation.
+        </div>
+    </div>
+    <script>
+        function showEquation(part) {
+            let message = "";
+            if (part === "E") {
+                message = "E = Q × V";
+                message += "<br><span class='word-equation'>Energy (J) = Charge (C) × Potential Difference (V)</span>";
+            } else if (part === "Q") {
+                message = "Q = E ÷ V";
+                message += "<br><span class='word-equation'>Charge (C) = Energy (J) ÷ Potential Difference (V)</span>";
+            } else if (part === "V") {
+                message = "V = E ÷ Q";
+                message += "<br><span class='word-equation'>Potential Difference (V) = Energy (J) ÷ Charge (C)</span>";
+            }
+            document.getElementById('output').innerHTML = message;
+        }
+    </script>
+</body>
+</html>
