@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop: Circuit Rules</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #2a7d8c;
+            font-size: 32px;
+        }
+        p {
+            font-size: 18px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .drop-zone {
+            border: 2px dashed #2a7d8c;
+            border-radius: 10px;
+            padding: 15px;
+            width: 220px;
+            height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .drop-zone.correct {
+            border-color: green;
+        }
+        .drop-zone.incorrect {
+            border-color: red;
+        }
+        .draggable {
+            background-color: #f0f8ff;
+            border: 1px solid #2a7d8c;
+            border-radius: 5px;
+            padding: 8px 15px;
+            margin: 8px 0;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: grab;
+            text-align: center;
+        }
+        .draggable:active {
+            cursor: grabbing;
+        }
+        .submit-btn {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #2a7d8c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #21657a;
+        }
+        .feedback {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        #drag-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Drag and Drop: Circuit Rules</h1>
+    <p>Drag the correct rules into the boxes for **Series Circuits** and **Parallel Circuits**.</p>
+
+    <div class="container">
+        <!-- Drop Zone for Series Circuits -->
+        <div id="series-drop-zone" class="drop-zone" ondrop="drop(event, 'series')" ondragover="allowDrop(event)">
+            <h3 style="font-size: 20px;">Series Circuits</h3>
+        </div>
+
+        <!-- Drop Zone for Parallel Circuits -->
+        <div id="parallel-drop-zone" class="drop-zone" ondrop="drop(event, 'parallel')" ondragover="allowDrop(event)">
+            <h3 style="font-size: 20px;">Parallel Circuits</h3>
+        </div>
+    </div>
+
+    <!-- Draggable Items -->
+    <div>
+        <p><strong style="font-size: 18px;">Rules to Drag:</strong></p>
+        <div id="drag-items">
+            <div class="draggable" draggable="true" id="rule1" ondragstart="drag(event)" ondragend="updateAnswers()">The current is the same</div>
+            <div class="draggable" draggable="true" id="rule2" ondragstart="drag(event)" ondragend="updateAnswers()">The current splits between loops</div>
+            <div class="draggable" draggable="true" id="rule3" ondragstart="drag(event)" ondragend="updateAnswers()">The voltage is shared across components</div>
+            <div class="draggable" draggable="true" id="rule4" ondragstart="drag(event)" ondragend="updateAnswers()">The voltage is the same across loops</div>
+        </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button class="submit-btn" onclick="checkAnswers()">Submit</button>
+
+    <!-- Feedback Section -->
+    <div id="feedback" class="feedback"></div>
+
+    <script>
+        // Correct answers for each drop zone
+        const correctAnswers = {
+            series: ["rule1", "rule3"],
+            parallel: ["rule2", "rule4"]
+        };
+
+        // Store user answers
+        const userAnswers = {
+            series: [],
+            parallel: []
+        };
+
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+
+        function drop(event, type) {
+            event.preventDefault();
+            const itemId = event.dataTransfer.getData("text");
+            const item = document.getElementById(itemId);
+
+            // Prevent duplicate entries in the same drop zone
+            if (userAnswers[type].includes(itemId)) return;
+
+            // Add the draggable item to the drop zone and update answers
+            event.target.appendChild(item);
+            userAnswers[type].push(itemId);
+        }
+
+        function updateAnswers() {
+            // Clear current answers and re-calculate based on elements in drop zones
+            userAnswers.series = [...document.getElementById("series-drop-zone").children]
+                .filter(child => child.classList.contains("draggable"))
+                .map(child => child.id);
+
+            userAnswers.parallel = [...document.getElementById("parallel-drop-zone").children]
+                .filter(child => child.classList.contains("draggable"))
+                .map(child => child.id);
+        }
+
+        function checkAnswers() {
+            let feedback = "";
+
+            // Check Series Circuit Answers
+            if (arraysMatch(correctAnswers.series, userAnswers.series)) {
+                feedback += "<p style='color: green;'>Series Circuits: Correct!</p>";
+                document.getElementById("series-drop-zone").classList.add("correct");
+            } else {
+                feedback += "<p style='color: red;'>Series Circuits: Incorrect. Review the rules!</p>";
+                document.getElementById("series-drop-zone").classList.add("incorrect");
+            }
+
+            // Check Parallel Circuit Answers
+            if (arraysMatch(correctAnswers.parallel, userAnswers.parallel)) {
+                feedback += "<p style='color: green;'>Parallel Circuits: Correct!</p>";
+                document.getElementById("parallel-drop-zone").classList.add("correct");
+            } else {
+                feedback += "<p style='color: red;'>Parallel Circuits: Incorrect. Review the rules!</p>";
+                document.getElementById("parallel-drop-zone").classList.add("incorrect");
+            }
+
+            // Display feedback
+            document.getElementById("feedback").innerHTML = feedback;
+        }
+
+        function arraysMatch(arr1, arr2) {
+            return arr1.sort().join(",") === arr2.sort().join(",");
+        }
+    </script>
+</body>
+</html>
