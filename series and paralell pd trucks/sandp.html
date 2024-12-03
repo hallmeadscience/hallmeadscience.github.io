@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Series and Parallel Circuit Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Title styling */
+        h1 {
+            margin: 20px 0;
+        }
+
+        .title-part {
+            display: inline;
+        }
+
+        .title-potential {
+            font-size: 0.8em;
+            color: red;
+            font-style: italic;
+        }
+
+        /* Container for GIFs */
+        #gif-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 75vw; /* 75% of viewport width */
+            height: 75vh; /* 75% of viewport height */
+            border: 2px solid black; /* Optional: Border to visually see the container */
+            background-color: white; /* White background since both circuits have white backgrounds */
+            margin: 0 auto; /* Center the container on the page */
+            overflow: hidden; /* Hide overflow if the GIF is larger than the container */
+        }
+
+        img {
+            width: 100%; /* Make GIFs fill the container's width */
+            height: 100%; /* Make GIFs fill the container's height */
+            object-fit: contain; /* Ensure the GIF scales while keeping its aspect ratio */
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .highlight {
+            background-color: pink;
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+
+    <h1><span class="title-part">SPOT THE </span><span class="title-potential">potential</span><span class="title-part"> DIFFERENCE again</span></h1>
+
+    <div id="question">Do you want to see a series or parallel circuit?</div>
+
+    <!-- Buttons for selecting series or parallel circuits -->
+    <div id="buttons">
+        <button id="series" onclick="startCycle('series')">Series Circuit</button>
+        <button id="parallel" onclick="startCycle('parallel')">Parallel Circuit</button>
+    </div>
+
+    <!-- Container for displaying GIFs -->
+    <div id="gif-container">
+        <img id="current-img" src="" alt="Circuit GIF" style="display:none;">
+    </div>
+
+    <script>
+        // Object to store GIF paths and updated descriptions for both series and parallel scenarios
+        const gifSets = {
+            'series': {
+                gifs: ['s.gif', 'svb.gif', 'svrb.gif', 'svl1.gif', 'svrl1.gif', 'svl2.gif', 'svrl2.gif'],
+                texts: [
+                    'Series circuit with no voltmeters. Click again to add voltmeter across the cell.',
+                    'Voltmeter across cell (no reading). Click again to see the reading.',
+                    'Voltmeter reading across cell. Click again to move voltmeter to lamp L1.',
+                    'Voltmeter across lamp L1 (no reading). Click again to see the reading.',
+                    'Voltmeter reading across lamp L1. Click again to move voltmeter to lamp L2.',
+                    'Voltmeter across lamp L2 (no reading). Click again to see the reading.',
+                    'Voltmeter reading across lamp L2. Cycle complete.'
+                ]
+            },
+            'parallel': {
+                gifs: ['p.gif', 'pvb.gif', 'pvrb.gif', 'pvl1.gif', 'pvrl1.gif', 'pvl2.gif', 'pvrl2.gif'],
+                texts: [
+                    'Parallel circuit with no voltmeters. Click again to add voltmeter across the cell.',
+                    'Voltmeter across cell (no reading). Click again to see the reading.',
+                    'Voltmeter reading across cell. Click again to move voltmeter to lamp L1.',
+                    'Voltmeter across lamp L1 (no reading). Click again to see the reading.',
+                    'Voltmeter reading across lamp L1. Click again to move voltmeter to lamp L2.',
+                    'Voltmeter across lamp L2 (no reading). Click again to see the reading.',
+                    'Voltmeter reading across lamp L2. Cycle complete.'
+                ]
+            }
+        };
+
+        // Variables to track current state
+        let currentSet = '';
+        let currentIndex = 0;
+
+        // Function to start the cycle based on user choice (series or parallel circuit)
+        function startCycle(set) {
+            // Set the current set and reset index
+            if (currentSet !== set || currentIndex >= gifSets[set].gifs.length) {
+                currentSet = set;
+                currentIndex = 0;  // Start with the first gif (s.gif or p.gif)
+                document.getElementById('current-img').style.display = 'block';  // Ensure image is visible
+            }
+
+            updateDisplay();
+        }
+
+        // Function to update the GIF and button text
+        function updateDisplay() {
+            const currentGifSet = gifSets[currentSet];
+            
+            // Show the GIF
+            document.getElementById('current-img').src = currentGifSet.gifs[currentIndex];
+            
+            // Update button text
+            const button = currentSet === 'series' ? document.getElementById('series') : document.getElementById('parallel');
+            button.innerText = currentGifSet.texts[currentIndex];
+            button.classList.add('highlight');
+            
+            // Make the other button return to its original state
+            const otherButton = currentSet === 'series' ? document.getElementById('parallel') : document.getElementById('series');
+            otherButton.innerText = currentSet === 'series' ? 'Parallel Circuit' : 'Series Circuit';
+            otherButton.classList.remove('highlight');
+
+            // Increment the index for the next cycle
+            currentIndex++;
+
+            // If cycle complete, reset question after the last gif
+            if (currentIndex >= currentGifSet.gifs.length) {
+                setTimeout(resetCycle, 5000);  // Wait 5 seconds before resetting
+            }
+        }
+
+        // Function to reset everything to the initial question
+        function resetCycle() {
+            document.getElementById('question').innerText = 'Do you want to see a series or parallel circuit?';
+            document.getElementById('series').innerText = 'Series Circuit';
+            document.getElementById('parallel').innerText = 'Parallel Circuit';
+            document.getElementById('current-img').style.display = 'none';
+            
+            currentSet = '';
+            currentIndex = 0;
+
+            // Remove the highlight from both buttons
+            document.getElementById('series').classList.remove('highlight');
+            document.getElementById('parallel').classList.remove('highlight');
+        }
+    </script>
+
+</body>
+</html>
+
