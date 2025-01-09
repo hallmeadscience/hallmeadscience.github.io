@@ -125,104 +125,110 @@
     <!-- Reset Button -->
     <button class="reset-button" id="resetButton">Reset</button>
 
-    <script>
-        const slider = document.getElementById("slider");
-        const sliderContainer = document.querySelector(".slider-container");
-        const chemicalBar = document.getElementById("chemicalBar");
-        const gpeBar = document.getElementById("gpeBar");
-        const keBar = document.getElementById("keBar");
-        const resetButton = document.getElementById("resetButton");
+<script>
+    const slider = document.getElementById("slider");
+    const sliderContainer = document.querySelector(".slider-container");
+    const chemicalBar = document.getElementById("chemicalBar");
+    const gpeBar = document.getElementById("gpeBar");
+    const keBar = document.getElementById("keBar");
+    const resetButton = document.getElementById("resetButton");
 
-        let isDragging = false;
-        let maxSliderHeight = sliderContainer.offsetHeight - slider.offsetHeight;
-        let totalEnergy = 100; // Total energy to maintain conservation of energy
-        let initialSliderTop = maxSliderHeight; // The starting position of the slider (fully down)
+    let isDragging = false;
+    let maxSliderHeight = sliderContainer.offsetHeight - slider.offsetHeight;
+    let totalEnergy = 100; // Total energy to maintain conservation of energy
+    let initialSliderTop = maxSliderHeight; // The starting position of the slider (fully down)
+    let lastSliderTop = maxSliderHeight; // Track the previous slider position
 
-        // Set initial energies (start with all chemical energy, no kinetic or potential energy)
+    // Set initial energies (start with all chemical energy, no kinetic or potential energy)
+    chemicalBar.style.height = '100%';
+    gpeBar.style.height = '0%';
+    keBar.style.height = '0%';
+
+    // Common function to handle mouse and touch events
+    const handleMove = (event) => {
+        let sliderTop;
+        if (event.touches) { // If it's a touch event
+            sliderTop = event.touches[0].clientY - sliderContainer.getBoundingClientRect().top;
+        } else { // If it's a mouse event
+            sliderTop = event.clientY - sliderContainer.getBoundingClientRect().top;
+        }
+
+        // Ensure the slider stays within the container bounds
+        if (sliderTop < 0) sliderTop = 0; // Prevent going above
+        if (sliderTop > maxSliderHeight) sliderTop = maxSliderHeight; // Prevent going below
+
+        // Restrict downward movement
+        if (sliderTop > lastSliderTop) return; // Ignore movement downward
+
+        slider.style.bottom = `${maxSliderHeight - sliderTop}px`; // Update slider position
+
+        // Calculate energy components based on the slider's position
+        let chemicalHeight = (sliderTop / maxSliderHeight) * totalEnergy; // Chemical energy decreases
+        let gpeHeight = (1 - sliderTop / maxSliderHeight) * totalEnergy; // GPE decreases as slider moves up
+
+        // Calculate KE, which grows as the slider moves up and converts potential energy
+        let keHeight = (initialSliderTop - sliderTop) / maxSliderHeight * totalEnergy;
+        keHeight = Math.max(keHeight, 0); // Ensure KE doesn't go negative
+        keHeight = Math.min(keHeight, gpeHeight); // KE can't exceed GPE, which is the available energy for conversion
+
+        // Adjust GPE and chemical energy based on KE
+        gpeHeight = Math.max(gpeHeight - keHeight, 0); // The remaining energy after KE conversion
+        chemicalHeight = Math.max(chemicalHeight - keHeight, 0); // The remaining chemical energy after conversion
+
+        // Update the bars' heights to represent energy conservation
+        gpeBar.style.height = `${gpeHeight}%`;
+        chemicalBar.style.height = `${chemicalHeight}%`;
+        keBar.style.height = `${keHeight}%`; // KE only appears when slider is moving
+
+        // Store the current slider position for next movement
+        lastSliderTop = sliderTop;
+    };
+
+    slider.addEventListener("mousedown", () => {
+        isDragging = true;
+    });
+
+    document.addEventListener("mouseup", () => {
+        isDragging = false;
+    });
+
+    document.addEventListener("mousemove", (event) => {
+        if (isDragging) {
+            handleMove(event);
+        }
+    });
+
+    // Touch event listeners
+    slider.addEventListener("touchstart", () => {
+        isDragging = true;
+    });
+
+    document.addEventListener("touchend", () => {
+        isDragging = false;
+    });
+
+    document.addEventListener("touchmove", (event) => {
+        if (isDragging) {
+            handleMove(event);
+        }
+    });
+
+    // Reset Button functionality
+    resetButton.addEventListener("click", () => {
+        // Reset slider position
+        slider.style.bottom = '0px'; // Slider returns to the bottom
+
+        // Reset energy bar heights
         chemicalBar.style.height = '100%';
         gpeBar.style.height = '0%';
         keBar.style.height = '0%';
 
-        // Common function to handle mouse and touch events
-        const handleMove = (event) => {
-            let sliderTop;
-            if (event.touches) { // If it's a touch event
-                sliderTop = event.touches[0].clientY - sliderContainer.getBoundingClientRect().top;
-            } else { // If it's a mouse event
-                sliderTop = event.clientY - sliderContainer.getBoundingClientRect().top;
-            }
+        // Reset initialSliderTop to the bottom position
+        initialSliderTop = maxSliderHeight;
+        lastSliderTop = maxSliderHeight;
+    });
+</script>
 
-            // Ensure the slider stays within the container bounds and is visible
-            if (sliderTop < 0) sliderTop = 0;  // Prevent going above
-            if (sliderTop > maxSliderHeight) sliderTop = maxSliderHeight;  // Prevent going below
-
-            slider.style.bottom = `${maxSliderHeight - sliderTop}px`;  // Update slider position to be from the bottom
-
-            // Calculate energy components based on the slider's position
-            let chemicalHeight = (sliderTop / maxSliderHeight) * totalEnergy; // Chemical energy decreases
-            let gpeHeight = (1 - sliderTop / maxSliderHeight) * totalEnergy; // GPE decreases as slider moves up
-
-            // Calculate KE, which grows as the slider moves up and converts potential energy
-            let keHeight = (initialSliderTop - sliderTop) / maxSliderHeight * totalEnergy;
-            keHeight = Math.max(keHeight, 0); // Ensure KE doesn't go negative
-            keHeight = Math.min(keHeight, gpeHeight); // KE can't exceed GPE, which is the available energy for conversion
-
-            // Adjust GPE and chemical energy based on KE
-            gpeHeight = Math.max(gpeHeight - keHeight, 0);  // The remaining energy after KE conversion
-            chemicalHeight = Math.max(chemicalHeight - keHeight, 0);  // The remaining chemical energy after conversion
-
-            // Update the bars' heights to represent energy conservation
-            gpeBar.style.height = `${gpeHeight}%`;
-            chemicalBar.style.height = `${chemicalHeight}%`;
-            keBar.style.height = `${keHeight}%`; // KE only appears when slider is moving
-
-            // Store the current slider position for next movement
-            initialSliderTop = sliderTop;
-        };
-
-        slider.addEventListener("mousedown", () => {
-            isDragging = true;
-        });
-
-        document.addEventListener("mouseup", () => {
-            isDragging = false;
-        });
-
-        document.addEventListener("mousemove", (event) => {
-            if (isDragging) {
-                handleMove(event);
-            }
-        });
-
-        // Touch event listeners
-        slider.addEventListener("touchstart", () => {
-            isDragging = true;
-        });
-
-        document.addEventListener("touchend", () => {
-            isDragging = false;
-        });
-
-        document.addEventListener("touchmove", (event) => {
-            if (isDragging) {
-                handleMove(event);
-            }
-        });
-
-        // Reset Button functionality
-        resetButton.addEventListener("click", () => {
-            // Reset slider position
-            slider.style.bottom = '0px'; // Slider returns to the bottom
-
-            // Reset energy bar heights
-            chemicalBar.style.height = '100%';
-            gpeBar.style.height = '0%';
-            keBar.style.height = '0%';
-
-            // Reset initialSliderTop to the bottom position
-            initialSliderTop = maxSliderHeight;
-        });
-    </script>
 
 </body>
 </html>
