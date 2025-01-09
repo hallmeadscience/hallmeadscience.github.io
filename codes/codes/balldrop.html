@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ball Drop Animation - Stage 2</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100px;
+            height: 300px;
+            background: #ddd;
+            border-radius: 10px;
+        }
+
+        .slider {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            border-radius: 50%;
+            cursor: pointer;
+            left: 40px;
+            top: 0;
+            transform: translateY(0);
+        }
+
+        .gpe-bar-container, .ke-bar-container {
+            position: relative;
+            width: 50px;
+            height: 300px;
+            margin-left: 20px;
+            background: #e0e0e0;
+            border-radius: 10px;
+        }
+
+        .gpe-bar, .ke-bar {
+            position: absolute;
+            width: 100%;
+            background: blue;
+            border-radius: 10px;
+            bottom: 0;
+        }
+
+        .gpe-bar {
+            background: blue;
+        }
+
+        .ke-bar {
+            background: pink;
+            height: 0;
+        }
+
+        .label {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            bottom: -40px;
+            font-size: 12px;
+            color: #000;
+        }
+
+        .reset-container {
+            margin-top: 20px;
+        }
+
+        .reset-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .reset-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="slider-container">
+            <div class="slider" id="slider"></div>
+        </div>
+
+        <div class="gpe-bar-container">
+            <div class="gpe-bar" id="gpeBar"></div>
+            <div class="label">Gravitational Potential Energy</div>
+        </div>
+
+        <div class="ke-bar-container">
+            <div class="ke-bar" id="keBar"></div>
+            <div class="label">Kinetic Energy</div>
+        </div>
+    </div>
+
+    <div class="reset-container">
+        <button class="reset-button" id="resetButton">Reset</button>
+    </div>
+
+    <script>
+        const slider = document.getElementById("slider");
+        const sliderContainer = document.querySelector(".slider-container");
+        const gpeBar = document.getElementById("gpeBar");
+        const keBar = document.getElementById("keBar");
+        const resetButton = document.getElementById("resetButton");
+
+        let isDragging = false;
+        let maxSliderHeight = sliderContainer.offsetHeight - slider.offsetHeight;
+
+        slider.addEventListener("mousedown", () => {
+            isDragging = true;
+        });
+
+        document.addEventListener("mouseup", () => {
+            isDragging = false;
+        });
+
+        document.addEventListener("mousemove", (event) => {
+            if (isDragging) {
+                let sliderTop = event.clientY - sliderContainer.getBoundingClientRect().top;
+
+                // Clamp the slider position to within the container
+                if (sliderTop < 0) sliderTop = 0;
+                if (sliderTop > maxSliderHeight) sliderTop = maxSliderHeight;
+
+                slider.style.transform = `translateY(${sliderTop}px)`;
+
+                // Adjust GPE and KE bar heights proportionally
+                let gpeHeight = 100 - (sliderTop / maxSliderHeight * 100); // GPE as percentage
+                let keHeight = sliderTop / maxSliderHeight * 100; // KE as percentage
+
+                gpeBar.style.height = `${gpeHeight}%`;
+                keBar.style.height = `${keHeight}%`;
+            }
+        });
+
+        resetButton.addEventListener("click", () => {
+            // Reset slider position
+            slider.style.transform = "translateY(0)";
+
+            // Reset GPE and KE bar heights
+            gpeBar.style.height = "100%";
+            keBar.style.height = "0";
+        });
+    </script>
+
+</body>
+</html>
+
+

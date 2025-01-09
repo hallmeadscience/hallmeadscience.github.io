@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Transfer Animation</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-end; /* Align items at the bottom */
+            gap: 40px; /* Increased gap for wider bars */
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100px;
+            height: 300px;
+            background: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .slider {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            border-radius: 50%;
+            cursor: pointer;
+            left: 40px;
+            bottom: 0; /* Position slider at the bottom */
+        }
+
+        .bar-container {
+            position: relative;
+            width: 150px; /* Set the width of the bar containers to 3 times the original */
+            height: 300px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column-reverse; /* Position bars at the bottom */
+        }
+
+        .bar {
+            width: 100%;
+            background: gray;
+            border-radius: 10px;
+            margin-bottom: 0; /* Ensure the bars stay at the bottom */
+        }
+
+        .chemical-potential {
+            background: orange;
+            height: 100%;
+        }
+
+        .gpe {
+            background: blue;
+            height: 0;
+        }
+
+        .ke {
+            background: pink;
+            height: 0;
+        }
+
+        .label {
+            width: 100%;
+            text-align: center;
+            font-size: calc(0.8em + 0.5vw); /* Responsive font size */
+            color: #000;
+            margin-bottom: 5px; /* Space between label and bar */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="slider-container">
+            <div class="slider" id="slider"></div>
+        </div>
+
+        <div class="bar-container">
+            <div class="label" aria-label="Chemical Potential Energy">Chemical Potential Energy</div>
+            <div class="bar chemical-potential" id="chemicalBar"></div>
+        </div>
+
+        <div class="bar-container">
+            <div class="label" aria-label="Gravitational Potential Energy">Gravitational Potential Energy</div>
+            <div class="bar gpe" id="gpeBar"></div>
+        </div>
+
+        <div class="bar-container">
+            <div class="label" aria-label="Kinetic Energy">Kinetic Energy</div>
+            <div class="bar ke" id="keBar"></div>
+        </div>
+    </div>
+
+    <script>
+        const slider = document.getElementById("slider");
+        const sliderContainer = document.querySelector(".slider-container");
+        const chemicalBar = document.getElementById("chemicalBar");
+        const gpeBar = document.getElementById("gpeBar");
+        const keBar = document.getElementById("keBar");
+
+        let isDragging = false;
+        let maxSliderHeight = sliderContainer.offsetHeight - slider.offsetHeight;
+        let totalEnergy = 100; // Total energy to maintain conservation of energy
+        let initialSliderTop = maxSliderHeight; // The starting position of the slider (fully down)
+
+        // Set initial energies (start with all chemical energy, no kinetic or potential energy)
+        chemicalBar.style.height = '100%';
+        gpeBar.style.height = '0%';
+        keBar.style.height = '0%';
+
+        slider.addEventListener("mousedown", () => {
+            isDragging = true;
+        });
+
+        document.addEventListener("mouseup", () => {
+            isDragging = false;
+        });
+
+        document.addEventListener("mousemove", (event) => {
+            if (isDragging) {
+                let sliderTop = event.clientY - sliderContainer.getBoundingClientRect().top;
+
+                // Ensure the slider stays within the container bounds and is visible
+                if (sliderTop < 0) sliderTop = 0;  // Prevent going above
+                if (sliderTop > maxSliderHeight) sliderTop = maxSliderHeight;  // Prevent going below
+
+                slider.style.bottom = `${maxSliderHeight - sliderTop}px`;  // Update slider position to be from the bottom
+
+                // Calculate energy components based on the slider's position
+                let chemicalHeight = (sliderTop / maxSliderHeight) * totalEnergy; // Chemical energy decreases
+                let gpeHeight = (1 - sliderTop / maxSliderHeight) * totalEnergy; // GPE decreases as slider moves up
+
+                // Calculate KE, which grows as the slider moves up and converts potential energy
+                let keHeight = (initialSliderTop - sliderTop) / maxSliderHeight * totalEnergy;
+                keHeight = Math.max(keHeight, 0); // Ensure KE doesn't go negative
+                keHeight = Math.min(keHeight, gpeHeight); // KE can't exceed GPE, which is the available energy for conversion
+
+                // Adjust GPE and chemical energy based on KE
+                gpeHeight = Math.max(gpeHeight - keHeight, 0);  // The remaining energy after KE conversion
+                chemicalHeight = Math.max(chemicalHeight - keHeight, 0);  // The remaining chemical energy after conversion
+
+                // Update the bars' heights to represent energy conservation
+                gpeBar.style.height = `${gpeHeight}%`;
+                chemicalBar.style.height = `${chemicalHeight}%`;
+                keBar.style.height = `${keHeight}%`; // KE only appears when slider is moving
+
+                // Store the current slider position for next movement
+                initialSliderTop = sliderTop;
+            }
+        });
+    </script>
+
+</body>
+</html>
