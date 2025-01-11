@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIF Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin: 20px 0;
+        }
+
+        #button-container {
+            margin: 20px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 2px solid #007BFF;
+            background-color: #f0f0f0;
+            color: #007BFF;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        #gif-display {
+            width: 80%;
+            height: 60vh; /* Adjust height of the display area */
+            margin: 20px auto;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            background-color: #000; /* Black background for better visibility */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        #gif-display img {
+            width: 100%; /* Take up full width of the display area */
+            height: 100%; /* Take up full height of the display area */
+            object-fit: contain; /* Scale the GIF to fit without cropping */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Energy distribution graphs</h1>
+    <h2>Where does the energy go for the last 3 animations?</h2>
+
+    <!-- Buttons for selecting GIFs -->
+    <div id="button-container">
+        <button onclick="loadGif('car ramp1.gif')">car down a ramp</button>
+        <button onclick="loadGif('rc11.gif')">roller coaster</button>
+        <button onclick="loadGif('sk1.gif')">skier</button>
+        <button onclick="loadGif('hw1.gif')">car stopping distance experiment</button>
+      
+
+    </div>
+
+    <!-- Display area for the selected GIF -->
+    <div id="gif-display">
+        <img id="current-gif" src="" alt="GIF Viewer" style="display: none;">
+    </div>
+
+    <script>
+        // Function to load the selected GIF
+        function loadGif(gifName) {
+            const gifDisplay = document.getElementById('current-gif');
+            
+            // Set the src attribute to reload the GIF
+            gifDisplay.src = gifName + '?t=' + new Date().getTime(); // Adding timestamp ensures GIF reloads
+            gifDisplay.style.display = 'block'; // Make sure the image is visible
+        }
+    </script>
+
+</body>
+</html>
+
