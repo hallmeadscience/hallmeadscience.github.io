@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charge Train</title>
+    <style>
+        /* Styling code remains unchanged from your original */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        #gif-container {
+            margin-top: 20px;
+        }
+
+        img {
+            width: 80%;
+            max-width: 600px;
+            height: auto;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #reset {
+            background-color: red;
+            color: white;
+        }
+
+        .glow {
+            background-color: pink;
+            box-shadow: 0 0 15px pink;
+        }
+
+        #timer {
+            background-color: yellow;
+            font-size: 18px;
+        }
+
+        #button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        @media (max-width: 600px) {
+            button {
+                width: 100%;
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Charge Train</h1>
+    <div id="gif-container">
+        <img id="current-img" src="r.png" alt="Reset Image">
+    </div>
+
+    <div id="button-container">
+        <button id="setA" onclick="showNextGif('a', 'X')">Show charge movement for current X</button>
+        <button id="setB" onclick="showNextGif('b', 'Y')">Show charge movement for current Y</button>
+        <button id="setC" onclick="showNextGif('c', 'Z')">Show charge movement for current Z</button>
+        <button id="reset" onclick="resetGifs()">Reset</button>
+    </div>
+
+    <button id="timer" onclick="startTimer()">5 second timer - Get ready to count</button>
+
+    <script>
+        const gifSets = {
+            'a': ['a1.gif', 'a2.gif', 'a3.gif'],
+            'b': ['b1.gif', 'b2.gif', 'b3.gif'],
+            'c': ['c1.gif', 'c2.gif', 'c3.gif']
+        };
+
+        let currentSet = '';
+        let currentIndex = 0;
+        let currentLabel = 'X';
+        let lastClickedButton = null;
+        let timerTimeout;
+
+        const initialButtonText = {
+            'a': 'Show charge movement for current X',
+            'b': 'Show charge movement for current Y',
+            'c': 'Show charge movement for current Z'
+        };
+
+        function showNextGif(set, label) {
+            if (currentSet !== '' && currentSet !== set) {
+                resetButtonText(currentSet);
+            }
+
+            if (currentSet === '' || currentSet !== set) {
+                currentSet = set;
+                currentIndex = 0;
+                currentLabel = label;
+            }
+
+            const currentGifSet = gifSets[currentSet];
+
+            if (currentIndex < currentGifSet.length) {
+                document.getElementById('current-img').src = currentGifSet[currentIndex];
+                updateButtonText(set);
+                currentIndex++;
+            }
+
+            highlightButton('set' + set.toUpperCase());
+        }
+
+        function updateButtonText(set) {
+            const buttonId = 'set' + set.toUpperCase();
+            const button = document.getElementById(buttonId);
+
+            if (currentIndex === 0) {
+                button.innerText = `Showing movement of charges for current ${currentLabel} - CLICK AGAIN to see ammeters`;
+            } else if (currentIndex === 1) {
+                button.innerText = `Showing position of ammeters for current ${currentLabel} charge movement - CLICK AGAIN to see ammeter reading`;
+            } else if (currentIndex === 2) {
+                button.innerText = `Showing ammeter reading for current ${currentLabel}`;
+            }
+        }
+
+        function resetButtonText(set) {
+            const buttonId = 'set' + set.toUpperCase();
+            const button = document.getElementById(buttonId);
+            button.innerText = initialButtonText[set];
+        }
+
+        function highlightButton(buttonId) {
+            if (lastClickedButton) {
+                lastClickedButton.classList.remove('glow');
+            }
+            const clickedButton = document.getElementById(buttonId);
+            clickedButton.classList.add('glow');
+            lastClickedButton = clickedButton;
+        }
+
+        function resetGifs() {
+            currentSet = '';
+            currentIndex = 0;
+            currentLabel = 'X';
+            document.getElementById('current-img').src = 'r.png';
+
+            document.getElementById('setA').innerText = initialButtonText['a'];
+            document.getElementById('setB').innerText = initialButtonText['b'];
+            document.getElementById('setC').innerText = initialButtonText['c'];
+
+            if (lastClickedButton) {
+                lastClickedButton.classList.remove('glow');
+            }
+
+            resetTimer();
+        }
+
+        function startTimer() {
+            const timerButton = document.getElementById('timer');
+            timerButton.innerText = "Counting charges...";
+            timerButton.style.backgroundColor = "green";
+
+            beepSound();
+
+            timerTimeout = setTimeout(() => {
+                timerButton.innerText = "Stop counting";
+                timerButton.style.backgroundColor = "red";
+                beepSound();
+
+                setTimeout(resetTimer, 2000);
+            }, 5000);
+        }
+
+        function resetTimer() {
+            const timerButton = document.getElementById('timer');
+            timerButton.innerText = "5 second timer - Get ready to count";
+            timerButton.style.backgroundColor = "yellow";
+            clearTimeout(timerTimeout);
+        }
+
+        function beepSound() {
+            const beep = new AudioContext();
+            const oscillator = beep.createOscillator();
+            oscillator.type = 'square';
+            oscillator.frequency.setValueAtTime(440, beep.currentTime);
+            oscillator.connect(beep.destination);
+            oscillator.start();
+            oscillator.stop(beep.currentTime + 0.1);
+        }
+    </script>
+
+</body>
+</html>
