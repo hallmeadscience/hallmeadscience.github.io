@@ -11,16 +11,18 @@
     }
     #map {
       position: relative;
-      width: 100vw;
-      height: 100vh;
+      width: 100%; /* Makes the map responsive */
+      height: 100%; /* Makes the map responsive */
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden; /* Prevents overshooting */
+      transform: scale(1); /* Scale down the entire map */
+      transform-origin: top left; /* Keep the map anchored */
     }
     #map img {
-      width: auto;
-      height: 100%;
-      max-width: 100%;
+      width: 100%; /* Ensure the map image fits within the container */
+      height: auto;
       object-fit: contain;
     }
     #protractor {
@@ -28,16 +30,16 @@
       top: 50px;
       left: 50px;
       cursor: grab;
-      transform: scale(0.33); /* Scale down the protractor by a third */
-      transform-origin: top left; /* Ensures scaling happens from the top-left corner */
+      transform: scale(0.33); /* Scale down the protractor */
+      transform-origin: top left; /* Keep the protractor anchored */
     }
   </style>
 </head>
 <body>
-  <p></p>Drag the protractor to the desired location</p)
+  <p>Drag the protractor to the desired location</p>
   <div id="map">
-    <img src="mapscale.png" alt="Map">
-    <img id="protractor" src="pngegg.png" alt="Protractor">
+    <img src="https://hallmeadscience.github.io/codeforces/mapscale.png" alt="Map">
+    <img id="protractor" src="https://hallmeadscience.github.io/codeforces/pngegg.png" alt="Protractor">
   </div>
 
   <script>
@@ -96,3 +98,4 @@
   </script>
 </body>
 </html>
+
