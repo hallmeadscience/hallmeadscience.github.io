@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Draggable Protractor on Map</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    #map {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #map img {
+      width: auto;
+      height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+    }
+    #protractor {
+      position: absolute;
+      top: 50px;
+      left: 50px;
+      cursor: grab;
+      transform: scale(0.33); /* Scale down the protractor by a third */
+      transform-origin: top left; /* Ensures scaling happens from the top-left corner */
+    }
+  </style>
+</head>
+<body>
+  <div id="map">
+    <img src="mapscale.png" alt="Map">
+    <img id="protractor" src="pngegg.png" alt="Protractor">
+  </div>
+
+  <script>
+    const protractor = document.getElementById('protractor');
+
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    function moveProtractor(x, y) {
+      const newX = x - offsetX;
+      const newY = y - offsetY;
+
+      protractor.style.left = `${newX}px`;
+      protractor.style.top = `${newY}px`;
+    }
+
+    // Mouse events
+    protractor.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      offsetX = e.clientX - protractor.offsetLeft;
+      offsetY = e.clientY - protractor.offsetTop;
+      protractor.style.cursor = 'grabbing';
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (isDragging) {
+        moveProtractor(e.clientX, e.clientY);
+      }
+    });
+
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+      protractor.style.cursor = 'grab';
+    });
+
+    // Touch events
+    protractor.addEventListener('touchstart', (e) => {
+      isDragging = true;
+      const touch = e.touches[0];
+      offsetX = touch.clientX - protractor.offsetLeft;
+      offsetY = touch.clientY - protractor.offsetTop;
+      protractor.style.cursor = 'grabbing';
+    });
+
+    document.addEventListener('touchmove', (e) => {
+      if (isDragging) {
+        const touch = e.touches[0];
+        moveProtractor(touch.clientX, touch.clientY);
+      }
+    });
+
+    document.addEventListener('touchend', () => {
+      isDragging = false;
+      protractor.style.cursor = 'grab';
+    });
+  </script>
+</body>
+</html>
