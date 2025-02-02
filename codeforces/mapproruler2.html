@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>Draggable & Rotatable Protractor and Ruler</title>
   <style>
     body, html {
@@ -11,6 +11,7 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
+      touch-action: none; /* Prevent zooming on touch */
     }
     #map {
       position: absolute;
@@ -32,6 +33,7 @@
       position: absolute;
       cursor: grab;
       transform-origin: center;
+      touch-action: none;
     }
     #protractor {
       top: 50px;
@@ -60,7 +62,7 @@
       left: -5px;
     }
     
-    /* Fixed buttons to ensure visibility */
+    /* Fixed buttons for visibility */
     #drawArrowBtn, #resetArrowsBtn {
       position: fixed;
       top: 10px;
@@ -106,20 +108,23 @@
 
     function enableDragAndRotate(element) {
       let isDragging = false;
-      let offsetX, offsetY;
+      let startX, startY;
       let rotation = 0;
+      let isRotating = false;
+      let initialAngle = 0;
 
+      // Mouse Dragging
       element.addEventListener('mousedown', (e) => {
         isDragging = true;
-        offsetX = e.clientX - element.offsetLeft;
-        offsetY = e.clientY - element.offsetTop;
+        startX = e.clientX - element.offsetLeft;
+        startY = e.clientY - element.offsetTop;
         element.style.cursor = 'grabbing';
       });
 
       document.addEventListener('mousemove', (e) => {
         if (isDragging) {
-          element.style.left = `${e.clientX - offsetX}px`;
-          element.style.top = `${e.clientY - offsetY}px`;
+          element.style.left = `${e.clientX - startX}px`;
+          element.style.top = `${e.clientY - startY}px`;
         }
       });
 
@@ -128,10 +133,50 @@
         element.style.cursor = 'grab';
       });
 
+      // Rotation using Mouse Wheel
       element.addEventListener('wheel', (e) => {
         e.preventDefault();
         rotation += e.deltaY > 0 ? 5 : -5;
         element.style.transform = `rotate(${rotation}deg)`;
+      });
+
+      // Touch Dragging & Rotation
+      element.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1) {
+          isDragging = true;
+          const touch = e.touches[0];
+          startX = touch.clientX - element.offsetLeft;
+          startY = touch.clientY - element.offsetTop;
+        } else if (e.touches.length === 2) {
+          isRotating = true;
+          initialAngle = Math.atan2(
+            e.touches[1].clientY - e.touches[0].clientY,
+            e.touches[1].clientX - e.touches[0].clientX
+          ) * (180 / Math.PI);
+        }
+      });
+
+      document.addEventListener('touchmove', (e) => {
+        if (isDragging && e.touches.length === 1) {
+          const touch = e.touches[0];
+          element.style.left = `${touch.clientX - startX}px`;
+          element.style.top = `${touch.clientY - startY}px`;
+        } else if (isRotating && e.touches.length === 2) {
+          const currentAngle = Math.atan2(
+            e.touches[1].clientY - e.touches[0].clientY,
+            e.touches[1].clientX - e.touches[0].clientX
+          ) * (180 / Math.PI);
+          rotation += currentAngle - initialAngle;
+          initialAngle = currentAngle;
+          element.style.transform = `rotate(${rotation}deg)`;
+        }
+      });
+
+      document.addEventListener('touchend', (e) => {
+        if (e.touches.length === 0) {
+          isDragging = false;
+          isRotating = false;
+        }
       });
     }
 
@@ -183,4 +228,3 @@
 
 </body>
 </html>
-
