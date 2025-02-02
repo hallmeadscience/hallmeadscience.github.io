@@ -5,14 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Draggable & Rotatable Protractor and Ruler</title>
   <style>
-    body {
+    body, html {
       margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
       overflow: hidden;
     }
     #map {
-      position: relative;
-      width: 100%;
-      height: 100%;
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -55,9 +60,9 @@
       left: -5px;
     }
     
-    /* Updated button styles */
+    /* Fixed buttons to ensure visibility */
     #drawArrowBtn, #resetArrowsBtn {
-      position: fixed;  /* Fixed to ensure visibility */
+      position: fixed;  /* Ensures buttons stay visible */
       top: 10px;
       z-index: 1000;
       padding: 10px;
@@ -218,3 +223,4 @@
 
 </body>
 </html>
+
