@@ -36,24 +36,22 @@
       touch-action: none;
     }
 
+    #protractor {
+      top: 50px;
+      left: 50px;
+      transform: scale(0.66) rotate(0deg); /* Set size to 66% */
+      width: auto;
+      height: auto;
+      pointer-events: auto;
+    }
 
-    
-   #protractor {
-  top: 50px;
-  left: 50px;
-  transform: scale(0.66) rotate(0deg); /* Set size to 66% */
-  width: auto;
-  height: auto;
-  pointer-events: auto;
-}
-
-
-    
     #ruler {
       top: 200px;
       left: 50px;
-      transform: rotate(0deg);
+      transform: rotate(0deg); /* Ruler does not scale */
+      transform-origin: center;
     }
+
     .arrow {
       position: absolute;
       width: 2px;
@@ -70,7 +68,7 @@
       bottom: -5px;
       left: -5px;
     }
-    
+
     /* Fixed buttons for visibility */
     #drawArrowBtn, #resetArrowsBtn {
       position: fixed;
@@ -115,93 +113,98 @@
     let drawingArrow = false;
     let arrowStart = null;
 
+    // Function to enable drag and rotate functionality
+    function enableDragAndRotate(element, isProtractor = false) {
+      let isDragging = false;
+      let offsetX, offsetY;
+      let rotation = 0;
+      let initialAngle = 0;
 
+      // Mouse drag
+      element.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        offsetX = e.clientX - element.offsetLeft;
+        offsetY = e.clientY - element.offsetTop;
+        element.style.cursor = 'grabbing';
+      });
 
-function enableDragAndRotate(element) {
-  let isDragging = false;
-  let offsetX, offsetY;
-  let rotation = 0;
-  let isRotating = false;
-  let initialAngle = 0;
+      document.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+          element.style.left = `${e.clientX - offsetX}px`;
+          element.style.top = `${e.clientY - offsetY}px`;
+        }
+      });
 
-  // This event is for when the user starts dragging
-  element.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    offsetX = e.clientX - element.offsetLeft;
-    offsetY = e.clientY - element.offsetTop;
-    element.style.cursor = 'grabbing';
-  });
+      document.addEventListener('mouseup', () => {
+        isDragging = false;
+        element.style.cursor = 'grab';
+      });
 
-  // This event is for dragging the element
-  document.addEventListener('mousemove', (e) => {
-    if (isDragging) {
-      element.style.left = `${e.clientX - offsetX}px`;
-      element.style.top = `${e.clientY - offsetY}px`;
+      // Mouse wheel for rotation
+      element.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        rotation += e.deltaY > 0 ? 5 : -5; // Rotate by 5 degrees on wheel scroll
+        if (!isProtractor) {
+          // Keep the ruler at 100% scale (no scaling)
+          element.style.transform = `rotate(${rotation}deg)`;
+        } else {
+          // Protractor will scale and rotate
+          element.style.transform = `scale(0.66) rotate(${rotation}deg)`;
+        }
+      });
+
+      // Touch events for drag and rotate
+      let isRotating = false;
+      element.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1) {
+          isDragging = true;
+          const touch = e.touches[0];
+          offsetX = touch.clientX - element.offsetLeft;
+          offsetY = touch.clientY - element.offsetTop;
+        } else if (e.touches.length === 2) {
+          isRotating = true;
+          initialAngle = Math.atan2(
+            e.touches[1].clientY - e.touches[0].clientY,
+            e.touches[1].clientX - e.touches[0].clientX
+          ) * (180 / Math.PI);
+        }
+      });
+
+      document.addEventListener('touchmove', (e) => {
+        if (isDragging && e.touches.length === 1) {
+          const touch = e.touches[0];
+          element.style.left = `${touch.clientX - offsetX}px`;
+          element.style.top = `${touch.clientY - offsetY}px`;
+        } else if (isRotating && e.touches.length === 2) {
+          const currentAngle = Math.atan2(
+            e.touches[1].clientY - e.touches[0].clientY,
+            e.touches[1].clientX - e.touches[0].clientX
+          ) * (180 / Math.PI);
+          rotation += currentAngle - initialAngle;
+          initialAngle = currentAngle;
+          if (!isProtractor) {
+            // Keep the ruler at 100% scale (no scaling)
+            element.style.transform = `rotate(${rotation}deg)`;
+          } else {
+            // Protractor will scale and rotate
+            element.style.transform = `scale(0.66) rotate(${rotation}deg)`;
+          }
+        }
+      });
+
+      document.addEventListener('touchend', (e) => {
+        if (e.touches.length === 0) {
+          isDragging = false;
+          isRotating = false;
+        }
+      });
     }
-  });
 
-  // This event is for when the user releases the drag
-  document.addEventListener('mouseup', () => {
-    isDragging = false;
-    element.style.cursor = 'grab';
-  });
+    // Initialize drag and rotate for the protractor and ruler
+    enableDragAndRotate(document.getElementById('protractor'), true);
+    enableDragAndRotate(document.getElementById('ruler'), false);
 
-  // This event allows rotating the element with mouse wheel
-  element.addEventListener('wheel', (e) => {
-    e.preventDefault();
-    rotation += e.deltaY > 0 ? 5 : -5; // Rotate by 5 degrees on wheel scroll
-    element.style.transform = `rotate(${rotation}deg)`; // Only apply rotation, no resizing
-  });
-
-  // This event allows touch dragging and rotating on mobile/tablet
-  element.addEventListener('touchstart', (e) => {
-    if (e.touches.length === 1) {
-      isDragging = true;
-      const touch = e.touches[0];
-      offsetX = touch.clientX - element.offsetLeft;
-      offsetY = touch.clientY - element.offsetTop;
-    } else if (e.touches.length === 2) {
-      isRotating = true;
-      initialAngle = Math.atan2(
-        e.touches[1].clientY - e.touches[0].clientY,
-        e.touches[1].clientX - e.touches[0].clientX
-      ) * (180 / Math.PI);
-    }
-  });
-
-  // This event allows moving the element on touch move
-  document.addEventListener('touchmove', (e) => {
-    if (isDragging && e.touches.length === 1) {
-      const touch = e.touches[0];
-      element.style.left = `${touch.clientX - offsetX}px`;
-      element.style.top = `${touch.clientY - offsetY}px`;
-    } else if (isRotating && e.touches.length === 2) {
-      const currentAngle = Math.atan2(
-        e.touches[1].clientY - e.touches[0].clientY,
-        e.touches[1].clientX - e.touches[0].clientX
-      ) * (180 / Math.PI);
-      rotation += currentAngle - initialAngle;
-      initialAngle = currentAngle;
-      element.style.transform = `rotate(${rotation}deg)`; // Only rotate, no scaling
-    }
-  });
-
-  // Reset rotation and dragging on touch end
-  document.addEventListener('touchend', (e) => {
-    if (e.touches.length === 0) {
-      isDragging = false;
-      isRotating = false;
-    }
-  });
-}
-
-
-
-
-
-
-
-
+    // Arrow drawing logic
     function drawArrow(startX, startY, endX, endY) {
       const arrow = document.createElement('div');
       arrow.classList.add('arrow');
@@ -248,3 +251,4 @@ function enableDragAndRotate(element) {
 
 </body>
 </html>
+
