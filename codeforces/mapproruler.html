@@ -54,9 +54,12 @@
       bottom: -5px;
       left: -5px;
     }
+    
+    /* Updated button styles */
     #drawArrowBtn, #resetArrowsBtn {
-      position: absolute;
+      position: fixed;  /* Fixed to ensure visibility */
       top: 10px;
+      z-index: 1000;
       padding: 10px;
       color: white;
       border: none;
@@ -86,132 +89,132 @@
   <img src="https://hallmeadscience.github.io/codeforces/mapscale2.png" alt="Map">
   <img id="protractor" class="draggable" src="https://hallmeadscience.github.io/codeforces/pngegg.png" alt="Protractor">
   <img id="ruler" class="draggable" src="https://hallmeadscience.github.io/codeforces/ruler-png-23421.png" alt="Ruler">
-
 </div>
 
 <script>
-  const drawArrowBtn = document.getElementById('drawArrowBtn');
-  const resetArrowsBtn = document.getElementById('resetArrowsBtn');
-  const map = document.getElementById('map');
-  let drawingArrow = false;
-  let arrowStart = null;
+  document.addEventListener("DOMContentLoaded", function() {
+    const drawArrowBtn = document.getElementById('drawArrowBtn');
+    const resetArrowsBtn = document.getElementById('resetArrowsBtn');
+    const map = document.getElementById('map');
+    let drawingArrow = false;
+    let arrowStart = null;
 
-  function enableDragAndRotate(element) {
-    let isDragging = false;
-    let offsetX, offsetY;
-    let rotation = 0;
-    let isRotating = false;
-    let initialAngle = 0;
+    function enableDragAndRotate(element) {
+      let isDragging = false;
+      let offsetX, offsetY;
+      let rotation = 0;
+      let isRotating = false;
+      let initialAngle = 0;
 
-    element.addEventListener('mousedown', (e) => {
-      isDragging = true;
-      offsetX = e.clientX - element.offsetLeft;
-      offsetY = e.clientY - element.offsetTop;
-      element.style.cursor = 'grabbing';
-    });
-
-    document.addEventListener('mousemove', (e) => {
-      if (isDragging) {
-        element.style.left = `${e.clientX - offsetX}px`;
-        element.style.top = `${e.clientY - offsetY}px`;
-      }
-    });
-
-    document.addEventListener('mouseup', () => {
-      isDragging = false;
-      element.style.cursor = 'grab';
-    });
-
-    element.addEventListener('wheel', (e) => {
-      e.preventDefault();
-      rotation += e.deltaY > 0 ? 5 : -5;
-      element.style.transform = `rotate(${rotation}deg) scale(${element.id === 'protractor' ? 0.33 : 0.5})`;
-    });
-
-    element.addEventListener('touchstart', (e) => {
-      if (e.touches.length === 1) {
+      element.addEventListener('mousedown', (e) => {
         isDragging = true;
-        const touch = e.touches[0];
-        offsetX = touch.clientX - element.offsetLeft;
-        offsetY = touch.clientY - element.offsetTop;
-      } else if (e.touches.length === 2) {
-        isRotating = true;
-        initialAngle = Math.atan2(
-          e.touches[1].clientY - e.touches[0].clientY,
-          e.touches[1].clientX - e.touches[0].clientX
-        ) * (180 / Math.PI);
-      }
-    });
+        offsetX = e.clientX - element.offsetLeft;
+        offsetY = e.clientY - element.offsetTop;
+        element.style.cursor = 'grabbing';
+      });
 
-    document.addEventListener('touchmove', (e) => {
-      if (isDragging && e.touches.length === 1) {
-        const touch = e.touches[0];
-        element.style.left = `${touch.clientX - offsetX}px`;
-        element.style.top = `${touch.clientY - offsetY}px`;
-      } else if (isRotating && e.touches.length === 2) {
-        const currentAngle = Math.atan2(
-          e.touches[1].clientY - e.touches[0].clientY,
-          e.touches[1].clientX - e.touches[0].clientX
-        ) * (180 / Math.PI);
-        rotation += currentAngle - initialAngle;
-        initialAngle = currentAngle;
-        element.style.transform = `rotate(${rotation}deg) scale(${element.id === 'protractor' ? 0.33 : 0.5})`;
-      }
-    });
+      document.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+          element.style.left = `${e.clientX - offsetX}px`;
+          element.style.top = `${e.clientY - offsetY}px`;
+        }
+      });
 
-    document.addEventListener('touchend', (e) => {
-      if (e.touches.length === 0) {
+      document.addEventListener('mouseup', () => {
         isDragging = false;
-        isRotating = false;
+        element.style.cursor = 'grab';
+      });
+
+      element.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        rotation += e.deltaY > 0 ? 5 : -5;
+        element.style.transform = `rotate(${rotation}deg) scale(${element.id === 'protractor' ? 0.33 : 0.5})`;
+      });
+
+      element.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1) {
+          isDragging = true;
+          const touch = e.touches[0];
+          offsetX = touch.clientX - element.offsetLeft;
+          offsetY = touch.clientY - element.offsetTop;
+        } else if (e.touches.length === 2) {
+          isRotating = true;
+          initialAngle = Math.atan2(
+            e.touches[1].clientY - e.touches[0].clientY,
+            e.touches[1].clientX - e.touches[0].clientX
+          ) * (180 / Math.PI);
+        }
+      });
+
+      document.addEventListener('touchmove', (e) => {
+        if (isDragging && e.touches.length === 1) {
+          const touch = e.touches[0];
+          element.style.left = `${touch.clientX - offsetX}px`;
+          element.style.top = `${touch.clientY - offsetY}px`;
+        } else if (isRotating && e.touches.length === 2) {
+          const currentAngle = Math.atan2(
+            e.touches[1].clientY - e.touches[0].clientY,
+            e.touches[1].clientX - e.touches[0].clientX
+          ) * (180 / Math.PI);
+          rotation += currentAngle - initialAngle;
+          initialAngle = currentAngle;
+          element.style.transform = `rotate(${rotation}deg) scale(${element.id === 'protractor' ? 0.33 : 0.5})`;
+        }
+      });
+
+      document.addEventListener('touchend', (e) => {
+        if (e.touches.length === 0) {
+          isDragging = false;
+          isRotating = false;
+        }
+      });
+    }
+
+    document.querySelectorAll('.draggable').forEach(enableDragAndRotate);
+
+    function drawArrow(startX, startY, endX, endY) {
+      const arrow = document.createElement('div');
+      arrow.classList.add('arrow');
+
+      const dx = endX - startX;
+      const dy = endY - startY;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      const angle = Math.atan2(dx, dy) * (-180 / Math.PI);
+
+      arrow.style.height = `${distance}px`;
+      arrow.style.transform = `rotate(${angle}deg)`;
+      arrow.style.left = `${startX}px`;
+      arrow.style.top = `${startY}px`;
+
+      map.appendChild(arrow);
+    }
+
+    drawArrowBtn.addEventListener('click', () => {
+      drawingArrow = !drawingArrow;
+      drawArrowBtn.classList.toggle('active');
+      drawArrowBtn.textContent = drawingArrow ? "Deactivate Arrow Drawing" : "Activate Arrow Drawing";
+    });
+
+    map.addEventListener('click', (e) => {
+      if (drawingArrow) {
+        const mapRect = map.getBoundingClientRect();
+        const offsetX = e.clientX - mapRect.left;
+        const offsetY = e.clientY - mapRect.top;
+
+        if (!arrowStart) {
+          arrowStart = { x: offsetX, y: offsetY };
+        } else {
+          drawArrow(arrowStart.x, arrowStart.y, offsetX, offsetY);
+          arrowStart = null;
+        }
       }
     });
-  }
 
-  document.querySelectorAll('.draggable').forEach(enableDragAndRotate);
-
-  function drawArrow(startX, startY, endX, endY) {
-    const arrow = document.createElement('div');
-    arrow.classList.add('arrow');
-
-    const dx = endX - startX;
-    const dy = endY - startY;
-    const distance = Math.sqrt(dx * dx + dy * dy);
-    const angle = Math.atan2(dx, dy) * (-180 / Math.PI);
-
-    arrow.style.height = `${distance}px`;
-    arrow.style.transform = `rotate(${angle}deg)`;
-    arrow.style.left = `${startX}px`;
-    arrow.style.top = `${startY}px`;
-
-    map.appendChild(arrow);
-  }
-
-  drawArrowBtn.addEventListener('click', () => {
-    drawingArrow = !drawingArrow;
-    drawArrowBtn.classList.toggle('active');
-    drawArrowBtn.textContent = drawingArrow ? "Deactivate Arrow Drawing" : "Activate Arrow Drawing";
+    resetArrowsBtn.addEventListener('click', () => {
+      document.querySelectorAll('.arrow').forEach(arrow => arrow.remove());
+    });
   });
-
-  map.addEventListener('click', (e) => {
-    if (drawingArrow) {
-      const mapRect = map.getBoundingClientRect();
-      const offsetX = e.clientX - mapRect.left;
-      const offsetY = e.clientY - mapRect.top;
-
-      if (!arrowStart) {
-        arrowStart = { x: offsetX, y: offsetY };
-      } else {
-        drawArrow(arrowStart.x, arrowStart.y, offsetX, offsetY);
-        arrowStart = null;
-      }
-    }
-  });
-
-  resetArrowsBtn.addEventListener('click', () => {
-    document.querySelectorAll('.arrow').forEach(arrow => arrow.remove());
-  });
-
 </script>
-</body>
 
+</body>
 </html>
