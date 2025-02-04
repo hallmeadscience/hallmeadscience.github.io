@@ -17,7 +17,7 @@
 
     <!-- Custom styles for this template -->
     <link href="main.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="https://physicslabs.ccnysites.cuny.edu/css/dataTables.tableTools.min.css">
+	<link rel="stylesheet" type="text/css" href="dataTables.tableTools.min.css">
     <!-- jQuery -->
 	<!--	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
 
@@ -40,27 +40,28 @@
           });
       </script>
 
+	<link rel="stylesheet" type="text/css" href="jquery.dataTables.min.css">
+  	<!-- DataTables -->
+	<script type="text/javascript" charset="utf8" src="jquery.dataTables.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="dataTables.tableTools.min.js"></script>
+	<!-- Math JAX -->
 
+	<script type="text/javascript" async
+	  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>
 
-
-
-
-
-
-
-
-  
-
-
+  <!-- <script type="text/javascript" src="http://localhost/~james/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+	<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<script type="text/javascript">
+		//<![CDATA[
+			ajaxurl = 'https://physicslabs.ccnysites.cuny.edu/wp-admin/admin-ajax.php';
+		//]]>
 		</script>
-
-
 
 	<script type="text/javascript" src="js-functions.js"></script>
 	 <script src="kinetic-v5.1.0.min.js"></script>
-
-
-
 
 		<script type="text/javascript"> $( document ).ready(function() {
 			 benchID = '';
@@ -84,19 +85,106 @@
 
   <body data-spy="scroll" data-target="#toc">
 
-      
-	  
-	  
-	  
-	  
-	  
+      <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="https://physicslabs.ccnysites.cuny.edu">CCNY Physics Labs</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Help
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item"  href="https://physicslabs.ccnysites.cuny.edu/about.php">About these labs</a>
+          <a class="dropdown-item"  href="https://physicslabs.ccnysites.cuny.edu/lab-guidelines.php">Lab Guidelines</a>
+          <a class="dropdown-item" href="https://physicslabs.ccnysites.cuny.edu/general-report.php">Lab Report Format</a>
+          <a class="dropdown-item" href="https://physicslabs.ccnysites.cuny.edu/significant-figures.php">Significant Figures</a>
+          <a class="dropdown-item" href="https://physicslabs.ccnysites.cuny.edu/errors.php">About error analysis</a>
+          <a class="dropdown-item" href="https://physicslabs.ccnysites.cuny.edu/curve-fitting.php">About Curves, Slopes, and Fits</a>
+          <a class="dropdown-item" href="https://physicslabs.ccnysites.cuny.edu/excel-tips.php">Some Excel Tips and Tricks</a>
+          <a class="dropdown-item" href="https://physicslabs.ccnysites.cuny.edu/ta-faq.php">FAQ for TAs</a>
+          <!-- <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a> -->
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Classes
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+        <a class="dropdown-item" href="https://physicslabs.ccnysites.cuny.edu/207-labs.php">Phys 207</a>
+        <a class="dropdown-item" href="https://physicslabs.ccnysites.cuny.edu/208-labs.php">Phys 208</a>
+        <a class="dropdown-item" href="https://physicslabs.ccnysites.cuny.edu/203-labs.php">Phys 203</a>
+        <a class="dropdown-item" href="https://physicslabs.ccnysites.cuny.edu/204-labs.php">Phys 204</a>
+        <a class="dropdown-item" href="https://physicslabs.ccnysites.cuny.edu/103-labs.php">Phys 103</a>
+
+      </div>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li> -->
+      <li class="nav-item nav-link "><a href="https://physicslabs.ccnysites.cuny.edu/wp-login.php?redirect_to=%2Flabs%2F207%2F207-force-tables%2Fforcetables.php">Log in</a> </li>
+
+
+       <li class="nav-item">
+        <span class="login-info-top">you are not logged in            </span>
+         </li> 
+    </ul>
+  </div>
+</nav>
 
     <div class="container">
 	<div class="row">
 	<div class="col-md-9">
 
 
+<h2>Physics 207 - Lab 2 - Vectors</h2>
 
+	  <section name="Names" id="names" class="noprint">
+	 <h3>Names and Such</h3>
+<p>Please enter your names below.</p>
+<div style="padding: .5em 0 .5em 0; font-family: "Courier New", Courier, monospace;"><span style="font-family: Helvetica, Arial, Sans">Student 1 = </span><span class="noprint" style="border: thin solid black; border-radius:5px; padding: .25em 3em .25em 3em;">please log in</span></div><div style="padding: .5em 0 .5em 0; font-family: "Courier New", Courier, monospace;"><span style="font-family: Helvetica, Arial, Sans">Student 2 = </span><span class="noprint" style="border: thin solid black; border-radius:5px; padding: .25em 3em .25em 3em;">please log in</span></div><div style="padding: .5em 0 .5em 0; font-family: "Courier New", Courier, monospace;"><span style="font-family: Helvetica, Arial, Sans">Student 3 = </span><span class="noprint" style="border: thin solid black; border-radius:5px; padding: .25em 3em .25em 3em;">please log in</span></div>
+
+
+<p>And the name of the lab instructor present:</p>
+<div style="padding: .5em 0 .5em 0; font-family: "Courier New", Courier, monospace;"><span style="font-family: Helvetica, Arial, Sans">Lab Instructor = </span><span class="noprint" style="border: thin solid black; border-radius:5px; padding: .25em 3em .25em 3em;">please log in</span></div> </section>
+
+ <section id="intro" name="Intro">
+	 <h3>Introduction</h3>
+	 <h1>Force Tables</h1>
+
+	 <p>The Force Table allows us to manipulate and measure the effects of vector quantities.</p>
+	 <h3>Goals</h3>
+
+ <p>The object of this lab is to gain a thorough understanding of vector addition. This is accomplished by using the force tables to establish equilibrium for a particle, and correlate this equilibrium condition with the math of vector addition. Two methods of vector addition are discussed: graphical and analytical. </p>
+</section>
+
+<section name="Equipment Check">
+<h3>
+Equipment check
+</h3>
+<p>Please make sure your station has all of the following items. If not, check again, then talk to your lab instructor.</p>
+<img class="reduceforprint" src="https://physicslabs.ccnysites.cuny.edu/img/force-tables-equip.jpg"/>
+</section>
+
+<section name="Intro to Vectors">
+ <h3>Intro to Vectors</h3>
+
+ <p>Physical quantities that require both a magnitude and direction for their description are vector quantities. A great example of a vector quantity is the wind velocity. Since the wind can blow in a direction, and with a certain speed, we will need to use both a magnitude and a direction to describe this physical quantity. </p>
+
+
+<div class="well well-interactive noprint ">
+	<h3>Interactive Task</h3>
+	 <p>On the map of New York below, manipulate the wind vector (by dragging the tip of the arrow) until you get a wind speed of 10 mph pointing in exactly the North East direction. </p>
+
+	 <p id="windVector-status" class="bg-success">Task has been completed</p>
 
 
 
