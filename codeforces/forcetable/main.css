@@ -1,0 +1,290 @@
+body {
+  /* padding-top: 50px; */
+   font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+  font-size: 16px;
+  position:relative;
+  min-height: 75rem;
+padding-top: 4.5rem;
+}
+
+h1,h2,h3,h4,h5,.navbar,form, .btn,.panel,.tableofdata {
+	font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+/* h3 {font-size: 18px;} */
+h3.anchor {padding-top: 70px; margin-top: -70px;}
+
+.starter-template {
+  padding: 40px 15px;
+  text-align: left;
+}
+body.login {background: red;}
+
+li.nav-link a {
+  color: white;
+}
+img {margin-bottom: 20px;}
+
+.login-info-top{
+	/* font-size:1.2em; */
+	/* display:block; */
+	color:white;
+	margin-left: 50px;
+	padding: 12px;
+}
+.section-login {
+	font-weight: bold;
+	color:red;
+}
+.numericResponse {
+	margin-bottom: 20px;
+}
+.numericResponse .btn {margin-left: 0px;}
+.numericAnswerBox {
+	display: inline;
+	margin-right: 20px;
+	margin-left: 20px;
+}
+
+
+
+.responseUnits {
+	display: inline;
+	margin-right:20px;
+}
+
+.reportQuestion {
+  margin: 10px;
+   border-width: 5px;
+   border-color:  hsl(41, 100%, 61%);
+}
+.reportQuestion h3 {
+	font-style: italic;
+}
+.reportQuestion > .card-header{
+  background: hsl(41, 100%, 90%);
+}
+.well-interactive {
+	background-color: #fff;
+}
+section {
+	border-top: thin solid black;
+  padding-top:10px;
+
+}
+
+.well-interactive h3 {margin-top:0;}
+section {
+  clear:both;
+}
+section.linktoWorksheet {
+	margin-bottom:20px;
+}
+
+form
+{
+	font-family:;
+}
+
+.form-control::-webkit-input-placeholder {
+
+    color: red;
+}
+.form-control:-moz-placeholder {
+    /* FF 4-18 */
+    color: red;
+}
+.form-control::-moz-placeholder {
+    /* FF 19+ */
+    color: red;
+}
+.form-control:-ms-input-placeholder {
+    /* IE 10+ */
+    color: red;
+}
+
+.table-of-contents {
+	visibility: hidden;
+	width: 15%;
+	position: fixed;
+	top: 56px;
+	right: 50px;
+	background: #eee;
+	font-size: 0.8em;
+	padding: 1em 2em;
+	margin: 0 0 0.5em 0.5em;
+	-webkit-border-bottom-right-radius: 20px;
+	-webkit-border-bottom-left-radius: 20px;
+	-moz-border-radius-bottomright: 20px;
+	-moz-border-radius-bottomleft: 20px;
+	border-bottom-right-radius: 20px;
+	border-bottom-left-radius: 20px;
+	border-bottom: thin solid #B2B2B2;
+	border-left: thin solid #B2B2B2;
+	border-right: thin solid #B2B2B2;
+}
+.table-of-contents ul {
+	padding: 0;
+}
+.table-of-contents li {
+	margin: 0 0 0.25em 0;
+}
+.table-of-contents li a {
+	text-decoration: none;
+	padding: 0;
+}
+.table-of-contents a:hover,{
+	color:red;
+}
+.table-of-contents li.active a{
+color:orange;
+}
+
+.table-of-contents {
+
+}
+
+
+h3:target {
+  animation: highlight 1s ease;
+}
+
+table.niceTable {font-family: Arial, Helvetica, sans-serif; font-size: .8em;}
+table.dataTable.niceTable tbody td {padding:2px;}
+th.rotate {
+  /* Something you can count on */
+  height: 20px;
+  white-space: nowrap;
+}
+
+th.rotate > div {
+  transform:
+    /* Magic Numbers */
+    translate(5px,10px)
+    /* 45 is really 360 - 45 */
+    rotate(315deg);
+  width: 10px;
+}
+th.rotate > div > span {
+
+  padding: 1px 10px;
+}
+
+
+ol.two-column {
+  width:80%;
+       -moz-column-count: 3;
+       -moz-column-gap: 5e0px;
+       -webkit-column-count: 3;
+       -webkit-column-gap: 50px;
+       column-count: 3;
+       column-gap: 50px;
+     }
+
+*.ta {
+  display: none;
+  visibility: hidden;
+}
+
+.panelLabel {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  text-transform: uppercase;
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #0d3db9;
+  white-space: nowrap;
+  background-color: #ececec;
+  border-radius: 4px;
+}
+
+img.centered {
+  float: none;
+  clear: both;
+  margin: auto;
+}
+@keyframes highlight {
+  from { background: yellow; }
+  to { background: white; }
+}
+
+@media (min-width: 768px) {
+	.table-of-contents {
+		visibility:visible;
+	}
+}
+@media print {
+  .form-control::-webkit-input-placeholder {
+    color: white;
+  }
+
+  .numericResponse input {
+    width: 20%;
+  }
+  .reduceforprint {
+    width: 50%;
+  }
+  input[type="submit"] {
+  display:none;
+  }
+	.worksheet {
+		font-size: .8em;
+	}
+	.noprint {
+		display:none;
+		visibility:hidden;
+	}
+  table {
+    page-break-inside: avoid;
+
+  }
+  .well {
+    page-break-inside: avoid;
+  }
+
+  body {
+    font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+    font-size: 18px;
+  }
+
+  .col-md-8 {
+    width: 66.66666667%;
+  }
+  .col-md-7 {
+    width: 58.33333333%;
+  }
+  .col-md-6 {
+    width: 50%;
+  }
+  .col-md-5 {
+    width: 41.66666667%;
+  }
+  .col-md-4 {
+    width: 33.33333333%;
+  }
+  .col-md-3 {
+    width: 25%;
+  }
+  .col-md-2 {
+    width: 16.66666667%;
+  }
+  .col-md-1 {
+    width: 8.33333333%;
+  }
+  .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+    float: left;
+  }
+  img.centered {
+    float: none;
+    clear: both;
+    margin: auto;
+  }
+  ol.two-column {position:relative; min-width:10em; margin-bottom: -6em;}
+ol.two-column li {width:40%; line-height:1.5em;margin-top:0;margin-bottom:0;}
+ ol.two-column li+ li + li + li + li + li {position:relative;left:50%;top:-7em}
+}
+
+p.alert {
+  display: block;
+  width: 80%;
+  background: #ff0000;
+  padding: 2%;
+}

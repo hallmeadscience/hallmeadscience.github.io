@@ -1,0 +1,426 @@
+function loadInteractiveScript(id){
+
+        function writeMessage(message) {
+            text.text(message);
+            layer.draw();
+        }
+
+        var colors = ['#DC3522', '#374140', '#D9CB9E', '#00A388', '#BEEB9F', '#FF6138', '#787746', '#703030', '#2F343B', '#C77966', '#7E827A', '#01B0F0', '#FF358B', '#AEEE00', '#F5A503', '#36B1BF', '#FFEEAD', '#8F8164', '#593325'];
+        function getRandomColor() {
+            return colors[Math.round(Math.random() * (colors.length-1))];
+        }
+
+        var mainVector;
+
+
+
+        var stage = new Kinetic.Stage({
+            container: id,
+            width: 500,
+            height: 500,
+        });
+
+
+        var buttonLayer = new Kinetic.Layer();
+        var sceneLayer = new Kinetic.Layer();
+
+
+
+        function makeLabel(name, text, textsize, textcolor, fill, opacity, width, height, posx, posy, drawlayer) {
+            var ButtonBG = new Kinetic.Rect({
+                width: width,
+                height: height,
+                fill: fill,
+                opacity: opacity,
+                offset: {x: 0, y: 0}
+            });
+            var ButtonText = new Kinetic.Text({
+                // x: 0,
+                y: height/2-textsize,
+                width: width,
+                height: height,
+                fontFamily: 'Helvetica Neue',
+                fontSize: textsize,
+                text: text,
+                fill: textcolor,
+                padding: 10,
+                align: 'center'
+            });
+            var ButtonSimple = new Kinetic.Group({
+                x: posx,
+                y: posy,
+                // x: Math.round(stage.width() * 0.7),
+                // y: Math.round(stage.height() * 0.2),
+                offset: {x: width/2, y: height/2},
+                name: name,
+            });
+            ButtonSimple.add(ButtonBG);
+            ButtonSimple.add(ButtonText);
+            drawlayer.add(ButtonSimple);
+            drawlayer.draw();
+
+            ButtonSimple.on('mouseover mousedown touchstart', function() {
+                this.scale({x: 0.98, y: 0.98});
+                buttonLayer.batchDraw();
+            });
+
+            ButtonSimple.on('mouseout mouseup touchend', function() {
+                this.scale({x: 1, y: 1});
+                buttonLayer.batchDraw();
+            });
+        }
+
+        //makeLabel('button1', 'Add a Vector', 20, 'white', '#000000', 0.3, 150, 50, Math.round(stage.width() * 0.9), 50, buttonLayer);
+
+       // makeLabel('button2', 'Remove', 20, 'white', '#D00017', 0.3, 150, 50, Math.round(stage.width() * 0.9), 100, buttonLayer);
+
+        buttonLayer.find('.button1').on('mousedown touchstart', function() {
+            var lastPosX = stage.width()*.5;
+            var lastPosY = stage.height()*.5;
+            var shapes = vectorlayer.find('.vector');
+
+            if (shapes.length > 0) {
+                var lastshape = shapes[(shapes.length-1)];
+                lastPosX = lastshape.position().x+lastshape.get('Line')[0].points()[2];
+                lastPosY = lastshape.position().y+lastshape.get('Line')[0].points()[3];
+            }
+
+            addVector((40+100*Math.random()), 8, 2*Math.PI*Math.random(), (lastPosX-stage.width()*.5), (lastPosY-stage.height()*.5), getRandomColor(), 'vector', vectorlayer);
+            showVectorSum();
+            checkForces();
+            updateStatus();
+        });
+
+        buttonLayer.find('.button2').on('mousedown touchstart', function() {
+            var shapes = vectorlayer.find('.vector');
+            if (shapes.length > 0) shapes[(shapes.length-1)].destroy();
+            showVectorSum();
+            checkForces();
+            updateStatus();
+        });
+
+
+
+		 var backgroundlayer = new Kinetic.Layer({
+			 name: 'backlayer',
+		 });
+
+		 var imageObj = new Image();
+
+		 imageObj.onload = function() {
+		   var nymap = new Kinetic.Image({
+		     x: 0,
+		     y: 0,
+		     image: imageObj,
+		     width: 500,
+		     height: 500
+		   });
+		   backgroundlayer.add(nymap);
+		   stage.add(backgroundlayer);
+		   backgroundlayer.setZIndex(1);
+		};
+
+		 imageObj.src = 'nymap.jpg';
+
+
+        var windlayer = new Kinetic.Layer({
+            name: 'windlayer',
+        });
+
+
+        var text = new Kinetic.Text({
+            x: 10,
+            y: 10,
+            fontFamily: 'Calibri',
+            fontSize: 24,
+            text: '',
+            fill: 'black'
+        });
+
+        var arrowRadius = 12;
+        var stickyAngles = [0, 30, 45, 60, 90, 120, 135, 150, 180, -30, -45, -60, -90, -120, -135, -150];
+
+        var vectors = [];
+        vectors.push({direction: 45, magnitude: 100, name: 'Wind Vel.', present: 0});
+        // forces.push({direction: 90, magnitude: 100, name: 'Normal', present: 0});
+        var vectorCount = vectors.length;
+        var vectorCountUser = 0;
+
+        function drawStatus() {
+           // makeLabel('checklist', 'Check List:', 20, 'white', '#c4c4c4', 0.8, 150, 50, Math.round(stage.width() * 0.9), 200, buttonLayer);
+           // makeLabel('checkCount', 'Vector Count', 20, 'white', '#d9d9d9', 0.8, 150, 50, Math.round(stage.width() * 0.9), 250, buttonLayer);
+            vectors.forEach(function(vector, index, array) {
+                var checkname = 'check'+index;
+                var checkcolor = (vector.present==0 ? '#d9d9d9' : '#54b543');
+                var checkpos = 20+index*50;
+                makeLabel(checkname, vector.name, 20, 'white', checkcolor, 0.8, 150, 50, Math.round(stage.width() * 0.1), checkpos, buttonLayer);
+            });
+            buttonLayer.batchDraw();
+        }
+        drawStatus();
+
+        function updateStatus() {
+            vectors.forEach(function(vector, index, array) {
+                var checkname = '.check'+index;
+                var checkcolor = (vector.present==0 ? '#d9d9d9' : '#54b543');
+                // var checkpos = 200+index*50;
+                buttonLayer.find(checkname)[0].get('Rect')[0].fill(checkcolor);
+                // makeLabel(checkname, force.name, 20, 'white', checkcolor, 0.8, 150, 50, Math.round(stage.width() * 0.9), checkpos, buttonLayer);
+            });
+            var checkcolor = (vectorCount==vectorCountUser ? '#54b543' : '#d9d9d9');
+            //buttonLayer.find('.checkCount')[0].get('Rect')[0].fill(checkcolor);
+            buttonLayer.batchDraw();
+        }
+
+
+
+        function checkForces() {
+
+            var checks = [];
+
+            var shapes = windlayer.find('.windvector');
+            vectorCountUser = shapes.length;
+            vectorCount = vectors.length;
+
+            vectors.forEach(function(vector, index, array) {
+                // console.log('element.name')
+                var match=0;
+                // console.log("element:", force.name);
+                shapes.forEach(function(userForce, userIndex, userArray) {
+                    // var compX = userForce.get('Line')[0].points()[2];
+                    // var compY = userForce.get('Line')[0].points()[3];
+                    var userForceTip = userForce.get('.vectortip')[0];
+                    var compX = userForceTip.x();
+                    var compY = userForceTip.y();
+                    var angle = -(Math.atan2(compY, compX))*(180/Math.PI);
+                    // baselength = Math.round(baselength/5) * 5;
+                    var baselength = Math.round(Math.sqrt(Math.pow(compX,2)+Math.pow(compY,2)));
+                     console.log("baselength " + baselength + ' angle: ' + angle);
+                    // console.log("baselength " + baselength);
+                    if (baselength == vector.magnitude && vector.direction == Math.round(angle)){
+                        match=1;
+						console.log(Math.round(angle));
+						ajaxInteractiveResponseUpdate('windVector',benchID,'lab2',courseNumber,match)
+
+                    }
+                });
+                vector.present = match;
+
+            });
+        }
+
+
+
+        function addVector(baseLength, baseWidth, baseRotation, xstart, ystart, color, name, drawlayer) {
+
+            // var initialX = (baseLength-arrowRadius) * Math.cos(baseRotation);
+            // var initialY = (baseLength-arrowRadius) * Math.sin(baseRotation);
+            var initialX = (baseLength) * Math.cos(baseRotation);
+            var initialY = (baseLength) * Math.sin(baseRotation);
+
+            baseLength = Math.round(baseLength);
+            baseRotation = Math.round(baseRotation*180/Math.PI);
+            var baseRotationArc = Math.abs(baseRotation);
+            // console.log(baseRotationArc);
+
+
+            var mainVectorbase = new Kinetic.Line({
+                x: 0,
+                y: 0,
+                points: [0, 0, initialX, initialY],
+                stroke: color,
+                strokeWidth: baseWidth,
+                dash: (name == 'vectorSum' ? [15,5] : 0),
+                opacity: 0.7,
+                lineCap: 'round',
+            });
+
+            var mainVectorTriangle = new Kinetic.RegularPolygon({
+                x: 0,
+                y: 0,
+                sides: 3,
+                radius: arrowRadius,
+                offset: [0, Math.round(arrowRadius / 2)],
+                fill: color,
+                opacity: 0.7,
+            });
+
+            var mainVectorCircle = new Kinetic.Circle({
+                x: 0,
+                y: 0,
+                radius: 20,
+                stroke: 'black',
+                dash: [4,4],
+                strokeWidth: 1,
+                opacity: 0,
+            });
+            var mainVectorArc = new Kinetic.Arc({
+                x: 0,
+                y: 0,
+                angle: baseRotationArc,
+                rotation: -baseRotationArc,
+                // angle: 290,
+                // innerRadius: 30,
+                outerRadius: 32,
+                // fill: 'grey',
+                stroke: 'black',
+                dash: [4,4],
+                // strokeWidth: 1,
+                opacity: 0.2,
+            });
+			var angleText;
+
+			if(baseRotation>0){angleText=-1*baseRotation+360;}
+			else{angleText=-baseRotation;}
+
+            var mainVectorLabel = new Kinetic.Text({
+                x: initialX/2+60,
+                y: initialY/2+10,
+                name: 'vectorlabel',
+                fontFamily: 'Helvetica',
+                fontSize: 24,
+                text: (angleText)+'\xB0',
+                fill: '#000',
+                opacity: 0,
+                listening: false,
+                // shadowColor: '#ffffff',
+                // shadowOffsetX: 2,
+                // shadowOffsetY: 2,
+                // shadowBlur: 10,
+            });
+            var mainVectorLabel2 = new Kinetic.Text({
+                x: initialX+60,
+                y: initialY+10,
+                name: 'vectorlabel2',
+                fontFamily: 'Helvetica',
+                fontSize: 24,
+                text: baseLength*.1+' mph',
+                fill: '#000',
+                opacity: 0,
+                listening: false,
+                // shadowColor: '#ffffff',
+                // shadowOpacity: 0.1,
+                // stroke: '#6f6f6f',
+                // shadowColorAlpha: 0,
+                // shadowOffsetX: 2,
+                // shadowOffsetY: 2,
+                // shadowBlur: 20,
+            });
+
+            var mainVectortip = new Kinetic.Group({
+                x: initialX,
+                y: initialY,
+                name: 'vectortip',
+                rotation:(90+baseRotation),
+                draggable: (name=='vectorSum' ? false : true)
+            });
+
+            mainVectortip.add(mainVectorTriangle);
+            mainVectortip.add(mainVectorCircle);
+
+            var mainVector = new Kinetic.Group({
+                x: stage.width() * .5 + xstart,
+                y: stage.height() * .5 + ystart,
+                draggable: true,
+                name: name,
+                // rotation: -350,
+            });
+
+            mainVector.on('mouseover mousedown touchstart', function() {
+                mainVectorCircle.opacity((mainVector.name() == 'vectorSum' ? 0 : 0.5));
+                mainVectorLabel.opacity(1);
+                mainVectorLabel2.opacity(1);
+                document.body.style.cursor = 'pointer';
+                drawlayer.batchDraw();
+            });
+
+            mainVector.on('mouseout mouseup touchend', function() {
+                mainVectorCircle.opacity(0);
+                mainVectorLabel.opacity(0);
+                mainVectorLabel2.opacity(0);
+                document.body.style.cursor = 'default';
+                drawlayer.batchDraw();
+            });
+
+            mainVectortip.on('dragend', function() {
+                checkForces();
+                updateStatus();
+            });
+
+            mainVectortip.on('dragmove', function() {
+
+                var tip=[];
+                tip.x = mainVectortip.x();
+                tip.y = -(mainVectortip.y());
+                var baselength = Math.sqrt(Math.pow(tip.x,2)+ Math.pow(tip.y,2));
+                var angle = Math.atan2(tip.y, tip.x)*180/Math.PI;
+                baselength = Math.round(baselength/5) * 5;
+
+                var pos=[];
+                pos.x = baselength*Math.cos(angle*Math.PI/180);
+                pos.y = -baselength*Math.sin(angle*Math.PI/180);
+                mainVectortip.position(pos);
+                mainVectorbase.points([0, 0, pos.x, pos.y]);
+
+                var stickyAngle;
+
+                $.each(stickyAngles,function() {
+                    if (Math.abs(this-angle) < 5) stickyAngle = this;
+                });
+
+                if (stickyAngle) {
+                    angle = stickyAngle;
+                    pos.x = baselength*Math.cos(stickyAngle*Math.PI/180);
+                    pos.y = -baselength*Math.sin(stickyAngle*Math.PI/180);
+                    mainVectortip.position(pos);
+                    mainVectorbase.points([0, 0, pos.x, pos.y]);
+                    mainVectortip.rotation(90-stickyAngle);
+                   // showVectorSum();
+                }
+                else
+                {
+                    mainVectortip.rotation(90-angle);
+                    mainVectorbase.points([0, 0, tip.x, -tip.y]);
+                    //showVectorSum();
+                }
+
+                mainVectorArc.angle(angle);
+                mainVectorArc.rotation(-angle);
+
+                mainVectorLabel.x(mainVectortip.x()/2+60);
+                mainVectorLabel.y(mainVectortip.y()/2+10);
+				if(angle<0){angleText=angle+360;}
+				else{angleText=angle;}
+		        mainVectorLabel.text(Math.round(angleText)+'\xB0');//\xB0
+                mainVectorLabel2.x(mainVectortip.x()+60);
+                mainVectorLabel2.y(mainVectortip.y()+10);
+                mainVectorLabel2.text(baselength*.1 + ' mph'); //\xB0
+            });
+
+            mainVector.add(mainVectorArc);
+            mainVector.add(mainVectorbase);
+            mainVector.add(mainVectortip);
+            mainVector.add(mainVectorLabel);
+            mainVector.add(mainVectorLabel2);
+            drawlayer.add(mainVector);
+        }
+
+       // addVector(100, 4, -4*Math.PI/4, 0, 0, 'black', 'vectorSum', vectorlayer);
+
+         addVector(100, 6, -Math.PI/2, 0, 0, 'red', 'windvector', windlayer);
+
+        // addVector(200, 6, -4*Math.PI/4, 0, -100, 'blue', 'vector', vectorlayer);
+
+
+
+        //showVectorSum();
+
+        // sceneLayer.batchDraw();
+
+        stage.add(sceneLayer);
+        stage.add(windlayer);
+
+        stage.add(buttonLayer);
+        // sceneLayer.batchDraw();
+        stage.draw();
+	};

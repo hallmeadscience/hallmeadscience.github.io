@@ -1,0 +1,644 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="favicos/forcetables.ico">
+
+    <title>Force Tables</title>
+			    <!-- Bootstrap core CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- <link href="bootstrap.min.css" rel="stylesheet"> -->
+
+    <!-- Custom styles for this template -->
+    <link href="main.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="dataTables.tableTools.min.css">
+    <!-- jQuery -->
+	<!--	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
+
+	<!-- <script src="/js/jquery-2.1.3.min.js"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+
+              tex2jax: {
+                  inlineMath: [
+                      ['$', '$'],
+                      ['\\(', '\\)']
+                  ]
+              },
+							TeX: { equationNumbers: { autoNumber: "AMS" } },
+              "HTML-CSS": {
+                  preferredFont: "STIX"
+              }
+          });
+      </script>
+
+	<link rel="stylesheet" type="text/css" href="jquery.dataTables.min.css">
+  	<!-- DataTables -->
+	<script type="text/javascript" charset="utf8" src="jquery.dataTables.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="dataTables.tableTools.min.js"></script>
+	<!-- Math JAX -->
+
+	<script type="text/javascript" async
+	  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>
+
+  <!-- <script type="text/javascript" src="http://localhost/~james/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+	<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<script type="text/javascript">
+		//<![CDATA[
+			ajaxurl = 'https://physicslabs.ccnysites.cuny.edu/wp-admin/admin-ajax.php';
+		//]]>
+		</script>
+
+	<script type="text/javascript" src="js-functions.js"></script>
+	 <script src="kinetic-v5.1.0.min.js"></script>
+
+		<script type="text/javascript"> $( document ).ready(function() {
+			 benchID = '';
+       courseNumber = '207';
+
+			loadInteractiveScript('windvelinteractive');
+			loadtwovectors('addTwoVectors');
+			loadForceTableSim('simForceTable');
+			loadVectorCompsTable('vectorCompsTable');
+			loadbalanceairplane('balance-airplane');
+			$('body').scrollspy({ target: '#toc' });
+			offsetValue = 60;
+			$('body').data()['bs.scrollspy'].options.offset = offsetValue;
+			// force scrollspy to recalculate the offsets to your targets
+			$('body').data()['bs.scrollspy'].process();
+
+		});
+			</script>
+
+  </head>
+
+  <body data-spy="scroll" data-target="#toc">
+
+      <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="https://physicslabs.ccnysites.cuny.edu">CCNY Physics Labs</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Help
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item"  href="https://physicslabs.ccnysites.cuny.edu/about.php">About these labs</a>
+          <a class="dropdown-item"  href="https://physicslabs.ccnysites.cuny.edu/lab-guidelines.php">Lab Guidelines</a>
+          <a class="dropdown-item" href="https://physicslabs.ccnysites.cuny.edu/general-report.php">Lab Report Format</a>
+          <a class="dropdown-item" href="https://physicslabs.ccnysites.cuny.edu/significant-figures.php">Significant Figures</a>
+          <a class="dropdown-item" href="https://physicslabs.ccnysites.cuny.edu/errors.php">About error analysis</a>
+          <a class="dropdown-item" href="https://physicslabs.ccnysites.cuny.edu/curve-fitting.php">About Curves, Slopes, and Fits</a>
+          <a class="dropdown-item" href="https://physicslabs.ccnysites.cuny.edu/excel-tips.php">Some Excel Tips and Tricks</a>
+          <a class="dropdown-item" href="https://physicslabs.ccnysites.cuny.edu/ta-faq.php">FAQ for TAs</a>
+          <!-- <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a> -->
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Classes
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+        <a class="dropdown-item" href="https://physicslabs.ccnysites.cuny.edu/207-labs.php">Phys 207</a>
+        <a class="dropdown-item" href="https://physicslabs.ccnysites.cuny.edu/208-labs.php">Phys 208</a>
+        <a class="dropdown-item" href="https://physicslabs.ccnysites.cuny.edu/203-labs.php">Phys 203</a>
+        <a class="dropdown-item" href="https://physicslabs.ccnysites.cuny.edu/204-labs.php">Phys 204</a>
+        <a class="dropdown-item" href="https://physicslabs.ccnysites.cuny.edu/103-labs.php">Phys 103</a>
+
+      </div>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li> -->
+      <li class="nav-item nav-link "><a href="https://physicslabs.ccnysites.cuny.edu/wp-login.php?redirect_to=%2Flabs%2F207%2F207-force-tables%2Fforcetables.php">Log in</a> </li>
+
+
+       <li class="nav-item">
+        <span class="login-info-top">you are not logged in            </span>
+         </li> 
+    </ul>
+  </div>
+</nav>
+
+    <div class="container">
+	<div class="row">
+	<div class="col-md-9">
+
+
+<h2>Physics 207 - Lab 2 - Vectors</h2>
+
+	  <section name="Names" id="names" class="noprint">
+	 <h3>Names and Such</h3>
+<p>Please enter your names below.</p>
+<div style="padding: .5em 0 .5em 0; font-family: "Courier New", Courier, monospace;"><span style="font-family: Helvetica, Arial, Sans">Student 1 = </span><span class="noprint" style="border: thin solid black; border-radius:5px; padding: .25em 3em .25em 3em;">please log in</span></div><div style="padding: .5em 0 .5em 0; font-family: "Courier New", Courier, monospace;"><span style="font-family: Helvetica, Arial, Sans">Student 2 = </span><span class="noprint" style="border: thin solid black; border-radius:5px; padding: .25em 3em .25em 3em;">please log in</span></div><div style="padding: .5em 0 .5em 0; font-family: "Courier New", Courier, monospace;"><span style="font-family: Helvetica, Arial, Sans">Student 3 = </span><span class="noprint" style="border: thin solid black; border-radius:5px; padding: .25em 3em .25em 3em;">please log in</span></div>
+
+
+<p>And the name of the lab instructor present:</p>
+<div style="padding: .5em 0 .5em 0; font-family: "Courier New", Courier, monospace;"><span style="font-family: Helvetica, Arial, Sans">Lab Instructor = </span><span class="noprint" style="border: thin solid black; border-radius:5px; padding: .25em 3em .25em 3em;">please log in</span></div> </section>
+
+ <section id="intro" name="Intro">
+	 <h3>Introduction</h3>
+	 <h1>Force Tables</h1>
+
+	 <p>The Force Table allows us to manipulate and measure the effects of vector quantities.</p>
+	 <h3>Goals</h3>
+
+ <p>The object of this lab is to gain a thorough understanding of vector addition. This is accomplished by using the force tables to establish equilibrium for a particle, and correlate this equilibrium condition with the math of vector addition. Two methods of vector addition are discussed: graphical and analytical. </p>
+</section>
+
+<section name="Equipment Check">
+<h3>
+Equipment check
+</h3>
+<p>Please make sure your station has all of the following items. If not, check again, then talk to your lab instructor.</p>
+<img class="reduceforprint" src="https://physicslabs.ccnysites.cuny.edu/img/force-tables-equip.jpg"/>
+</section>
+
+<section name="Intro to Vectors">
+ <h3>Intro to Vectors</h3>
+
+ <p>Physical quantities that require both a magnitude and direction for their description are vector quantities. A great example of a vector quantity is the wind velocity. Since the wind can blow in a direction, and with a certain speed, we will need to use both a magnitude and a direction to describe this physical quantity. </p>
+
+
+<div class="well well-interactive noprint ">
+	<h3>Interactive Task</h3>
+	 <p>On the map of New York below, manipulate the wind vector (by dragging the tip of the arrow) until you get a wind speed of 10 mph pointing in exactly the North East direction. </p>
+
+	 <p id="windVector-status" class="bg-success">Task has been completed</p>
+ <div id="windvelinteractive" style="width: 800px"></div>
+ <script src="id-windvelocity.js"> </script>
+
+ <script type="text/javascript">
+
+ $( document ).ready(function() {
+     //console.log( "ready!" );
+
+ });</script>
+
+ </div>
+
+
+
+</section>
+
+
+
+<section id="vectorAddition" name="Vector Addition">
+ <h3>Adding Vectors</h3>
+ <p> Vectors must be added by special rules that take both parts of the description into account. </p>
+
+ <p>Below are two blue vectors, and the vector sum, a dashed black line. Try manipulating the blue vectors and observing what happens to the sum.</p>
+
+ <div id="addTwoVectors" style="width: 600px" class="noprint"></div>
+ <script src="add-2-vectors.js"> </script>
+ <script type="text/javascript">
+ $( document ).ready(function() {
+     //console.log( "ready!" );
+
+ });
+ </script>
+
+</section>
+
+
+<section id="aboutForceTable" name="About the Force Table">
+ <h3>About the Force Table</h3>
+ <img src="https://physicslabs.ccnysites.cuny.edu/img/force-table-lables.png" alt="force tables">
+
+ <p>
+ Let's understand exactly how the force table works. A mass is placed in each <i>pan</i> (each pan has a mass of 50g). This mass experiences a force due to gravity given by its mass times $g$ . This force is acting in the vertical direction. In order to redirect the force to act in a horizontal direction (i.e parallel to the surface of the table), chords and pulleys are used. Thus, the tensions from the chords on the ring at the center are equal in magnitude to the force due to gravity on the pan + mass: $$T_1 = m_1 g$$ Attaching several pan/pulley systems to the table allows us to pull on the ring with different tensions in different directions.
+ </p>
+
+ <p>What will the tension be, in Newtons, if a 20 gram mass is attached to the 50g tray?</p>
+ <div style="padding: .5em 0 .5em 0; font-family: "Courier New", Courier, monospace;"><span style="font-family: Helvetica, Arial, Sans">Tension [N] = </span><span class="noprint" style="border: thin solid black; border-radius:5px; padding: .25em 3em .25em 3em;">please log in</span></div>
+<h4>Instructions for use:</h4>
+	<ol>
+		<li>The central ring has spokes that connect the inner and outer edges. When connecting the cords be sure that the hooks have not snagged on a spoke. In that case the cord will not be radial. Also whenever you change a pulley position, check that the cord is still radial.</li>
+		<li>Be sure that when you position a pulley, that both edges of the clamp arc snugly against the edge of the force table. Check that the cord is on the pulley.</li>
+		<li>There are two tests for equilibrium.
+			<ol style="list-style-type: upper-alpha;">
+				<li>The first test is to move the pin up and down and observe the ring. If it moves with the pin, the system is NOT in equilibrium and forces need to be adjusted.</li>
+					<li>The second test is to remove the pin. However, this should be done in two stages. First just lift it but hold it in the ring to prevent large motions. If there is no motion, remove it completely. If the ring remains centered then the system is in equilibrium.</li></ol>
+		</li>
+	</ol>
+</section>
+
+
+<section id="exp1" name="Exp 1: Sensitivity">
+ <img src="https://physicslabs.ccnysites.cuny.edu/img/force-table-top-side.png" alt="force table top side">
+
+<h3>Exp. 1: Sensitivity of the instrument</h3>
+<p>Let's measure how precise the force tables are.</p>
+<ol>
+	<li>Arrange two pulley systems, Pan 1 at 0&deg; and Pan 2 at 180&deg;. </li>
+	<li>In Pan 1, place 50 grams. In Pan 2, also place 50 grams.</li>
+	<li>Now, in Pan 2 add 1 gram and check for equilibrium. It's most likely still in equilibrium, right?</li>
+	<li>Find the maximum mass you can place in pan 2 and still maintain experimental equilibrium.</li>
+</ol>
+
+<p>Record this value below. This is the sensitivity to weight of the force table. </p>
+ <div style="padding: .5em 0 .5em 0; font-family: "Courier New", Courier, monospace;"><span style="font-family: Helvetica, Arial, Sans">Sensitivity [g] = </span><span class="noprint" style="border: thin solid black; border-radius:5px; padding: .25em 3em .25em 3em;">please log in</span></div>
+
+
+   <div class="card reportQuestion">
+     <h3 class="card-header">
+     Report Questions
+   </h3>
+     <div class="card-body">
+       	<p>What factors could contribute to this sensitivity?</p>
+     </div>
+   </div>
+</section>
+
+
+
+<section id="equilibrant" name="Equilibrant">
+<h3>Resultant Vs. Equilibrant</h3>
+<p>A point to be aware of is that the force needed to balance the system is <b>not</b> the resultant of the weights, but the negative of that vector, also called the equilibrant.
+<img src="https://physicslabs.ccnysites.cuny.edu/img/force-table-equi-res.jpg" alt="force table equilibrant">
+
+<h4>Response:</h4>
+<p>If the resultant of 2 mass/tray systems points in a direction 234&deg; measured counter-clock-wise (CCW) from the 0&deg; line, in what direction should the equilibrant point?</p>
+ <div style="padding: .5em 0 .5em 0; font-family: "Courier New", Courier, monospace;"><span style="font-family: Helvetica, Arial, Sans">Direction of Equilibrant [&deg;] = </span><span class="noprint" style="border: thin solid black; border-radius:5px; padding: .25em 3em .25em 3em;">please log in</span></div>
+</section>
+
+<section id="exp2" name="Exp 2: Symmetry">
+
+ <h3>Experiment 2: Symmetric Arrangement</h3>
+
+ <ol>
+ 	<li>Using the number generator below, pick two initial masses and directions.</li>
+ 	<script type="text/javascript">
+
+ 	var massArray = ["20","25","30"];
+ 	var angleArray = ["30","35","45","50","65"];
+ 	var angleArray2 = ["55","60","65","70","75","80","85", ];
+	function generateNumbers(){
+	 	var mass1 = massArray[Math.floor( Math.random() * ( 3 ) )];
+	 	var mass2 = mass1;
+	 	//var mass2 = massArray[Math.floor( Math.random() * ( 7 ) )];//Math.floor(Math.random()*(10-2+1)+2);
+	 	var dir1 = angleArray[Math.floor( Math.random() * ( 5 ) )];
+	 	var dir2 = 360-dir1;
+		showResults(mass1,mass2,dir1,dir2);
+
+	}
+
+ 	function showResults(mass1,mass2,dir1,dir2) {
+
+ 	//var dir2 = angleArray[Math.floor( Math.random() * ( 7 ) )];//Math.floor(Math.random()*(85-5+1)+5);
+
+	$('#mass1').html(mass1);
+	$('#dir1').html(dir1);
+	$('#mass2').html(mass2);
+	$('#mass1Text').html(mass1);
+	$('#dir2').html(dir2);
+	$('#rndNumbers').prop('disabled', true);
+
+	// $('#rndNumbers').fadeOut(200);
+ 	}
+
+ 	function dice(){
+ 	window.location.reload();
+
+ 	}
+
+ 	</script>
+
+		<button id="rndNumbers" type="button" class="btn btn-primary" onclick="generateNumbers()">Generate Numbers</button>
+ 		<div>
+ 		<div class="mass1">Mass 1:
+ 		<span id="mass1">x
+ 		</span> grams
+ 		</div>
+ 		<div class="dir1">Direction 1:
+ 		<span id="dir1">x
+ 		</span>&deg;
+ 		</div>
+ 		<div class="mass2">Mass 2:
+ 		<span id="mass2">x
+ 		</span> grams
+ 		</div>
+ 		<div class="dir2">Direction 2:
+ 		<span id="dir2">x
+ 		</span>&deg;
+ 		</div>
+ 	</div>
+ 	<br style="clear:both">
+ 	<li>Set up two pans and mass systems based on these values.</li>
+ 	<li>Experimentally balance the system. (i.e. without performing any math or analytical operations, find a third pan/mass system that will balance the first two.)
+ </ol>
+	 <div style="padding: .5em 0 .5em 0; font-family: "Courier New", Courier, monospace;"><span style="font-family: Helvetica, Arial, Sans">Mass needed to balance the System [g] = </span><span class="noprint" style="border: thin solid black; border-radius:5px; padding: .25em 3em .25em 3em;">please log in</span></div> 	<br style="clear:both">
+
+	<p>Use the simulated force table below to predict how much mass you should need and compare this to the value you found experimentally. Make sure to include the mass of the pans in when setting up the forces. (You can use $g \approx 10 m/s^2$ for this)</p>
+
+
+    <div id="simForceTable" style="width: 600px"class="noprint"></div>
+    <script src="add-two-v-on-table.js"> </script>
+    <script type="text/javascript">
+    $( document ).ready(function() {
+        //console.log( "ready!" );
+
+    });
+    </script>
+	<p>By how many grams was your experiment different from this simulation?</p>
+	<div style="padding: .5em 0 .5em 0; font-family: "Courier New", Courier, monospace;"><span style="font-family: Helvetica, Arial, Sans">Grams difference = </span><span class="noprint" style="border: thin solid black; border-radius:5px; padding: .25em 3em .25em 3em;">please log in</span></div>
+
+
+  <div class="card reportQuestion">
+    <h3 class="card-header">
+    Report Questions
+  </h3>
+    <div class="card-body">
+      	<p>Report the difference between what you've experimentally measured and what the simulation predicted. Are they within the expected sensitivity of the instrument?</p>
+    </div>
+  </div>
+
+</section>
+
+<section id="exp3" name="Exp 3: Find a Function">
+	<h3>Exp. 3: Find a function</h3>
+	<img src="https://physicslabs.ccnysites.cuny.edu/img/force-table-symmetic-setup.jpg" class="reduceforprint" alt="symmetric setup">
+	<p>Set up the table at shown. Place 50 grams in pans 1 and 2. Make both angles $b$ equal to 5 degrees.</p>
+	<ol>
+		<li>Experimentally determine the mass needed to hang from pan 3 to put the system into equilibrium</li>
+		<li>Repeat the measurement, changing the angles $b$ each time, in 5&deg; increments, until you reach 80&deg;. (Change the positions of both Pans 1 and 2 each time) </li>
+		<li>Compile the results in a table like this.</li>
+
+	</ol>
+ <table class="table table-bordered" style="width:40%">
+	 <thead>
+		 <tr>
+		 <th>Angle</th><th>Mass of Pan 3 system</th>
+	 	</tr>
+		</thead>
+		<tbody style="font-family: 'Courier New',Courier, monospace">
+		 <tr><td>5&deg;</td><td>$P_3$ mass</td></tr>
+		 <tr><td>10&deg;</td><td>$P_3$ mass</td></tr>
+		 <tr><td>&#8942;</td><td>&#8942;</td></tr>
+		 <tr><td>80&deg;</td><td>$P_3$ mass</td></tr>
+	 </tbody>
+ </table>
+
+<p>We would expect there to be some mathematical relation between the angle $b$, the mass of $P_1$ and $P_2$, and the mass of $P_3$ needed to balance the system. Using some basic trigonometry, determine an equation that we can use to predict the mass of $P_3$ as a function of the angle $b$, and the mass of $P_1 + P_2$ (considered a constant equal to 200g). It should be something of the form $P_3 = C \cos(b)$, where $C$ is a constant. </p>
+<p>In the box below, enter the formula you have found that will predict the mass of Pan 3.</p>
+	<div style="padding: .5em 0 .5em 0; font-family: "Courier New", Courier, monospace;"><span style="font-family: Helvetica, Arial, Sans">Formula:  = </span><span class="noprint" style="border: thin solid black; border-radius:5px; padding: .25em 3em .25em 3em;">please log in</span></div>
+  <div class="card reportQuestion">
+    <h3 class="card-header">
+    Report Questions
+  </h3>
+    <div class="card-body">
+      <p>On one graph plot the experimental data from your table along with the analytical prediction of the function you found. Do they follow the same trend? </p>
+      <p>Your plots should like a section of a cosine function. We can make the data a little easier to work with by plotting the mass as function of the $\cos(b)$ instead. Plot the results (both experimental and anlytical) with the mass of $P_3$ on the vertical axis, and the $\cos(b)$ on the horizontal axis. This should be a linear line:</p>
+        $$\textrm{if } h(x) = \cos(x) \; \textrm{and}\; f(x) = C \cos(x)$$
+        $$\Downarrow$$
+        $$f(x) = C \times h(x) \; \textrm{a linear function}$$
+        <p>Find the slope of your linear data and compare it to what the slope should be from your analytical equation. Does it differ from the analytically derived slope by less than the uncertainty? There are more details about this process <a href="curve-fitting.php">here</a>. </p>
+    </div>
+  </div>
+
+
+</section>
+
+<section id="vectorcomponents" name="Vector Components">
+
+<h3>Vector Components</h3>
+<p>Our mathematical framework for dealing with multiple vectors involves using vector components. If we have an x-y coordinate axis, any vector on this axis can be <i>decomposed</i> into its x and y components. The simulation below shows one vector decomposed into its x and y components.</p>
+
+
+    <div id="vectorCompsTable" style="width: 600px" class="noprint"></div>
+    <script src="vector-components-on-table.js"> </script>
+    <script type="text/javascript">
+    $( document ).ready(function() {
+        //console.log( "ready!" );
+
+    });
+    </script>
+
+<h3>Q: Components </h3>
+<p>What angle (measured counterclockwise from the x axis) would a vector $\overrightarrow{A}$ need to have so that the magnitude of the x component was equal to twice the magnitude of the y component?</p>
+	<div style="padding: .5em 0 .5em 0; font-family: "Courier New", Courier, monospace;"><span style="font-family: Helvetica, Arial, Sans">angle for $A_x = 2A_y$ = </span><span class="noprint" style="border: thin solid black; border-radius:5px; padding: .25em 3em .25em 3em;">please log in</span></div><p>What angle (measured counterclockwise from the x axis) would a vector $\overrightarrow{A}$ need to have so that the magnitude of the y component was equal to half the magnitude of the original vector?</p>
+	<div style="padding: .5em 0 .5em 0; font-family: "Courier New", Courier, monospace;"><span style="font-family: Helvetica, Arial, Sans">angle for $A_y = 0.5 |A|$ = </span><span class="noprint" style="border: thin solid black; border-radius:5px; padding: .25em 3em .25em 3em;">please log in</span></div>
+	<p>We'll need vector components to do more complicated calculations as the next section shows.</p>
+
+</section>
+
+<section id="multipleForces" name="Multiple Forces">
+<h3>Multiple Forces</h3>
+
+<div class="well well-interactive noprint">
+	<h3>Interactive Task</h3>
+<p>An airplane in flight will have many forces acting on it. In the most simplified model, we can consider four major contributors: weight, lift, drag, and thrust. Your task: Balance the forces on this airplane so that plane would fly with a uniform velocity. (i.e. $F_\textrm{net} = 0$.)</p>
+
+	 <p id="balanceAirplane-status" class="bg-warning">Task not yet completed</p>
+
+    <div id="balance-airplane" style="width: 600px"></div>
+    <script src="balance-airplane.js"> </script>
+    <script type="text/javascript">
+    $( document ).ready(function() {
+        //console.log( "ready!" );
+
+    });
+    </script>
+
+</div>
+
+</section>
+<section id="exp4" name="Exp 4: Many Forces">
+<h3>Exp. 4: Return to the Force Table</h3>
+<p>Now let's apply these concepts to the force table. If we have 3 known forces acting, we should be able to analytically predict a fourth force to add so that the system is in equilibrium, i.e. $F_\textrm{net} = 0$. </p>
+
+<p>Press the blue button below to generate 3 sets of random masses and directions</p>
+ 	<script type="text/javascript">
+
+ 	var massArray = ["20","25","30","35","40"];
+	//  	var angleArrayA = ["10","15","25","30","35","40","45","50","55","60","65","75"];
+	//  	var angleArrayB = ["10","15","25","30","35","40","45","50","55","60","65","75"];
+	// var angleArrayC = ["10","15","25","30","35","40","45","50","55","60","65","75"];
+	var angleArrayA = [];
+		var angleArrayB = [];
+			var angleArrayC = [];
+	for (i = 5; i <= 90; i+=5) {
+
+	    angleArrayA.push(i);
+		angleArrayB.push(i+90);
+		angleArrayC.push(i+180);
+	}
+	function generate3Numbers(){
+	 	var mass1 = massArray[Math.floor( Math.random() * ( 5 ) )];
+	 	var mass2 = massArray[Math.floor( Math.random() * ( 5 ) )];
+		var mass3 = massArray[Math.floor( Math.random() * ( 5 ) )];
+	 	//var mass2 = massArray[Math.floor( Math.random() * ( 7 ) )];//Math.floor(Math.random()*(10-2+1)+2);
+	 	var dir1 = angleArrayA[Math.floor( Math.random() * ( 12 ) )];
+	 	var dir2 = angleArrayB[Math.floor( Math.random() * ( 12 ) )];
+	 	var dir3 = angleArrayC[Math.floor( Math.random() * ( 12 ) )];
+		show3Results(mass1,mass2,mass3,dir1,dir2,dir3);
+	}
+
+ 	function show3Results(mass1,mass2,mass3,dir1,dir2,dir3) {
+
+ 	//var dir2 = angleArray[Math.floor( Math.random() * ( 7 ) )];//Math.floor(Math.random()*(85-5+1)+5);
+
+	$('#Bmass1').html(mass1);
+	$('#Bdir1').html(dir1);
+	$('#Bmass2').html(mass2);
+	$('#Bdir2').html(dir2);
+	$('#Bmass3').html(mass3);
+	$('#Bdir3').html(dir3);
+	$('#3rndNumbers').prop('disabled', true);
+
+	// $('#rndNumbers').fadeOut(200);
+ 	}
+
+ 	function dice(){
+ 	window.location.reload();
+
+ 	}
+
+ 	</script>
+
+		<button id="3rndNumbers" type="button" class="btn btn-primary" onclick="generate3Numbers()">Generate Numbers</button>
+ 		<div>
+			<h4>Vector $\overrightarrow{A}$</h4>
+ 		<div class="Bmass1">Mass 1:
+ 		<span id="Bmass1">x
+ 		</span> grams
+ 		</div>
+ 		<div class="Bdir1">Direction 1:
+ 		<span id="Bdir1">x
+ 		</span>&deg;
+ 		</div>
+					<h4>Vector $\overrightarrow{B}$</h4>
+ 		<div class="Bmass2">Mass 2:
+ 		<span id="Bmass2">x
+ 		</span> grams
+ 		</div>
+ 		<div class="Bdir2">Direction 2:
+ 		<span id="Bdir2">x
+ 		</span>&deg;
+ 		</div>
+					<h4>Vector $\overrightarrow{C}$</h4>
+ 		<div class="Bmass3">Mass 3:
+ 		<span id="Bmass3">x
+ 		</span> grams
+ 		</div>
+ 		<div class="Bdir3">Direction 3:
+ 		<span id="Bdir3">x
+ 		</span>&deg;
+ 		</div>
+ 	</div>
+ 	<br style="clear:both">
+
+
+<p>Now, use component algebra to calculate a forth vector, $\overrightarrow{D}$, that when added to the system will result in equilibrium</p>
+<p>The Equation you are essentially trying to solve is: $\overrightarrow{A}+\overrightarrow{B}+\overrightarrow{C}+\overrightarrow{D}=0$
+</p>
+<p>Once you have arrived an answer, enter the components of the vector in the boxes below</p>
+
+<div style="padding: .5em 0 .5em 0; font-family: "Courier New", Courier, monospace;"><span style="font-family: Helvetica, Arial, Sans">$|D_x| = $ = </span><span class="noprint" style="border: thin solid black; border-radius:5px; padding: .25em 3em .25em 3em;">please log in</span></div><div style="padding: .5em 0 .5em 0; font-family: "Courier New", Courier, monospace;"><span style="font-family: Helvetica, Arial, Sans">$|D_y| = $ = </span><span class="noprint" style="border: thin solid black; border-radius:5px; padding: .25em 3em .25em 3em;">please log in</span></div>
+<p>Use trig to convert your answer back to a magnitude and degree format. Add all four mass/pan systems (3 from the above, the fourth from your prediction) to the table, and verify that the prediction does indeed balance the system.</p>
+
+
+ <div class="card reportQuestion">
+   <h3 class="card-header">
+   Report Questions
+ </h3>
+   <div class="card-body">
+     <p>Give the details of this calculation and compare your analytical results with the the experimental results.</p>
+   <p>Draw a vector diagram that shows the table arrangement.</p>
+   </div>
+ </div>
+
+</section>
+
+
+
+
+
+ <section id="worksheet" name="Finished?" class="linktoWorksheet noprint">
+	 <h3>Done?</h3>
+   <p>First, check your station for the equipment. Please return the station to a neat and orderly arrangement as shown in this picture. Once you have done that, click the checkbox below. </p>
+
+   	<img style="width:200px;"  class="btn" data-toggle="modal" data-target="#force-tables-setup" src="https://physicslabs.ccnysites.cuny.edu/img/force-tables-equip-sm.jpg" class="img-responsive">
+
+ 		<div class="modal fade force-tables-setup" id="force-tables-setup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+ 		  <div class="modal-dialog modal-lg">
+ 		    <div class="modal-content">
+ 		      <div class="modal-header">
+ 		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+ 		        <h4 class="modal-title" id="myModalLabel">Force Table lab setup.</h4>
+ 		      </div>
+ 		      <div class="modal-body">
+ 		        <img src="https://physicslabs.ccnysites.cuny.edu/img/force-tables-equip.jpg" class="img-responsive">
+ 		      </div>
+ 		      <div class="modal-footer">
+ 				  <p>This is what the force-table set up should look like. Make sure there are four pans/pulley systems attached to the central ring. Also check that the masses are complete. </p>
+ 		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+ 		      </div>
+ 		    </div>
+ 		  </div>
+ 		</div>
+
+
+<form>
+
+  <div class="checkbox">
+    <label>
+      <input id="setupneat" type="checkbox"> Yes, our station is neat and tidy and complete.
+    </label>
+  </div>
+</form>
+<script>
+$("#setupneat").click(function() {
+$("#gotoworksheet").attr("disabled", !this.checked);
+$("#gotoworksheet").removeClass("disabled", !this.checked);
+
+});
+</script>
+
+	 	<p>Now, click this button below to view your filled out worksheet. On the next page you can email it to yourself to keep a record of having completed the lab.</p>
+      <a id="gotoworksheet" href="forcetables-worksheet.php" class="btn btn-primary btn-lg disabled" tabindex="-1" role="button" aria-disabled="true">Worksheet</a>
+
+ </section>
+
+
+
+</div>
+</div>
+</div><!-- /.container -->
+
+
+
+
+	<!-- <script src="js/sims/add-2-vectors.js"></script> -->
+
+
+
+	    <!-- Bootstrap core JavaScript
+	    ================================================== -->
+	    <!-- Placed at the end of the document so the pages load faster -->
+
+
+
+	  </body>
+	</html>
