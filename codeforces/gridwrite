@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Draw on CM Grid</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      touch-action: none; /* Prevent zooming on touch */
+      background-color: white;
+    }
+    
+    #canvasContainer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    canvas {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      touch-action: none;
+    }
+    
+    #clearBtn {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      padding: 10px 15px;
+      background: red;
+      color: white;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    #ruler {
+      position: absolute;
+      width: 300px;
+      height: 10px;
+      background: #333;
+      cursor: pointer;
+      z-index: 20;
+      transform-origin: center center;
+    }
+  </style>
+</head>
+<body>
+
+<button id="clearBtn">Clear</button>
+<div id="canvasContainer">
+  <canvas id="gridCanvas"></canvas>
+  <canvas id="drawCanvas"></canvas>
+</div>
+<div id="ruler"></div>
+
+<script>
+  const gridCanvas = document.getElementById("gridCanvas");
+  const drawCanvas = document.getElementById("drawCanvas");
+  const gridCtx = gridCanvas.getContext("2d");
+  const drawCtx = drawCanvas.getContext("2d");
+  const ruler = document.getElementById("ruler");
+
+  gridCanvas.width = drawCanvas.width = window.innerWidth;
+  gridCanvas.height = drawCanvas.height = window.innerHeight;
+
+  // Draw CM Grid
+  function drawGrid() {
+    const cmSize = 37.8; // Approx 1 cm in pixels
+    gridCtx.clearRect(0, 0, gridCanvas.width, gridCanvas.height);
+    gridCtx.strokeStyle = "#ddd";
+    gridCtx.lineWidth = 1;
+    
+    for (let x = 0; x < gridCanvas.width; x += cmSize) {
+      gridCtx.beginPath();
+      gridCtx.moveTo(x, 0);
+      gridCtx.lineTo(x, gridCanvas.height);
+      gridCtx.stroke();
+    }
+    
+    for (let y = 0; y < gridCanvas.height; y += cmSize) {
+      gridCtx.beginPath();
+      gridCtx.moveTo(0, y);
+      gridCtx.lineTo(gridCanvas.width, y);
+      gridCtx.stroke();
+    }
+  }
+
+  drawGrid();
+
+  // Drawing functionality
+  let isDrawing = false;
+  let lastX = 0;
+  let lastY = 0;
+  drawCtx.lineWidth = 3;
+  drawCtx.strokeStyle = "black";
+  drawCtx.lineJoin = "round";
+  drawCtx.lineCap = "round";
+
+  function startDrawing(x, y) {
+    isDrawing = true;
+    lastX = x;
+    lastY = y;
+  }
+
+  function draw(x, y) {
+    if (!isDrawing) return;
+    drawCtx.beginPath();
+    drawCtx.moveTo(lastX, lastY);
+    drawCtx.lineTo(x, y);
+    drawCtx.stroke();
+    lastX = x;
+    lastY = y;
+  }
+
+  function stopDrawing() {
+    isDrawing = false;
+  }
+
+  // Mouse events for drawing
+  drawCanvas.addEventListener("mousedown", (e) => startDrawing(e.offsetX, e.offsetY));
+  drawCanvas.addEventListener("mousemove", (e) => draw(e.offsetX, e.offsetY));
+  drawCanvas.addEventListener("mouseup", stopDrawing);
+  drawCanvas.addEventListener("mouseout", stopDrawing);
+
+  // Touch events for drawing
+  drawCanvas.addEventListener("touchstart", (e) => {
+    const touch = e.touches[0];
+    startDrawing(touch.clientX, touch.clientY);
+  });
+  drawCanvas.addEventListener("touchmove", (e) => {
+    e.preventDefault();
+    const touch = e.touches[0];
+    draw(touch.clientX, touch.clientY);
+  });
+  drawCanvas.addEventListener("touchend", stopDrawing);
+
+  // Clear button
+  document.getElementById("clearBtn").addEventListener("click", () => {
+    drawCtx.clearRect(0, 0, drawCanvas.width, drawCanvas.height);
+  });
+
+  // Ruler drag and rotate functionality
+  let isDragging = false;
+  let startX = 0;
+  let startY = 0;
+  let startAngle = 0;
+  
+  ruler.addEventListener("mousedown", (e) => {
+    isDragging = true;
+    startX = e.clientX - ruler.offsetLeft;
+    startY = e.clientY - ruler.offsetTop;
+  });
+
+  document.addEventListener("mousemove", (e) => {
+    if (isDragging) {
+      const newX = e.clientX - startX;
+      const newY = e.clientY - startY;
+      ruler.style.left = `${newX}px`;
+      ruler.style.top = `${newY}px`;
+    }
+  });
+
+  document.addEventListener("mouseup", () => {
+    isDragging = false;
+  });
+
+  // Rotation functionality
+  let isRotating = false;
+  let startMouseAngle = 0;
+  
+  ruler.addEventListener("mousedown", (e) => {
+    if (e.button === 2) { // Right-click for rotation
+      e.preventDefault();
+      isRotating = true;
+      startMouseAngle = Math.atan2(e.clientY - ruler.offsetTop - ruler.offsetHeight / 2, e.clientX - ruler.offsetLeft - ruler.offsetWidth / 2);
+    }
+  });
+
+  document.addEventListener("mousemove", (e) => {
+    if (isRotating) {
+      const newMouseAngle = Math.atan2(e.clientY - ruler.offsetTop - ruler.offsetHeight / 2, e.clientX - ruler.offsetLeft - ruler.offsetWidth / 2);
+      const rotation = newMouseAngle - startMouseAngle;
+      const degree = (rotation * 180) / Math.PI;
+      ruler.style.transform = `rotate(${degree}deg)`;
+    }
+  });
+
+  document.addEventListener("mouseup", () => {
+    isRotating = false;
+  });
+</script>
+
+</body>
+</html>
