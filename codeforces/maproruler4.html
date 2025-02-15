@@ -146,7 +146,7 @@
     e.preventDefault();
     rotation += e.deltaY > 0 ? 5 : -5; // Rotate by 5 degrees
     if (!isProtractor) {
-      element.style.transform = `scale(0.53) rotate(${rotation}deg)`; // Keeps initial scale
+      element.style.transform = `scale(0.66) rotate(${rotation}deg)`; // Keeps initial scale
     } else {
       element.style.transform = `scale(0.66) rotate(${rotation}deg)`; // Protractor keeps its scale
     }
@@ -199,7 +199,7 @@
 
 // Apply function
 enableDragAndRotate(document.getElementById('protractor'), true);
-enableDragAndRotate(document.getElementById('ruler'), false);
+enableDragAndRotate(document.getElementById('ruler'), true);
 
 
 
