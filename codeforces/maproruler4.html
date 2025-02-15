@@ -114,7 +114,7 @@
     let arrowStart = null;
 
     // Function to enable drag and rotate functionality
-    function enableDragAndRotate(element, isProtractor = false) {
+function enableDragAndRotate(element, isProtractor = false) {
   let isDragging = false;
   let offsetX, offsetY;
   let rotation = 0;
@@ -141,14 +141,14 @@
     element.style.cursor = 'grab';
   });
 
-  // Mouse wheel for rotation (No Scaling Change)
+  // Fix Mouse Wheel Rotation (Keep Scale Fixed)
   element.addEventListener('wheel', (e) => {
     e.preventDefault();
     rotation += e.deltaY > 0 ? 5 : -5; // Rotate by 5 degrees
     if (!isProtractor) {
-      element.style.transform = `scale(0.66) rotate(${rotation}deg)`; // Keeps initial scale
+      element.style.transform = `scale(1.32) rotate(${rotation}deg)`; // Fixed ruler scale
     } else {
-      element.style.transform = `scale(1.32) rotate(${rotation}deg)`; // Protractor keeps its scale
+      element.style.transform = `scale(0.66) rotate(${rotation}deg)`; // Fixed protractor scale
     }
   });
 
@@ -184,7 +184,7 @@
       if (!isProtractor) {
         element.style.transform = `scale(1.32) rotate(${rotation}deg)`; // Keep ruler's scale fixed
       } else {
-        element.style.transform = `scale(0.66) rotate(${rotation}deg)`; // Keep protractor's scale
+        element.style.transform = `scale(0.66) rotate(${rotation}deg)`; // Keep protractor's scale fixed
       }
     }
   });
@@ -200,6 +200,7 @@
 // Apply function
 enableDragAndRotate(document.getElementById('protractor'), true);
 enableDragAndRotate(document.getElementById('ruler'), false);
+
 
 
 
