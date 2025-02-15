@@ -48,7 +48,7 @@
     #ruler {
       top: 200px;
       left: 50px;
-      transform: rotate(0deg); /* Ruler does not scale */
+      transform: scale(0.66) rotate(0deg); /* Ruler does not scale */
       transform-origin: center;
     }
 
@@ -115,94 +115,47 @@
 
     // Function to enable drag and rotate functionality
     function enableDragAndRotate(element, isProtractor = false) {
-      let isDragging = false;
-      let offsetX, offsetY;
-      let rotation = 0;
-      let initialAngle = 0;
+  let isDragging = false;
+  let offsetX, offsetY;
+  let rotation = 0;
+  let initialAngle = 0;
 
-      // Mouse drag
-      element.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        offsetX = e.clientX - element.offsetLeft;
-        offsetY = e.clientY - element.offsetTop;
-        element.style.cursor = 'grabbing';
-      });
+  // Mouse drag
+  element.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    offsetX = e.clientX - element.offsetLeft;
+    offsetY = e.clientY - element.offsetTop;
+    element.style.cursor = 'grabbing';
+  });
 
-      document.addEventListener('mousemove', (e) => {
-        if (isDragging) {
-          element.style.left = `${e.clientX - offsetX}px`;
-          element.style.top = `${e.clientY - offsetY}px`;
-        }
-      });
-
-      document.addEventListener('mouseup', () => {
-        isDragging = false;
-        element.style.cursor = 'grab';
-      });
-
-      // Mouse wheel for rotation
-      element.addEventListener('wheel', (e) => {
-        e.preventDefault();
-        rotation += e.deltaY > 0 ? 5 : -5; // Rotate by 5 degrees on wheel scroll
-        if (!isProtractor) {
-          // Keep the ruler at 100% scale (no scaling)
-          element.style.transform = `rotate(${rotation}deg)`;
-        } else {
-          // Protractor will scale and rotate
-          element.style.transform = `scale(0.66) rotate(${rotation}deg)`;
-        }
-      });
-
-      // Touch events for drag and rotate
-      let isRotating = false;
-      element.addEventListener('touchstart', (e) => {
-        if (e.touches.length === 1) {
-          isDragging = true;
-          const touch = e.touches[0];
-          offsetX = touch.clientX - element.offsetLeft;
-          offsetY = touch.clientY - element.offsetTop;
-        } else if (e.touches.length === 2) {
-          isRotating = true;
-          initialAngle = Math.atan2(
-            e.touches[1].clientY - e.touches[0].clientY,
-            e.touches[1].clientX - e.touches[0].clientX
-          ) * (180 / Math.PI);
-        }
-      });
-
-      document.addEventListener('touchmove', (e) => {
-        if (isDragging && e.touches.length === 1) {
-          const touch = e.touches[0];
-          element.style.left = `${touch.clientX - offsetX}px`;
-          element.style.top = `${touch.clientY - offsetY}px`;
-        } else if (isRotating && e.touches.length === 2) {
-          const currentAngle = Math.atan2(
-            e.touches[1].clientY - e.touches[0].clientY,
-            e.touches[1].clientX - e.touches[0].clientX
-          ) * (180 / Math.PI);
-          rotation += currentAngle - initialAngle;
-          initialAngle = currentAngle;
-          if (!isProtractor) {
-            // Keep the ruler at 100% scale (no scaling)
-            element.style.transform = `rotate(${rotation}deg)`;
-          } else {
-            // Protractor will scale and rotate
-            element.style.transform = `scale(0.66) rotate(${rotation}deg)`;
-          }
-        }
-      });
-
-      document.addEventListener('touchend', (e) => {
-        if (e.touches.length === 0) {
-          isDragging = false;
-          isRotating = false;
-        }
-      });
+  document.addEventListener('mousemove', (e) => {
+    if (isDragging) {
+      element.style.left = `${e.clientX - offsetX}px`;
+      element.style.top = `${e.clientY - offsetY}px`;
     }
+  });
 
-    // Initialize drag and rotate for the protractor and ruler
-    enableDragAndRotate(document.getElementById('protractor'), true);
-    enableDragAndRotate(document.getElementById('ruler'), false);
+  document.addEventListener('mouseup', () => {
+    isDragging = false;
+    element.style.cursor = 'grab';
+  });
+
+  // Mouse wheel for rotation (No Scaling Change)
+  element.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    rotation += e.deltaY > 0 ? 5 : -5; // Rotate by 5 degrees
+    if (!isProtractor) {
+      element.style.transform = `scale(0.53) rotate(${rotation}deg)`; // Keeps initial scale
+    } else {
+      element.style.transform = `scale(0.66) rotate(${rotation}deg)`; // Protractor keeps its scale
+    }
+  });
+}
+
+// Apply function
+enableDragAndRotate(document.getElementById('protractor'), true);
+enableDragAndRotate(document.getElementById('ruler'), false);
+
 
     // Arrow drawing logic
     function drawArrow(startX, startY, endX, endY) {
