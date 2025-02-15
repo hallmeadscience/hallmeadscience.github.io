@@ -48,7 +48,7 @@
     #ruler {
       top: 200px;
       left: 50px;
-      transform: scale(1.50) rotate(0deg); /* Ruler does not scale */
+      transform: scale(1.55) rotate(0deg); /* Ruler does not scale */
       transform-origin: center;
     }
 
@@ -146,7 +146,7 @@ function enableDragAndRotate(element, isProtractor = false) {
     e.preventDefault();
     rotation += e.deltaY > 0 ? 5 : -5; // Rotate by 5 degrees
     if (!isProtractor) {
-      element.style.transform = `scale(1.50) rotate(${rotation}deg)`; // Fixed ruler scale
+      element.style.transform = `scale(1.55) rotate(${rotation}deg)`; // Fixed ruler scale
     } else {
       element.style.transform = `scale(0.66) rotate(${rotation}deg)`; // Fixed protractor scale
     }
@@ -182,7 +182,7 @@ function enableDragAndRotate(element, isProtractor = false) {
       initialAngle = currentAngle;
 
       if (!isProtractor) {
-        element.style.transform = `scale(1.45) rotate(${rotation}deg)`; // Keep ruler's scale fixed
+        element.style.transform = `scale(1.55) rotate(${rotation}deg)`; // Keep ruler's scale fixed
       } else {
         element.style.transform = `scale(0.66) rotate(${rotation}deg)`; // Keep protractor's scale fixed
       }
