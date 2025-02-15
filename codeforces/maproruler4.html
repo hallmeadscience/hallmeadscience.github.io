@@ -119,6 +119,7 @@
   let offsetX, offsetY;
   let rotation = 0;
   let initialAngle = 0;
+  let isRotating = false;
 
   // Mouse drag
   element.addEventListener('mousedown', (e) => {
@@ -150,11 +151,56 @@
       element.style.transform = `scale(0.66) rotate(${rotation}deg)`; // Protractor keeps its scale
     }
   });
+
+  // Touch events for drag and rotate
+  element.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 1) {
+      isDragging = true;
+      const touch = e.touches[0];
+      offsetX = touch.clientX - element.offsetLeft;
+      offsetY = touch.clientY - element.offsetTop;
+    } else if (e.touches.length === 2) {
+      isRotating = true;
+      initialAngle = Math.atan2(
+        e.touches[1].clientY - e.touches[0].clientY,
+        e.touches[1].clientX - e.touches[0].clientX
+      ) * (180 / Math.PI);
+    }
+  });
+
+  document.addEventListener('touchmove', (e) => {
+    if (isDragging && e.touches.length === 1) {
+      const touch = e.touches[0];
+      element.style.left = `${touch.clientX - offsetX}px`;
+      element.style.top = `${touch.clientY - offsetY}px`;
+    } else if (isRotating && e.touches.length === 2) {
+      const currentAngle = Math.atan2(
+        e.touches[1].clientY - e.touches[0].clientY,
+        e.touches[1].clientX - e.touches[0].clientX
+      ) * (180 / Math.PI);
+      rotation += currentAngle - initialAngle;
+      initialAngle = currentAngle;
+
+      if (!isProtractor) {
+        element.style.transform = `scale(0.53) rotate(${rotation}deg)`; // Keep ruler's scale fixed
+      } else {
+        element.style.transform = `scale(0.66) rotate(${rotation}deg)`; // Keep protractor's scale
+      }
+    }
+  });
+
+  document.addEventListener('touchend', (e) => {
+    if (e.touches.length === 0) {
+      isDragging = false;
+      isRotating = false;
+    }
+  });
 }
 
 // Apply function
 enableDragAndRotate(document.getElementById('protractor'), true);
 enableDragAndRotate(document.getElementById('ruler'), false);
+
 
 
     // Arrow drawing logic
