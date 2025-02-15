@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Draggable & Rotatable Protractor and Ruler</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      touch-action: none; /* Prevent zooming on touch */
+    }
+
+    #map {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background-color: white;
+      background-image: 
+        linear-gradient(to right, lightblue 1px, transparent 1px),
+        linear-gradient(to bottom, lightblue 1px, transparent 1px);
+      background-size: 1cm 1cm; /* Grid lines now spaced every 1cm */
+    }
+
+    .draggable {
+      position: absolute;
+      cursor: grab;
+      transform-origin: center;
+      touch-action: none;
+    }
+
+    #protractor {
+      top: 50px;
+      left: 50px;
+      transform: scale(0.66) rotate(0deg); /* Set size to 66% */
+      width: auto;
+      height: auto;
+      pointer-events: auto;
+    }
+
+    #ruler {
+      top: 200px;
+      left: 50px;
+      transform: scale(1.64) rotate(0deg); /* Ruler does not scale */
+      transform-origin: center;
+    }
+
+    .arrow {
+      position: absolute;
+      width: 4px;
+      background-color: red;
+      transform-origin: 0 0;
+    }
+    .arrow::after {
+      content: '';
+      position: absolute;
+      width: 15px;
+      height: 20px;
+      background-color: red;
+      clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+      bottom: -5px;
+      left: -5px;
+    }
+
+    /* Fixed buttons for visibility */
+    #drawArrowBtn, #resetArrowsBtn {
+      position: fixed;
+      top: 10px;
+      z-index: 1000;
+      padding: 10px;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    #drawArrowBtn {
+      left: 10px;
+      background-color: #4CAF50;
+    }
+    #drawArrowBtn.active {
+      background-color: #FF5733;
+    }
+    #resetArrowsBtn {
+      left: 180px;
+      background-color: #FF0000;
+    }
+  </style>
+</head>
+
+<body>
+
+<button id="drawArrowBtn">Activate Arrow Drawing</button>
+<button id="resetArrowsBtn">Reset Arrows</button>
+
+<div id="map">
+  <img id="protractor" class="draggable" src="https://hallmeadscience.github.io/codeforces/pngegg.png" alt="Protractor">
+  <img id="ruler" class="draggable" src="https://hallmeadscience.github.io/codeforces/ruler-png-23421.png" alt="Ruler">
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const drawArrowBtn = document.getElementById('drawArrowBtn');
+    const resetArrowsBtn = document.getElementById('resetArrowsBtn');
+    const map = document.getElementById('map');
+    let drawingArrow = false;
+    let arrowStart = null;
+
+    // Function to enable drag and rotate functionality
+    function enableDragAndRotate(element, isProtractor = false) {
+      let isDragging = false;
+      let offsetX, offsetY;
+      let rotation = 0;
+      let initialAngle = 0;
+      let isRotating = false;
+
+      // Mouse drag
+      element.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        offsetX = e.clientX - element.offsetLeft;
+        offsetY = e.clientY - element.offsetTop;
+        element.style.cursor = 'grabbing';
+      });
+
+      document.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+          element.style.left = `${e.clientX - offsetX}px`;
+          element.style.top = `${e.clientY - offsetY}px`;
+        }
+      });
+
+      document.addEventListener('mouseup', () => {
+        isDragging = false;
+        element.style.cursor = 'grab';
+      });
+
+      // Fix Mouse Wheel Rotation (Keep Scale Fixed)
+      element.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        rotation += e.deltaY > 0 ? 5 : -5; // Rotate by 5 degrees
+        if (!isProtractor) {
+          element.style.transform = `scale(1.64) rotate(${rotation}deg)`; // Fixed ruler scale
+        } else {
+          element.style.transform = `scale(0.66) rotate(${rotation}deg)`; // Fixed protractor scale
+        }
+      });
+
+      // Touch events for drag and rotate
+      element.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1) {
+          isDragging = true;
+          const touch = e.touches[0];
+          offsetX = touch.clientX - element.offsetLeft;
+          offsetY = touch.clientY - element.offsetTop;
+        } else if (e.touches.length === 2) {
+          isRotating = true;
+          initialAngle = Math.atan2(
+            e.touches[1].clientY - e.touches[0].clientY,
+            e.touches[1].clientX - e.touches[0].clientX
+          ) * (180 / Math.PI);
+        }
+      });
+
+      document.addEventListener('touchmove', (e) => {
+        if (isDragging && e.touches.length === 1) {
+          const touch = e.touches[0];
+          element.style.left = `${touch.clientX - offsetX}px`;
+          element.style.top = `${touch.clientY - offsetY}px`;
+        } else if (isRotating && e.touches.length === 2) {
+          const currentAngle = Math.atan2(
+            e.touches[1].clientY - e.touches[0].clientY,
+            e.touches[1].clientX - e.touches[0].clientX
+          ) * (180 / Math.PI);
+          rotation += currentAngle - initialAngle;
+          initialAngle = currentAngle;
+
+          if (!isProtractor) {
+            element.style.transform = `scale(1.64) rotate(${rotation}deg)`; // Keep ruler's scale fixed
+          } else {
+            element.style.transform = `scale(0.66) rotate(${rotation}deg)`; // Keep protractor's scale fixed
+          }
+        }
+      });
+
+      document.addEventListener('touchend', (e) => {
+        if (e.touches.length === 0) {
+          isDragging = false;
+          isRotating = false;
+        }
+      });
+    }
+
+    // Apply function
+    enableDragAndRotate(document.getElementById('protractor'), true);
+    enableDragAndRotate(document.getElementById('ruler'), false);
+
+    // Arrow drawing logic
+    function drawArrow(startX, startY, endX, endY) {
+      const arrow = document.createElement('div');
+      arrow.classList.add('arrow');
+
+      const dx = endX - startX;
+      const dy = endY - startY;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      const angle = Math.atan2(dx, dy) * (-180 / Math.PI);
+
+      arrow.style.height = `${distance}px`;
+      arrow.style.transform = `rotate(${angle}deg)`;
+      arrow.style.left = `${startX}px`;
+      arrow.style.top = `${startY}px`;
+
+      map.appendChild(arrow);
+    }
+
+    drawArrowBtn.addEventListener('click', () => {
+      drawingArrow = !drawingArrow;
+      drawArrowBtn.classList.toggle('active');
+      drawArrowBtn.textContent = drawingArrow ? "Deactivate Arrow Drawing" : "Activate Arrow Drawing";
+    });
+
+    map.addEventListener('click', (e) => {
+      if (drawingArrow) {
+        const mapRect = map.getBoundingClientRect();
+        const offsetX = e.clientX - mapRect.left;
+        const offsetY = e.clientY - mapRect.top;
+
+        if (!arrowStart) {
+          arrowStart = { x: offsetX, y: offsetY };
+        } else {
+          drawArrow(arrowStart.x, arrowStart.y, offsetX, offsetY);
+          arrowStart = null;
+        }
+      }
+    });
+
+    resetArrowsBtn.addEventListener('click', () => {
+      document.querySelectorAll('.arrow').forEach(arrow => arrow.remove());
+    });
+  });
+</script>
+
+</body>
+</html>
