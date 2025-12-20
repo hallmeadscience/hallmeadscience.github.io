@@ -1,0 +1,656 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-8175315-28"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-8175315-28');
+</script>
+
+  <meta charset="utf-8">
+  <title>Marching band model</title>
+</head>
+
+<body style="font-family:sans-serif; font-size:15px; margin-left:10; margin-right:10;">
+<center>
+	<div id="canvasesdiv" style="position:relative; display:block; margin:auto; width:620px; height:450px"></div>
+    <canvas id="myCanvas" style="display: block; position: absolute; margin: 0 auto;display: block;
+        position: absolute; margin: 0 auto; top: 0; bottom: 0; left: 0; right: 0;" width="620" height="450"></canvas>
+    <div id="buttons">
+      <input type="button" id="play" value="Play" onclick="play()">
+      <input type="button" id="pause" value="Pause" onclick="pause()">
+      <input type="button" id="stepforward" value="Step >>" onclick="stepForward()">
+      <input type="button" id="reset" value="Reset" onclick="reset()">
+    </div>
+
+</center>
+
+  <script>
+
+
+      function play() {
+        window.clearTimeout(timer);
+        runFlag = 1;
+        runMotion();
+
+      }
+
+      function pause() {
+        window.clearTimeout(timer);
+        runFlag = 0;
+
+      }
+
+      function stepForward() {
+        window.clearTimeout(timer);
+        runFlag = 1;
+        drawMotion();
+
+      }
+
+
+
+      function reset() {
+        window.clearTimeout(timer);
+        index = -1;
+        time = 0.0;
+        n1sliderValue = n1sliderValueMin + (n1sliderValueMax-n1sliderValueMin)*(n1sliderX-n1sliderXMin)/(n1sliderXMax-n1sliderXMin);
+        n1 = n1sliderValue;
+        n2sliderValue = n2sliderValueMin + (n2sliderValueMax-n2sliderValueMin)*(n2sliderX-n2sliderXMin)/(n2sliderXMax-n2sliderXMin);
+        n2 = n2sliderValue;
+        angle1sliderValue = angle1sliderValueMin + (angle1sliderValueMax-angle1sliderValueMin)*(angle1sliderX-angle1sliderXMin)/(angle1sliderXMax-angle1sliderXMin);
+        angle1 = angle1sliderValue;
+        theta1 = angle1*Math.PI/180.0;
+        sintheta2 = (n1/n2)*Math.sin(theta1);
+        costheta2 = Math.sqrt(1-sintheta2*sintheta2);
+        theta2 = Math.atan(sintheta2/costheta2);
+        angle2 = theta2*180.0/Math.PI;
+        vx = (Math.sin(theta1))/n1;
+        vy = (Math.cos(theta1))/n1;
+        vx2 = (Math.sin(theta2))/n2;
+        vy2 = (Math.cos(theta2))/n2;
+
+        counter = 0;
+        for (var i = 0; i < 5; i++) {      // 5 rows
+          for (var j = -4; j<= 4; j++) {   // 7 marchers per row
+            marchers[counter].x = canvas.width/2-(140-15*i/n1)*Math.sin(theta1)+12*j*Math.cos(theta1);
+            marchers[counter].y = 150-(140-15*i/n1)*Math.cos(theta1)-12*j*Math.sin(theta1);
+            counter = counter + 1;
+          }
+        }
+
+        runFlag = 1;
+        drawMotion();
+      }
+
+
+
+      var canvas = document.getElementById("myCanvas");
+      var context = canvas.getContext("2d");
+      canvas.onmousedown = myDown;							// mouse event handler for computer browsers
+	  canvas.onmouseup = myUp;								// mouse event handler for computer browsers
+	  canvas.addEventListener("touchstart", myTouchStart, false);	// touch handler for iPhones, iPads, and Androids
+	  canvas.addEventListener("touchmove", myTouchMove, false);	// touch handler for iPhones, iPads, and Androids
+	  canvas.addEventListener("touchend", myTouchEnd, false);		// touch handler for iPhones, iPads, and Androids
+      var index = -1;
+      var xBase = 100;
+      var yBase = 50;
+      var xSupport = canvas.width/2;
+      var ySupport = yBase;
+      var xInit = 37;
+      var radius = 5;
+      var time = 0.0;
+      var  deltat = 1/3.0;
+
+      var n1 = 1.0;
+      var n2 = 1.33;
+      var angle1 = 0.0;
+      var theta1 = angle1*Math.PI/180.0;
+      var sintheta2 = (n1/n2)*Math.sin(theta1);
+      var costheta2 = Math.sqrt(1-sintheta2*sintheta2);
+      var theta2 = Math.atan(sintheta2/costheta2);
+      var angle2 = theta2*180.0/Math.PI;
+
+      var xPos = xBase;
+      var yPos = yBase + 150;
+      var timer;
+      var runFlag = 1;
+
+      var n1sliderY = 350;
+      var n1sliderXMin = 30;
+      var n1sliderXMax = 230;
+      var n1sliderValueMin = 1.0;
+      var n1sliderValueMax = 1.40;
+      var n1sliderValue = n1;
+      var n1sliderX = n1sliderXMin+(n1sliderXMax-n1sliderXMin)*(n1sliderValue-n1sliderValueMin)/(n1sliderValueMax-n1sliderValueMin);
+      var n1sliderDecimals = 3;
+
+      var angle1sliderY = 420;
+      var angle1sliderXMin = 255;
+      var angle1sliderXMax = 345;
+      var angle1sliderValueMin = 0.0;
+      var angle1sliderValueMax = 45.0;
+      var angle1sliderValue = angle1;
+      var angle1sliderX = angle1sliderXMin+(angle1sliderXMax-angle1sliderXMin)*(angle1sliderValue-angle1sliderValueMin)/(angle1sliderValueMax-angle1sliderValueMin);
+      var angle1sliderDecimals = 1;
+
+      var n2sliderY = 350;
+      var n2sliderXMin = 340;
+      var n2sliderXMax = 590;
+      var n2sliderValueMin = 1.0;
+      var n2sliderValueMax = 1.50;
+      var n2sliderValue = n2;
+      var n2sliderX = n2sliderXMin+(n2sliderXMax-n2sliderXMin)*(n2sliderValue-n2sliderValueMin)/(n2sliderValueMax-n2sliderValueMin);
+      var n2sliderDecimals = 3;
+
+      var arraySize = 45;
+      var counter = 0;
+      var vx = (Math.sin(theta1))/n1;
+      var vy = (Math.cos(theta1))/n1;
+      var vx2 = (Math.sin(theta2))/n2;
+      var vy2 = (Math.cos(theta2))/n2;
+
+      var marchers = new Array(arraySize);
+        for (var i = 0; i < 5; i++) {      // 5 rows
+          for (var j = -4; j<= 4; j++) {   // 9 marchers per row
+            marchers[counter] = {};
+            marchers[counter].x = canvas.width/2-(140-15*i/n1)*Math.sin(theta1)+12*j*Math.cos(theta1);
+            marchers[counter].y = 150-(140-15*i/n1)*Math.cos(theta1)-12*j*Math.sin(theta1);
+            counter = counter + 1;
+          }
+        }
+
+
+      drawMotion();
+
+    function drawMotion() {
+
+  //    console.log("In the drawMotion function, with runFlag = " + runFlag );
+
+      if ((time >= 100.0) || (xPos > xBase+400) || (Math.abs(yPos-(yBase+150))>150)) runFlag = 0;
+
+  //    console.log("In the drawMotion function, with runFlag = " + runFlag + " xPos = " + xPos + " time = " + time + " yPos = " + yPos);
+
+      if (runFlag == 1) {    //      run if runFlag equal 1, not if equal 0
+        // clear
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        // set background color for the entire thing
+           context.fillStyle = "#ffd";
+           context.fillRect(0, 0, canvas.width, canvas.height);
+
+        // set background color for medium 1
+           var blueness = Math.floor(100 + 100*n1);
+           var blueString = blueness.toString(16);
+           if (blueString.length == 1) blueString = "0"+blueString;
+//        console.log(lambda + " " + redness + " " + greenness + " " +blueness);
+           var mediumColor = "#bbbb" +blueString;
+           context.fillStyle = mediumColor;
+           context.fillRect(0, 0, canvas.width, 150);
+
+        // set background color for medium 2
+           blueness = Math.floor(100+100*n2);
+           blueString = blueness.toString(16);
+           if (blueString.length == 1) blueString = "0"+blueString;
+//        console.log(lambda + " " + redness + " " + greenness + " " +blueness);
+           var mediumColor = "#bbbb" +blueString;
+           context.fillStyle = mediumColor;
+           context.fillRect(0, 151, canvas.width, 149);
+
+       // draw n1 slider
+
+           drawSlider(n1sliderX, n1sliderY, n1sliderXMin, n1sliderXMax, n1sliderValueMin, n1sliderValueMax, n1sliderValue, n1sliderDecimals);
+           var sLabel = '(top medium) n1 = ';
+           sLabel = sLabel + n1sliderValue.toFixed(n1sliderDecimals);
+           context.font = '16pt Calibri';
+           context.textAlign = 'center';
+           context.textBaseline = 'middle';
+           context.fillStyle = 'black';
+           context.fillText(sLabel,n1sliderXMin+0.5*(n1sliderXMax-n1sliderXMin), n1sliderY-25);
+
+
+       // draw n2 slider
+
+           drawSlider(n2sliderX, n2sliderY, n2sliderXMin, n2sliderXMax, n2sliderValueMin, n2sliderValueMax, n2sliderValue, n2sliderDecimals);
+           var sLabel = '(bottom medium) n2 = ';
+           sLabel = sLabel + n2sliderValue.toFixed(n2sliderDecimals);
+           context.font = '16pt Calibri';
+           context.textAlign = 'center';
+           context.textBaseline = 'middle';
+           context.fillStyle = 'black';
+           context.fillText(sLabel,n2sliderXMin+0.5*(n2sliderXMax-n2sliderXMin), n2sliderY-25);
+
+       // draw angle1 slider
+
+           drawSlider(angle1sliderX, angle1sliderY, angle1sliderXMin, angle1sliderXMax, angle1sliderValueMin, angle1sliderValueMax, angle1sliderValue, angle1sliderDecimals);
+           var sLabel = 'Angle in top medium = ';
+           sLabel = sLabel + angle1sliderValue.toFixed(angle1sliderDecimals) + " degrees";
+           context.font = '16pt Calibri';
+           context.textAlign = 'center';
+           context.textBaseline = 'middle';
+           context.fillStyle = 'black';
+           context.fillText(sLabel,angle1sliderXMin+0.5*(angle1sliderXMax-angle1sliderXMin), angle1sliderY-25);
+
+
+           index = index + 1;
+           time = index/100.0;
+   //        console.log(index + "  time = " + time + " x = " + xPos + " y = " + yPos);
+
+
+// draw reference lines in the two media
+            context.strokeStyle = 'white';
+            context.lineWidth = 4;
+            context.beginPath();
+            context.moveTo(canvas.width/2,150);
+            context.lineTo(canvas.width/2-120*Math.sin(theta1),150-120*Math.cos(theta1));
+            context.stroke();
+            context.beginPath();
+            context.moveTo(canvas.width/2,150);
+            context.lineTo(canvas.width/2+120*Math.sin(theta2),150+120*Math.cos(theta2));
+            context.stroke();
+
+// draw the marchers
+            context.fillStyle = 'red';
+            for (var i = 0; i < arraySize; i++) {
+              context.beginPath();
+              context.arc(marchers[i].x,marchers[i].y, radius, 0, 2 * Math.PI, false);
+              context.fill();
+            }
+
+
+// update the positions and y velocity
+            for (i = 0; i < arraySize; i++) {
+              var velX = vx;
+              var velY = vy;
+              if (marchers[i].y >= 150) {
+                velX = vx2;
+                velY = vy2;
+                if ((marchers[i].y >= 290) || (marchers[i].x >= canvas.width)) runFlag = 0;
+              }
+
+              marchers[i].x = marchers[i].x + velX*deltat;
+              marchers[i].y = marchers[i].y + velY*deltat;
+            }
+
+
+
+
+ //          context.font = '16pt Calibri';
+ //          context.fillStyle = 'black';
+
+
+//        var timeLabel = 't = ';
+//        timeLabel = timeLabel + time.toFixed(2) + ' s';
+//        context.textAlign = 'center';
+//        context.fillText(timeLabel, xSupport, 410);
+
+      }
+    }
+
+    function runMotion() {
+        drawMotion();
+        if (runFlag == 1) {
+          timer = window.setTimeout(runMotion, 300/30);
+        }
+      }
+
+    function drawArrow(Fx,Fy,Px,Py, arrowColor) {
+           var theta = Math.atan2(Fy,Fx);
+           context.strokeStyle = arrowColor;
+           context.lineWidth = 4;
+           context.beginPath();
+           context.moveTo(Px, Py);
+           context.lineTo(Px+5*Fx, Py-5*Fy);
+           context.stroke();
+
+           context.lineWidth = 2;
+
+           var Fmag = Math.sqrt(Fx*Fx+Fy*Fy);
+           if (Fmag > 5) Fmag = 5;
+
+           context.fillStyle = arrowColor;
+           context.beginPath();
+           context.moveTo(Px+5*Fx-3*Fmag*Math.cos(theta+0.25*(3.1416/2)),Py-5*Fy+3*Fmag*Math.sin(theta+0.25*(3.1416/2)));
+           context.lineTo(Px+5*Fx,Py-5*Fy);
+           context.lineTo(Px+5*Fx-3*Fmag*Math.cos(theta-0.25*(3.1416/2)),Py-5*Fy+3*Fmag*Math.sin(theta-0.25*(3.1416/2)));
+
+           context.stroke();
+           context.fill();
+
+    }
+
+    function drawAxes(xAxisStart,yAxisStart,xNum, yNum, xOffset, xIncrement, yIncrement, xNumDecimals, yNumDecimals, xAxisTitle, yAxisTitle, graphTitle) {
+        // set background color for the graph
+           context.fillStyle = "#eff";
+           context.fillRect(xAxisStart, yAxisStart, 40*xNum, 40*yNum);
+
+           var axisLabel = '';
+           var axisValue = 0;
+
+         // vertical grid lines
+         context.lineWidth = 2;
+         context.strokeStyle = '#888';
+
+         for (var i = 0; i <= xNum; i++) {
+           context.beginPath();
+           context.moveTo(xAxisStart+40*i, yAxisStart);
+           context.lineTo(xAxisStart+40*i, yAxisStart+40*yNum+10);
+           context.stroke();
+           context.font = '14pt Calibri';
+           context.fillStyle = 'black';
+           context.textAlign = 'center';
+           context.textBaseline = 'middle';
+           axisValue = xOffset+xIncrement*(i);
+           axisLabel = axisValue.toFixed(xNumDecimals);
+           context.fillText(axisLabel, xAxisStart+40*i, yAxisStart+40*yNum+20);
+          }
+
+         // horizontal grid lines
+         for (i = 0; i <= yNum; i++) {
+           context.beginPath();
+           context.moveTo(xAxisStart-10, yAxisStart+40*i);
+           context.lineTo(xAxisStart+40*xNum, yAxisStart+40*i);
+           context.stroke();
+           context.font = '14pt Calibri';
+           context.fillStyle = 'black';
+           context.textAlign = 'center';
+           context.textBaseline = 'middle';
+           axisValue = yIncrement*(yNum-i);
+           axisLabel = axisValue.toFixed(yNumDecimals);
+           context.fillText(axisLabel, xAxisStart-30, yAxisStart+40*i);
+
+          }
+
+         // x-axis
+           context.strokeStyle = '#000';
+           context.lineWidth = 4;
+           context.beginPath();
+           context.moveTo(xAxisStart-1, yAxisStart+40*yNum);
+           context.lineTo(xAxisStart+40*xNum+20, yAxisStart+40*yNum);
+           context.stroke();
+           context.moveTo(xAxisStart+40*xNum+10, yAxisStart+40*yNum-6);
+           context.lineTo(xAxisStart+40*xNum+20, yAxisStart+40*yNum);
+           context.lineTo(xAxisStart+40*xNum+10, yAxisStart+40*yNum+6);
+           context.lineJoin = 'miter';
+           context.stroke();
+           context.font = '16pt Calibri';
+           context.fillStyle = 'black';
+           context.textAlign = 'left';
+           context.fillText(xAxisTitle, xAxisStart+40*xNum+24, yAxisStart+40*yNum);
+
+         // y-axis
+           context.strokeStyle = '#000';
+           context.beginPath();
+           context.moveTo(xAxisStart, yAxisStart-20);
+           context.lineTo(xAxisStart, yAxisStart+40*yNum);
+           context.stroke();
+           context.moveTo(xAxisStart-6, yAxisStart-10);
+           context.lineTo(xAxisStart, yAxisStart-20);
+           context.lineTo(xAxisStart+6, yAxisStart-10);
+           context.lineJoin = 'miter';
+           context.stroke();
+           context.strokeStyle = '#000';
+           context.textAlign = 'center';
+  //         console.log("In the drawMotion function, with yAxisTitle = " + yAxisTitle + xAxisStart );
+
+           context.font = '16pt Calibri';
+           context.fillStyle = 'black';
+           context.fillText(yAxisTitle, xAxisStart-30, yAxisStart - 35);
+
+           // graph title
+           context.font = 'bold 18pt Calibri';
+           context.fillStyle = 'purple';
+           context.textAlign = 'center';
+           context.fillText(graphTitle, xAxisStart+40*xNum/2, yAxisStart-24);
+
+    }
+
+    function drawAxesMidY(xAxisStart,yAxisStart,xNum, yNum, xOffset, xIncrement, yIncrement, xNumDecimals, yNumDecimals, xAxisTitle, yAxisTitle, graphTitle) {
+        // set background color for the graph
+           context.fillStyle = "#eff";
+           context.fillRect(xAxisStart, yAxisStart, 40*xNum, 40*yNum);
+
+           var axisLabel = '';
+           var axisValue = 0;
+
+         // vertical grid lines
+         context.lineWidth = 2;
+         context.strokeStyle = '#888';
+
+         for (var i = 0; i <= xNum; i++) {
+           context.beginPath();
+           context.moveTo(xAxisStart+40*i, yAxisStart);
+           context.lineTo(xAxisStart+40*i, yAxisStart+40*yNum/2+10);
+           context.stroke();
+           context.moveTo(xAxisStart+40*i, yAxisStart+40*yNum/2+30);
+           context.lineTo(xAxisStart+40*i, yAxisStart+40*yNum);
+           context.stroke();
+           context.font = '14pt Calibri';
+           context.fillStyle = 'black';
+           context.textAlign = 'center';
+           context.textBaseline = 'middle';
+           axisValue = xOffset + xIncrement*(i);
+           axisLabel = axisValue.toFixed(xNumDecimals);
+           if (i > 0) context.fillText(axisLabel, xAxisStart+40*i, yAxisStart+40*yNum/2+20);
+          }
+
+         // horizontal grid lines
+         for (i = 0; i <= yNum; i++) {
+           context.beginPath();
+           context.moveTo(xAxisStart-10, yAxisStart+40*i);
+           context.lineTo(xAxisStart+40*xNum, yAxisStart+40*i);
+           context.stroke();
+           context.font = '14pt Calibri';
+           context.fillStyle = 'black';
+           context.textAlign = 'center';
+           context.textBaseline = 'middle';
+           axisValue = yIncrement*(yNum/2-i);
+           axisLabel = axisValue.toFixed(yNumDecimals);
+           context.fillText(axisLabel, xAxisStart-30, yAxisStart+40*i);
+
+          }
+
+         // x-axis
+           context.strokeStyle = '#000';
+           context.lineWidth = 4;
+           context.beginPath();
+           context.moveTo(xAxisStart-1, yAxisStart+40*yNum/2);
+           context.lineTo(xAxisStart+40*xNum+20, yAxisStart+40*yNum/2);
+           context.stroke();
+           context.moveTo(xAxisStart+40*xNum+10, yAxisStart+40*yNum/2-6);
+           context.lineTo(xAxisStart+40*xNum+20, yAxisStart+40*yNum/2);
+           context.lineTo(xAxisStart+40*xNum+10, yAxisStart+40*yNum/2+6);
+           context.lineJoin = 'miter';
+           context.stroke();
+           context.font = '16pt Calibri';
+           context.fillStyle = 'black';
+           context.textAlign = 'left';
+           context.fillText(xAxisTitle, xAxisStart+40*xNum+24, yAxisStart+40*yNum/2);
+
+         // y-axis
+           context.strokeStyle = '#000';
+           context.beginPath();
+           context.moveTo(xAxisStart, yAxisStart-20);
+           context.lineTo(xAxisStart, yAxisStart+40*yNum);
+           context.stroke();
+           context.moveTo(xAxisStart-6, yAxisStart-10);
+           context.lineTo(xAxisStart, yAxisStart-20);
+           context.lineTo(xAxisStart+6, yAxisStart-10);
+           context.lineJoin = 'miter';
+           context.stroke();
+           context.strokeStyle = '#000';
+           context.textAlign = 'center';
+  //         console.log("In the drawMotion function, with yAxisTitle = " + yAxisTitle + xAxisStart );
+
+           context.font = '16pt Calibri';
+           context.fillStyle = 'black';
+           context.fillText(yAxisTitle, xAxisStart-30, yAxisStart - 35);
+
+           // graph title
+           context.font = 'bold 18pt Calibri';
+           context.fillStyle = 'purple';
+           context.textAlign = 'center';
+           context.fillText(graphTitle, xAxisStart+40*xNum/2, yAxisStart-24);
+
+    }
+
+    function drawSlider(sliderX, sliderY, sliderXMin, sliderXMax, sliderValueMin, sliderValueMax, sliderValue, sliderDecimals) {
+
+
+       context.strokeStyle = '#999';
+       context.lineWidth = 8;
+       context.beginPath();
+       context.moveTo(sliderXMin,sliderY);
+       context.lineTo(sliderXMax,sliderY);
+       context.stroke();
+
+       context.strokeStyle = '#44f';
+       context.lineWidth = 8;
+       context.beginPath();
+       context.moveTo(sliderXMin,sliderY);
+       context.lineTo(sliderX,sliderY);
+       context.stroke();
+
+       context.beginPath();
+       context.arc(sliderX, sliderY, 10, 0, 2 * Math.PI, false);
+       context.fillStyle = '#00f';
+       context.fill();
+       context.lineWidth = 1;
+       context.strokeStyle = 'black';
+       context.stroke();
+
+      }
+
+//  Mouse and Touch event functions from  Wolfgang Bauer
+
+function whereClicked(x_,y_,what_) {    // underscore denotes local variables
+	//if (what_ == 'down') {console.log('('+x_+','+y_+')'+what_)};
+//	console.log('('+x_+','+y_+')'+what_);
+//    console.log("x offset = " + charge1X + " y offset = " + charge1Y);
+      if ((Math.abs(x_ - (n1sliderX)) < 40) && (Math.abs(y_ - n1sliderY) < 40))   // moving the n1 slider
+      {
+        n1sliderX = x_ ;
+        if (n1sliderX < n1sliderXMin) n1sliderX = n1sliderXMin;
+        if (n1sliderX > n1sliderXMax) n1sliderX = n1sliderXMax;
+        reset();
+      }
+      else if ((Math.abs(x_ - (n2sliderX)) < 40) && (Math.abs(y_ - n2sliderY) < 40))   // moving the n2 slider
+      {
+        n2sliderX = x_ ;
+        if (n2sliderX < n2sliderXMin) n2sliderX = n2sliderXMin;
+        if (n2sliderX > n2sliderXMax) n2sliderX = n2sliderXMax;
+        reset();
+      }
+      else if ((Math.abs(x_ - (angle1sliderX)) < 40) && (Math.abs(y_ - angle1sliderY) < 40))   // moving the angle1 slider
+      {
+        angle1sliderX = x_ ;
+        if (angle1sliderX < angle1sliderXMin) angle1sliderX = angle1sliderXMin;
+        if (angle1sliderX > angle1sliderXMax) angle1sliderX = angle1sliderXMax;
+        reset();
+      }
+//        reset();
+//      }
+//      else if ((Math.abs(x_ - (charge2X)) < 15) && (Math.abs(y_ - charge2Y) < 15))  // moving the right-hand charge
+//      {
+//        charge2X = x_ ;
+//        charge2Y = y_ ;
+//        reset();
+//      }
+
+	if (what_ == 'down') {
+//		dragRect = true;
+//		x1 = x_;     // x1, y1 are global variables
+//		y1 = y_;
+	}
+	if (what_ == 'move') {
+//		dragRect = true;
+//		dx = x_-x1;
+//		dy = y_-y1;
+	}
+	if (what_ == 'up') {
+//		dragRect = false;
+//		dx = x_-x1;
+//		dy = y_-y1;
+	}
+}
+
+function myMove(event){
+	var xClick = event.pageX - canvasesdiv.offsetLeft;
+	var yClick = event.pageY - canvasesdiv.offsetTop;
+	whereClicked(xClick,yClick,'move');
+//	drawAll();
+//	drawMotion();
+
+}
+
+function myDown(event){
+	var xClick = event.pageX - canvasesdiv.offsetLeft;
+	var yClick = event.pageY - canvasesdiv.offsetTop;
+	whereClicked(xClick,yClick,'down');
+	canvas.onmousemove = myMove;
+//	drawMotion();
+}
+
+function myUp(event){
+	var xClick = event.pageX - canvasesdiv.offsetLeft;
+	var yClick = event.pageY - canvasesdiv.offsetTop;
+	whereClicked(xClick,yClick,'up');
+	canvas.onmousemove = null;
+//	drawMotion();
+}
+
+function myTouchMove(event){
+	event.preventDefault();
+	var xClick = event.targetTouches[0].pageX - canvasesdiv.offsetLeft;
+	var yClick = event.targetTouches[0].pageY - canvasesdiv.offsetTop;
+	whereClicked(xClick,yClick,'move');
+//	drawMotion();
+}
+
+function myTouchStart(event){
+	event.preventDefault();
+	var xClick = event.targetTouches[0].pageX - canvasesdiv.offsetLeft;
+	var yClick = event.targetTouches[0].pageY - canvasesdiv.offsetTop;
+	whereClicked(xClick,yClick,'down');
+//	drawMotion();
+}
+
+function myTouchEnd(event){
+	event.preventDefault();
+	var xClick = event.targetTouches[0].pageX - canvasesdiv.offsetLeft;
+	var yClick = event.targetTouches[0].pageY - canvasesdiv.offsetTop;
+	whereClicked(xClick,yClick,'up');
+//	drawMotion();
+}
+
+
+  </script>
+<p>This simulation shows a marching band model for refraction. We're looking at an overhead view
+of five rows of the marching band. When the band moves from one surface (say, a parking lot) to
+a different surface (say, a grassy field), the speed of the marchers can change. Associated with
+that change in speed is, often, a change in direction - this happens if different marchers in a particular
+row reach the second surface at different times.
+</p>
+
+<p>This is an analog of the behavior of light when it travels from one medium to another.
+The index of refraction of the media can be set with the sliders - the larger the index of refraction, the
+slower the marchers (the light) travels in that medium. The angle of incidence, measured from the
+normal (perpendicular to the interface), can also be set with a slider.</p>
+
+<p>Simulation written by Andrew Duffy, and first posted on 2-13-2018.</p>
+
+
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/InteractiveResource" rel="dct:type">work</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Andrew Duffy</span> is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.<br />This simulation can be found in the collection at <a xmlns:dct="http://purl.org/dc/terms/" href="http://physics.bu.edu/~duffy/classroom.html" rel="dct:source">http://physics.bu.edu/~duffy/classroom.html</a>.
+
+                <p>The counter has been running on this page since 8-14-2018. The number of people accessing the page since then is:
+<br><img src="http://physics.bu.edu/cgi-bin/Count.cgi?df=marching_band_model.dat" align="absmiddle">
+
+
+</body>
+</html>
